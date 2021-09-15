@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		2808977526EEFC510094A830 /* FullScreenSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2808977426EEFC510094A830 /* FullScreenSheetView.swift */; };
+		285974E926F07F3800FCC3B9 /* ImageDetectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285974E526F07F3300FCC3B9 /* ImageDetectionManager.swift */; };
+		285974EA26F07F3800FCC3B9 /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 285974E626F07F3800FCC3B9 /* Resnet50.mlmodel */; };
+		285974EB26F07F3800FCC3B9 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285974E726F07F3800FCC3B9 /* UIImage+Extension.swift */; };
+		285974EC26F07F3900FCC3B9 /* ImageDetectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285974E826F07F3800FCC3B9 /* ImageDetectionViewModel.swift */; };
+		28A4FAD926F2A656002CCD45 /* ImageDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A4FAD826F2A656002CCD45 /* ImageDetection.swift */; };
 		28C97F7D26E9D29400C06095 /* CustomCameraEditApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C97F7C26E9D29400C06095 /* CustomCameraEditApp.swift */; };
 		28C97F7F26E9D29400C06095 /* MyCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C97F7E26E9D29400C06095 /* MyCameraView.swift */; };
 		28C97F8126E9D29700C06095 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28C97F8026E9D29700C06095 /* Assets.xcassets */; };
@@ -16,6 +21,11 @@
 
 /* Begin PBXFileReference section */
 		2808977426EEFC510094A830 /* FullScreenSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenSheetView.swift; sourceTree = "<group>"; };
+		285974E526F07F3300FCC3B9 /* ImageDetectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDetectionManager.swift; sourceTree = "<group>"; };
+		285974E626F07F3800FCC3B9 /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
+		285974E726F07F3800FCC3B9 /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		285974E826F07F3800FCC3B9 /* ImageDetectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDetectionViewModel.swift; sourceTree = "<group>"; };
+		28A4FAD826F2A656002CCD45 /* ImageDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetection.swift; sourceTree = "<group>"; };
 		28C97F7926E9D29400C06095 /* CustomCameraEdit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomCameraEdit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28C97F7C26E9D29400C06095 /* CustomCameraEditApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCameraEditApp.swift; sourceTree = "<group>"; };
 		28C97F7E26E9D29400C06095 /* MyCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCameraView.swift; sourceTree = "<group>"; };
@@ -35,10 +45,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		285974ED26F07F4300FCC3B9 /* ImageDetection */ = {
+			isa = PBXGroup;
+			children = (
+				285974E526F07F3300FCC3B9 /* ImageDetectionManager.swift */,
+				285974E826F07F3800FCC3B9 /* ImageDetectionViewModel.swift */,
+				285974E626F07F3800FCC3B9 /* Resnet50.mlmodel */,
+				285974E726F07F3800FCC3B9 /* UIImage+Extension.swift */,
+			);
+			path = ImageDetection;
+			sourceTree = "<group>";
+		};
 		28C97F7026E9D29400C06095 = {
 			isa = PBXGroup;
 			children = (
 				28C97F7B26E9D29400C06095 /* CustomCameraEdit */,
+				285974ED26F07F4300FCC3B9 /* ImageDetection */,
 				28C97F7A26E9D29400C06095 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -57,6 +79,7 @@
 				28C97F7C26E9D29400C06095 /* CustomCameraEditApp.swift */,
 				28C97F7E26E9D29400C06095 /* MyCameraView.swift */,
 				2808977426EEFC510094A830 /* FullScreenSheetView.swift */,
+				28A4FAD826F2A656002CCD45 /* ImageDetection.swift */,
 				28C97F8026E9D29700C06095 /* Assets.xcassets */,
 				28C97F8526E9D29700C06095 /* Info.plist */,
 				28C97F8226E9D29700C06095 /* Preview Content */,
@@ -141,9 +164,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				285974EA26F07F3800FCC3B9 /* Resnet50.mlmodel in Sources */,
+				28A4FAD926F2A656002CCD45 /* ImageDetection.swift in Sources */,
 				28C97F7F26E9D29400C06095 /* MyCameraView.swift in Sources */,
 				28C97F7D26E9D29400C06095 /* CustomCameraEditApp.swift in Sources */,
+				285974EB26F07F3800FCC3B9 /* UIImage+Extension.swift in Sources */,
+				285974EC26F07F3900FCC3B9 /* ImageDetectionViewModel.swift in Sources */,
 				2808977526EEFC510094A830 /* FullScreenSheetView.swift in Sources */,
+				285974E926F07F3800FCC3B9 /* ImageDetectionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

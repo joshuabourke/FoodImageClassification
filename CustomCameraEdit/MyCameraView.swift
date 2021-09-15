@@ -12,11 +12,30 @@ struct CustomCameraPhotoView: View {
     @State private var showingCustomCamera = false
     @State private var inputImage: UIImage?
     var body: some View {
-        
 //        NavigationView {
+        let detectDirectionDrags = DragGesture(minimumDistance: 3.0, coordinateSpace: .local)
+            .onEnded { value in
+                print(value.translation)
+                if value.translation.width < 0 && value.translation.height > -30 && value.translation.height < 30{
+                   print("Swipe Left")
+                }else if value.translation.width > 0 && value.translation.height > -30 && value.translation.height < 30{
+                    print("Swipe Right")
+                }else if value.translation.height < 0 && value.translation.width < 100 && value.translation.width > -100 {
+                    print("Swipe Up")
+                    showingCustomCamera = true
+                }else if value.translation.height > 0 && value.translation.width < 100 && value.translation.width > -100 {
+                    print("Swipe Down")
+                }else {
+                    print("Not sure where you swiped aye dawg.")
+                }
+                
+            }
+
             VStack {
+                
                 ZStack {
                     CustomCameraView(showingCustomCamera: self.$showingCustomCamera, image: self.$inputImage)
+                        .gesture(detectDirectionDrags)
 //                    Rectangle().fill(Color.secondary)
                     
 //                    if image != nil
@@ -35,7 +54,7 @@ struct CustomCameraPhotoView: View {
 //                }
             }
             .fullScreenCover(isPresented: $showingCustomCamera) {
-                FullScreenSheetView(sheetViewImage: $inputImage)
+                FullScreenSheetView(sheetViewImage: $inputImage, imDetection: ImageDetection())
             }
             .onAppear(perform: {
                 loadImage()
@@ -209,6 +228,7 @@ struct CaptureButtonView: View {
                 .stroke(Color.white,lineWidth: 2)
                 .frame(width: 75, height: 75)
         }
+        .padding(EdgeInsets(top: 0, leading: 0, bottom: 40, trailing: 0))
 
     }
 }
