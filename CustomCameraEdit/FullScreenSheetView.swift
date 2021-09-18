@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct FullScreenSheetView: View {
     @Environment(\.presentationMode) var presentataionMode
@@ -14,6 +15,7 @@ struct FullScreenSheetView: View {
     @State var foodNameTitle: String = "Food Name"
     @State var didClickClose: Bool = false
     @State var didClickSave: Bool = false
+    var fireBaseObject = FireBaseUpload()
 //    @ObservedObject var imageDetectionVM: ImageDetectionViewModel
 //    var imageDetectionManager: ImageDetectionManager
 //
@@ -44,15 +46,30 @@ struct FullScreenSheetView: View {
                         Image(systemName: self.didClickClose == true ? "xmark.circle.fill" : "xmark" )
                             .resizable()
                             .frame(width: 15, height: 20)
-                            .foregroundColor(.green)
                 })
                     .frame(width: 15, height: 20)
                     .padding()
                     .background(Color.white)
                     .clipShape(Circle())
                     .shadow(radius: 10)
-                    Spacer(minLength: 200)
                     
+                 Spacer()
+                    
+                
+                Button(action: {
+                    fireBaseObject.fireBaseUpload(funcName: foodNameTitle, funcImage: sheetViewImage!)
+                    
+                    print("Upload Button Pressed")
+                    }, label: {
+                        Image(systemName: "square.and.arrow.up")
+                        .resizable()
+                })
+                        .frame(width: 15, height: 20)
+                        .padding()
+                        .background(Color.white)
+                        .clipShape(Circle())
+                        .shadow(radius: 10)
+                
                     Spacer()
                     
                 Button(action: {
@@ -60,7 +77,6 @@ struct FullScreenSheetView: View {
                     }, label: {
                         Image(systemName: self.didClickSave == true ? "bookmark.fill" : "bookmark")
                         .resizable()
-                        .foregroundColor(.green)
                 })
                         .frame(width: 15, height: 20)
                         .padding()
@@ -94,6 +110,31 @@ struct FullScreenSheetView: View {
             Spacer()
         }
     }
+    
+}
+
+class FireBaseUpload {
+    //Create a root reference
+    
+    func fireBaseUpload(funcName: String,funcImage: UIImage){
+        let foodNameId = funcName
+        let storageRef = Storage.storage().reference(withPath: "Nutrify Photo's/\(foodNameId).jpg")
+        guard let imageData = funcImage.jpegData(compressionQuality: 0.75) else {return}
+        let uploadMetaData = StorageMetadata.init()
+        uploadMetaData.contentType = "image/jpeg"
+        
+        storageRef.putData(imageData, metadata: uploadMetaData) { downloadMetadata, error in
+            if let error = error{
+                print("Oh no! Got an Error! \(error.localizedDescription)")
+                return
+            }
+            print("Put is complete and I got this back: \(downloadMetadata)")
+        }
+        
+    }
+
+    
+    
     
 }
 
