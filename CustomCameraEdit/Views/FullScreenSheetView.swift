@@ -26,9 +26,10 @@ struct FullScreenSheetView: View {
     var body: some View {
         VStack {
             ZStack(alignment: .top){
+            ScrollView{
                 Image(uiImage: sheetViewImage ?? UIImage(named: "placeholder")!)
                     .resizable()
-                    .frame(width: 325, height: 450)
+                    .frame(width: 350, height: 475)
                     .cornerRadius(12)
                     .onChange(of: sheetViewImage, perform: { value in
                         imDetection.imageDetectionVM.detect(sheetViewImage)
@@ -36,6 +37,25 @@ struct FullScreenSheetView: View {
                         didClickClose = false
                         didClickSave = false
                     })
+                Spacer()
+                    HStack(){
+                    Text(foodNameTitle)
+                        .font(.largeTitle).bold()
+                        .padding(EdgeInsets(.init(top: 0, leading: 15, bottom: 3, trailing: 5)))
+                        Spacer()
+                    }
+                    .frame(alignment: .leading)
+                    HStack(){
+                        Text("Secondary food info will be displayed here...")
+                            .font(.caption)
+                            .foregroundColor(.gray)
+                            .padding(EdgeInsets(.init(top: 0, leading: 15, bottom: 5, trailing: 5)))
+                        Spacer()
+                    }
+                    .frame(alignment: .leading)
+                    Spacer()
+                }
+                
             HStack{
                     Spacer()
                 Button(action: {
@@ -91,24 +111,7 @@ struct FullScreenSheetView: View {
             }
             Spacer()
         }
-        ScrollView{
-            HStack(){
-            Text(foodNameTitle)
-                .font(.largeTitle).bold()
-                .padding(EdgeInsets(.init(top: 0, leading: 15, bottom: 3, trailing: 5)))
-                Spacer()
-            }
-            .frame(alignment: .leading)
-            HStack(){
-                Text("Secondary food info will be displayed here...")
-                    .font(.caption)
-                    .foregroundColor(.gray)
-                    .padding(EdgeInsets(.init(top: 0, leading: 15, bottom: 5, trailing: 5)))
-                Spacer()
-            }
-            .frame(alignment: .leading)
-            Spacer()
-        }
+
     }
     
 }
@@ -128,7 +131,7 @@ class FireBaseUpload {
                 print("Oh no! Got an Error! \(error.localizedDescription)")
                 return
             }
-            print("Put is complete and I got this back: \(downloadMetadata)")
+            print("Put is complete and I got this back: \(String(describing: downloadMetadata))")
         }
         
     }
