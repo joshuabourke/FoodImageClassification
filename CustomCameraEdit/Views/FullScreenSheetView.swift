@@ -16,26 +16,97 @@ struct FullScreenSheetView: View {
     @State var didClickClose: Bool = false
     @State var didClickSave: Bool = false
     var fireBaseObject = FireBaseUpload()
-//    @ObservedObject var imageDetectionVM: ImageDetectionViewModel
-//    var imageDetectionManager: ImageDetectionManager
-//
-//    init(){
-//        self.imageDetectionManager = ImageDetectionManager()
-//        self.imageDetectionVM = ImageDetectionViewModel(manager: imageDetectionManager)
-    
+    @EnvironmentObject var imageAndNameFeeder: ImageAndNameFeeder
+
     var body: some View {
+//        let detectDirectionDrags = DragGesture(minimumDistance: 3.0, coordinateSpace: .local)
+//            .onEnded { value in
+//                print(value.translation)
+//                if value.translation.width < 0 && value.translation.height > -30 && value.translation.height < 30{
+//                   print("Swipe Left FullScreenSheetView")
+//
+//                }else if value.translation.width > 0 && value.translation.height > -30 && value.translation.height < 30{
+//                    print("Swipe Right FullScreenSheetView")
+//                }else if value.translation.height < 0 && value.translation.width < 100 && value.translation.width > -100 {
+//                    print("Swipe Up FullScreenSheetView")
+//                }else if value.translation.height > 0 && value.translation.width < 100 && value.translation.width > -100 {
+//                    print("Swipe Down FullScreenSheetView")
+//                }else {
+//                    print("Not sure where you swiped aye dawg. FullScreenSheetView")
+//                }
+//                
+//            }
+        
         VStack {
+            HStack{
+                    Spacer()
+                Button(action: {
+//                        sheetViewImage = UIImage()
+                        presentataionMode.wrappedValue.dismiss()
+                        didClickClose = true
+                    }, label: {
+                        Image(systemName: self.didClickClose == true ? "xmark.circle.fill" : "xmark" )
+                            .resizable()
+                            .frame(width: 15, height: 20)
+                })
+                    .frame(width: 15, height: 20)
+                    .padding()
+                    .background(Color.white)
+                    .clipShape(Circle())
+                    .shadow(color: .black, radius: 3, x: 0.25, y: 0.25)
+                    
+                 Spacer()
+                    
+                
+                Button(action: {
+                    fireBaseObject.fireBaseUpload(funcMetaDataName: foodNameTitle, funcImage: sheetViewImage!)
+                    
+                    print("Upload Button Pressed")
+                    }, label: {
+                        Image(systemName: "square.and.arrow.up")
+                        .resizable()
+                })
+                        .frame(width: 15, height: 20)
+                        .padding()
+                        .background(Color.white)
+                        .clipShape(Circle())
+                        .shadow(color: .black, radius: 3, x: 0.25, y: 0.25)
+                
+                    Spacer()
+                    
+                Button(action: {
+                    didClickSave.toggle()
+                    
+                    if didClickSave == true {
+                        imageAndNameFeeder.foodList.append(ImageAndNameFeeder.Item(addingItemName: foodNameTitle, itemImage: sheetViewImage ?? UIImage(named: "placeholder")!))
+                    } else {
+                        imageAndNameFeeder.foodList.removeLast()
+                    }
+                    
+                    }, label: {
+                        Image(systemName: self.didClickSave == true ? "bookmark.fill" : "bookmark")
+                        .resizable()
+                })
+                        .frame(width: 15, height: 20)
+                        .padding()
+                        .background(Color.white)
+                        .clipShape(Circle())
+                        .shadow(color: .black, radius: 3, x: 0.25, y: 0.25)
+                    Spacer()
+                }
             ZStack(alignment: .top){
             ScrollView{
                 Image(uiImage: sheetViewImage ?? UIImage(named: "placeholder")!)
                     .resizable()
-                    .frame(width: 350, height: 475)
+                    .frame(width: 350, height: 425)
                     .cornerRadius(12)
+                    .shadow(color: .black, radius: 3, x: 0.25, y: 0.25)
                     .onChange(of: sheetViewImage, perform: { value in
                         imDetection.imageDetectionVM.detect(sheetViewImage)
                        foodNameTitle = imDetection.imageDetectionVM.predictionLabel
                         didClickClose = false
                         didClickSave = false
+                    
                     })
                 Spacer()
                     HStack(){
@@ -55,63 +126,13 @@ struct FullScreenSheetView: View {
                     .frame(alignment: .leading)
                     Spacer()
                 }
-                
-            HStack{
-                    Spacer()
-                Button(action: {
-//                        sheetViewImage = UIImage()
-                        presentataionMode.wrappedValue.dismiss()
-                        didClickClose = true
-                    }, label: {
-                        Image(systemName: self.didClickClose == true ? "xmark.circle.fill" : "xmark" )
-                            .resizable()
-                            .frame(width: 15, height: 20)
-                })
-                    .frame(width: 15, height: 20)
-                    .padding()
-                    .background(Color.white)
-                    .clipShape(Circle())
-                    .shadow(radius: 10)
-                    
-                 Spacer()
-                    
-                
-                Button(action: {
-                    fireBaseObject.fireBaseUpload(funcName: foodNameTitle, funcImage: sheetViewImage!)
-                    
-                    print("Upload Button Pressed")
-                    }, label: {
-                        Image(systemName: "square.and.arrow.up")
-                        .resizable()
-                })
-                        .frame(width: 15, height: 20)
-                        .padding()
-                        .background(Color.white)
-                        .clipShape(Circle())
-                        .shadow(radius: 10)
-                
-                    Spacer()
-                    
-                Button(action: {
-                    didClickSave.toggle()
-                    }, label: {
-                        Image(systemName: self.didClickSave == true ? "bookmark.fill" : "bookmark")
-                        .resizable()
-                })
-                        .frame(width: 15, height: 20)
-                        .padding()
-                        .background(Color.white)
-                        .clipShape(Circle())
-                        .shadow(radius: 10)
-                    Spacer()
-                    
-                }
+            }
+            
             Spacer()
 
-            }
+            
             Spacer()
         }
-
     }
     
 }
@@ -119,12 +140,16 @@ struct FullScreenSheetView: View {
 class FireBaseUpload {
     //Create a root reference
     
-    func fireBaseUpload(funcName: String,funcImage: UIImage){
-        let foodNameId = funcName
+    func fireBaseUpload(funcMetaDataName: String, funcImage: UIImage){
+        let foodNameId = UUID.init().uuidString
         let storageRef = Storage.storage().reference(withPath: "Nutrify Photo's/\(foodNameId).jpg")
         guard let imageData = funcImage.jpegData(compressionQuality: 0.75) else {return}
         let uploadMetaData = StorageMetadata.init()
         uploadMetaData.contentType = "image/jpeg"
+        uploadMetaData.customMetadata = ["Name" : "\(funcMetaDataName)"]
+        
+        
+        
         
         storageRef.putData(imageData, metadata: uploadMetaData) { downloadMetadata, error in
             if let error = error{

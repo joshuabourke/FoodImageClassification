@@ -8,9 +8,29 @@
 import SwiftUI
 
 struct SavedFoodView: View {
+    
+    @EnvironmentObject var imageAndFoodNameFeeder: ImageAndNameFeeder
+    
     var body: some View {
-        navigationTitle("Saved Foods")
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView{
+            List{
+                ForEach(imageAndFoodNameFeeder.foodList) { index in
+                    HStack{
+                        Image(uiImage: index.itemImage)
+                            .resizable()
+                            .frame(width: 125, height: 125)
+                            .cornerRadius(12)
+                            .padding()
+                        Text(index.addingItemName)
+                            .font(.bold(.title2)())
+                    }
+
+                }
+                .onDelete(perform: imageAndFoodNameFeeder.delete)
+            }
+            
+                .navigationTitle("Saved")
+        }
     }
 }
 

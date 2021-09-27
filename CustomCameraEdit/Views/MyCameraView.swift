@@ -11,6 +11,7 @@ struct CustomCameraPhotoView: View {
     @State private var image: Image?
     @State private var showingCustomCamera = false
     @State private var inputImage: UIImage?
+    @State private var selcetion = 0
     var body: some View {
 //        NavigationView {
         let detectDirectionDrags = DragGesture(minimumDistance: 3.0, coordinateSpace: .local)
@@ -18,6 +19,9 @@ struct CustomCameraPhotoView: View {
                 print(value.translation)
                 if value.translation.width < 0 && value.translation.height > -30 && value.translation.height < 30{
                    print("Swipe Left")
+                    withAnimation {
+                        selcetion = 1
+                    }
                 }else if value.translation.width > 0 && value.translation.height > -30 && value.translation.height < 30{
                     print("Swipe Right")
                 }else if value.translation.height < 0 && value.translation.width < 100 && value.translation.width > -100 {
@@ -30,39 +34,24 @@ struct CustomCameraPhotoView: View {
                 }
                 
             }
-
-            VStack {
-                
+        TabView(selection: $selcetion){
+            VStack{
                 ZStack {
                     CustomCameraView(showingCustomCamera: self.$showingCustomCamera, image: self.$inputImage)
                         .gesture(detectDirectionDrags)
-//                    Rectangle().fill(Color.secondary)
-                    
-//                    if image != nil
-//                    {
-//                        image?
-//                            .resizable()
-//                            .aspectRatio(contentMode: .fill)
-//                    }
-//                    else
-//                    {
-//                        Text("Take Photo").foregroundColor(.white).font(.headline)
-//                    }
-                }
-//                .onTapGesture {
-//                    self.showingCustomCamera = true
-//                }
             }
-            .fullScreenCover(isPresented: $showingCustomCamera) {
+            .sheet(isPresented: $showingCustomCamera) {
                 FullScreenSheetView(sheetViewImage: $inputImage, imDetection: ImageDetection())
             }
             .onAppear(perform: {
                 loadImage()
             })
             .edgesIgnoringSafeArea(.all)
-//
-//        }
 
+            }.tag(0)
+            
+            SavedFoodView().tag(1)
+        }.tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
     }
     func loadImage() {
         guard let inputImage = inputImage else { return }
