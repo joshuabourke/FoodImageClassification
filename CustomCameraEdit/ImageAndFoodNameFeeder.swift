@@ -14,7 +14,7 @@ class ImageAndNameFeeder: ObservableObject, Identifiable {
     @Published var foodList: [Item]
 
     init(addingItemName: String, itemImage: UIImage){
-        self.foodList = [Item(addingItemName: "Test", itemImage: UIImage(named: "placeholder")!)]
+        self.foodList = []
     }
     
     struct Item: Identifiable {

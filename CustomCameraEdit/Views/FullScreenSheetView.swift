@@ -19,29 +19,10 @@ struct FullScreenSheetView: View {
     @EnvironmentObject var imageAndNameFeeder: ImageAndNameFeeder
 
     var body: some View {
-//        let detectDirectionDrags = DragGesture(minimumDistance: 3.0, coordinateSpace: .local)
-//            .onEnded { value in
-//                print(value.translation)
-//                if value.translation.width < 0 && value.translation.height > -30 && value.translation.height < 30{
-//                   print("Swipe Left FullScreenSheetView")
-//
-//                }else if value.translation.width > 0 && value.translation.height > -30 && value.translation.height < 30{
-//                    print("Swipe Right FullScreenSheetView")
-//                }else if value.translation.height < 0 && value.translation.width < 100 && value.translation.width > -100 {
-//                    print("Swipe Up FullScreenSheetView")
-//                }else if value.translation.height > 0 && value.translation.width < 100 && value.translation.width > -100 {
-//                    print("Swipe Down FullScreenSheetView")
-//                }else {
-//                    print("Not sure where you swiped aye dawg. FullScreenSheetView")
-//                }
-//                
-//            }
-        
         VStack {
             HStack{
                     Spacer()
                 Button(action: {
-//                        sheetViewImage = UIImage()
                         presentataionMode.wrappedValue.dismiss()
                         didClickClose = true
                     }, label: {
@@ -136,6 +117,7 @@ struct FullScreenSheetView: View {
     }
     
 }
+
 
 class FireBaseUpload {
     //Create a root reference

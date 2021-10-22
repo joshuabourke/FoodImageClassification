@@ -14,7 +14,7 @@ struct CustomCameraEditApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var body: some Scene {
         WindowGroup {
-            CustomCameraPhotoView().environmentObject(ImageAndNameFeeder(addingItemName: "Test", itemImage: UIImage(named: "placeholder")!))
+            CustomCameraPhotoView(didOutPutImage: false).environmentObject(ImageAndNameFeeder(addingItemName: "Test", itemImage: UIImage(named: "placeholder")!))
             
         }
     }
