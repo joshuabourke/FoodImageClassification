@@ -12,15 +12,14 @@ struct CustomCameraPhotoView: View {
 //    @State private var showingCustomCamera = false
 //    @State private var inputImage: UIImage?
     @State private var image: UIImage?
-    @State var didOutPutImage: Bool
+    @State private var didOutPutImage = false
     @State private var selcetion = 0
     let customCameraController = CustomCameraController()
     var body: some View {
 
         TabView(selection: $selcetion){
-
             
-            var customCameraRepresentable = CustomCameraRepresentable(
+            let customCameraRepresentable = CustomCameraRepresentable(
                 cameraFrame: .zero,
                 imageCompletion: { _ in }
             )
@@ -30,30 +29,26 @@ struct CustomCameraPhotoView: View {
                     imageCompletion: { newImage in
                         self.image = newImage
                         didOutPutImage = true
+                        
                     }
                 )
-                    .sheet(isPresented: $didOutPutImage, content: {
-                        FullScreenSheetView(sheetViewImage: $image, imDetection: ImageDetection())
-                    })
+                .sheet(isPresented: $didOutPutImage, content: {
+                    FullScreenSheetView(sheetViewImage: $image, imDetection: ImageDetection(), didTakePhoto: $didOutPutImage)
+                })
+
                 .onAppear {
                     customCameraRepresentable.startRunningCaptureSession()
                 }
                 .onDisappear {
                     customCameraRepresentable.stopRunningCaptureSession()
                 }
+
                 
         //        if let image = image {
         //            Image(uiImage: image)
         //                .resizable()
         //                .aspectRatio(contentMode: .fit)
         //        }
-            
- 
-            
-            
-            
-            
-            
 //            VStack{
 //                ZStack {
 //                    CustomCameraView(showingCustomCamera: self.$showingCustomCamera, image: self.$inputImage)
@@ -70,11 +65,13 @@ struct CustomCameraPhotoView: View {
 //            .edgesIgnoringSafeArea(.all)
 //
 //            }
+
             
             
                 .tag(0)
                 .tabItem {
                     Image(systemName: (selcetion == 0 ? "camera.fill" : "camera"))
+                    
                 }
             
             SavedFoodView()
@@ -109,7 +106,9 @@ struct CustomCameraView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                let frame = CGRect(x: 0, y: 0, width: geometry.size.width, height: geometry.size.height - 100)
+                
+                //Camera Frame
+                let frame = CGRect(x: 0, y: 0, width: geometry.size.width, height: geometry.size.height)
                 cameraView(frame: frame)
                 
                 HStack {
@@ -254,7 +253,7 @@ final class CustomCameraController: UIViewController {
             
             photoOutput = AVCapturePhotoOutput()
             photoOutput?.setPreparedPhotoSettingsArray(
-                [AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.hevc])],
+                [AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])],
                 completionHandler: nil
             )
             

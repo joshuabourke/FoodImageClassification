@@ -13,10 +13,12 @@ struct FullScreenSheetView: View {
     @Binding var sheetViewImage: UIImage?
     @StateObject var imDetection: ImageDetection
     @State var foodNameTitle: String = "Food Name"
+    @Binding var didTakePhoto: Bool
     @State var didClickClose: Bool = false
     @State var didClickSave: Bool = false
     var fireBaseObject = FireBaseUpload()
     @EnvironmentObject var imageAndNameFeeder: ImageAndNameFeeder
+
 
     var body: some View {
         VStack {
@@ -78,22 +80,27 @@ struct FullScreenSheetView: View {
             ZStack(alignment: .top){
             ScrollView{
                 Image(uiImage: sheetViewImage ?? UIImage(named: "placeholder")!)
+
                     .resizable()
                     .frame(width: 350, height: 425)
                     .cornerRadius(12)
                     .shadow(color: .black, radius: 3, x: 0.25, y: 0.25)
-                    .onChange(of: sheetViewImage, perform: { value in
-                        imDetection.imageDetectionVM.detect(sheetViewImage)
-                       foodNameTitle = imDetection.imageDetectionVM.predictionLabel
-                        didClickClose = false
-                        didClickSave = false
                     
-                    })
+//                    .onChange(of: sheetViewImage, perform: { value in
+//                        imDetection.imageDetectionVM.detect(sheetViewImage)
+//                        foodNameTitle = imDetection.imageDetectionVM.predictionLabel
+//            //            imDetection.imageDetectionVM.detect(sheetViewImage)
+//            //            foodNameTitle = imDetection.imageDetectionVM.predictionLabel
+//                        didClickClose = false
+//                        didClickSave = false
+//                    })
+//                    
+
                 Spacer()
                     HStack(){
-                    Text(foodNameTitle)
-                        .font(.largeTitle).bold()
-                        .padding(EdgeInsets(.init(top: 0, leading: 15, bottom: 3, trailing: 5)))
+                        Text(foodNameTitle)
+                            .font(.largeTitle).bold()
+                            .padding(EdgeInsets(.init(top: 0, leading: 15, bottom: 3, trailing: 5)))
                         Spacer()
                     }
                     .frame(alignment: .leading)
@@ -114,7 +121,16 @@ struct FullScreenSheetView: View {
             
             Spacer()
         }
+        .onAppear {
+            imDetection.imageDetectionVM.detect(sheetViewImage)
+            foodNameTitle = imDetection.imageDetectionVM.predictionLabel
+//            imDetection.imageDetectionVM.detect(sheetViewImage)
+//            foodNameTitle = imDetection.imageDetectionVM.predictionLabel
+            didClickClose = false
+            didClickSave = false
+        }
     }
+        
     
 }
 
@@ -150,6 +166,6 @@ class FireBaseUpload {
 
 struct FullScreenSheetView_Previews: PreviewProvider {
     static var previews: some View {
-        FullScreenSheetView(sheetViewImage: Binding<UIImage?>.constant(UIImage(named: "placeholder")!), imDetection: ImageDetection())
+        FullScreenSheetView(sheetViewImage: Binding<UIImage?>.constant(UIImage(named: "placeholder")!), imDetection: ImageDetection(), didTakePhoto: Binding<Bool>.constant(false))
     }
 }

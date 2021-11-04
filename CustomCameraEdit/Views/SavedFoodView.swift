@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct SavedFoodView: View {
-    
+
+    @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var imageAndFoodNameFeeder: ImageAndNameFeeder
     
     var body: some View {
@@ -29,8 +30,9 @@ struct SavedFoodView: View {
                 .onDelete(perform: imageAndFoodNameFeeder.delete)
             }
             
-                .navigationTitle("Saved")
+            .navigationBarTitle(Text("Saved"))
         }
+        
     }
 }
 

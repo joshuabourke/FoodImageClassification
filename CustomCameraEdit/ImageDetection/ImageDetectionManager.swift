@@ -11,7 +11,7 @@ import UIKit
 
 class ImageDetectionManager {
     
-    let model = Resnet50()
+    let model = FoodVisionV0_2()
     
     func detect(_ img: UIImage) -> String? {
         
