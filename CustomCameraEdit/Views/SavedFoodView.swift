@@ -6,34 +6,60 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct SavedFoodView: View {
 
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var imageAndFoodNameFeeder: ImageAndNameFeeder
     
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(entity: Saved.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Saved.dataFoodName, ascending: true), NSSortDescriptor(keyPath: \Saved.dataFoodImage, ascending: true), NSSortDescriptor(keyPath: \Saved.dataPredicPercent, ascending: true), NSSortDescriptor(keyPath: \Saved.dataFoodID, ascending: true)])
+    
+    var savings: FetchedResults<Saved>
+    
+    
+  
     var body: some View {
         NavigationView{
             List{
-                ForEach(imageAndFoodNameFeeder.foodList) { index in
+                ForEach(savings, id:\.self) { index in
                     HStack{
-                        Image(uiImage: index.itemImage)
+                        Image(uiImage: UIImage(data: index.dataFoodImage!) ?? UIImage(named: "placeholder")!)
                             .resizable()
                             .frame(width: 125, height: 125)
                             .cornerRadius(12)
                             .padding()
-                        Text(index.addingItemName)
+                        Text(index.dataFoodName ?? "")
                             .font(.bold(.title2)())
                     }
 
                 }
-                .onDelete(perform: imageAndFoodNameFeeder.delete)
+                .onDelete(perform: removeFromCoreData)
             }
             
             .navigationBarTitle(Text("Saved"))
+            .navigationBarHidden(false)
         }
         
+        //Fetching CoreData
+    .onAppear{
+       
+        }
+        //Storing CoreData
+    .onDisappear{
+        
+        }
+    
     }
+
+    func removeFromCoreData(at offsets: IndexSet) {
+        for index in offsets {
+            let storedFoodItem = savings[index]
+            moc.delete(storedFoodItem)
+        }
+    }
+
 }
 
 struct SavedFoodView_Previews: PreviewProvider {

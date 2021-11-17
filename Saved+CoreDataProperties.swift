@@ -16,10 +16,10 @@ extension Saved {
         return NSFetchRequest<Saved>(entityName: "Saved")
     }
 
-    @NSManaged public var foodname: String?
-    @NSManaged public var foodImage: Data?
-    @NSManaged public var predictionPercent: String?
-
+    @NSManaged public var dataFoodName: String?
+    @NSManaged public var dataFoodImage: Data?
+    @NSManaged public var dataPredicPercent: String?
+    @NSManaged public var dataFoodID: UUID?
 }
 
 extension Saved : Identifiable {

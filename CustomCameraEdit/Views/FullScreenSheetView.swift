@@ -9,6 +9,7 @@ import SwiftUI
 import Firebase
 
 struct FullScreenSheetView: View {
+    @Environment(\.defaultMinListRowHeight) var minRowHeight
     @Environment(\.presentationMode) var presentataionMode
     @Binding var sheetViewImage: UIImage?
     @StateObject var imDetection: ImageDetection
@@ -16,7 +17,22 @@ struct FullScreenSheetView: View {
     @Binding var didTakePhoto: Bool
     @State var didClickClose: Bool = false
     @State var didClickSave: Bool = false
+    
+    @State var id = UUID()
     var fireBaseObject = FireBaseUpload()
+    
+    @State var posts = [Post]()
+    
+
+    
+    //trying to save items from the list the Core Data
+
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(entity: Saved.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Saved.dataFoodName, ascending: true), NSSortDescriptor(keyPath: \Saved.dataFoodImage, ascending: true), NSSortDescriptor(keyPath: \Saved.dataPredicPercent, ascending: true), NSSortDescriptor(keyPath: \Saved.dataFoodID, ascending: true)])
+    
+    var savings: FetchedResults<Saved>
+    
+    
     @EnvironmentObject var imageAndNameFeeder: ImageAndNameFeeder
 
 
@@ -58,13 +74,16 @@ struct FullScreenSheetView: View {
                     Spacer()
                     
                 Button(action: {
+                    addItem()
                     didClickSave.toggle()
+//Testing to see if the items are being displayed in the list with CoreData
                     
-                    if didClickSave == true {
-                        imageAndNameFeeder.foodList.append(ImageAndNameFeeder.Item(addingItemName: foodNameTitle, itemImage: sheetViewImage ?? UIImage(named: "placeholder")!))
-                    } else {
-                        imageAndNameFeeder.foodList.removeLast()
-                    }
+                    
+//                    if didClickSave == true {
+//                        imageAndNameFeeder.foodList.append(ImageAndNameFeeder.Item(addingItemName: foodNameTitle, itemImage: sheetViewImage ?? UIImage(named: "placeholder")!))
+//                    } else {
+//                        imageAndNameFeeder.foodList.removeLast()
+//                    }
                     
                     }, label: {
                         Image(systemName: self.didClickSave == true ? "bookmark.fill" : "bookmark")
@@ -85,17 +104,7 @@ struct FullScreenSheetView: View {
                     .frame(width: 350, height: 425)
                     .cornerRadius(12)
                     .shadow(color: .black, radius: 3, x: 0.25, y: 0.25)
-                    
-//                    .onChange(of: sheetViewImage, perform: { value in
-//                        imDetection.imageDetectionVM.detect(sheetViewImage)
-//                        foodNameTitle = imDetection.imageDetectionVM.predictionLabel
-//            //            imDetection.imageDetectionVM.detect(sheetViewImage)
-//            //            foodNameTitle = imDetection.imageDetectionVM.predictionLabel
-//                        didClickClose = false
-//                        didClickSave = false
-//                    })
-//                    
-
+                
                 Spacer()
                     HStack(){
                         Text(foodNameTitle)
@@ -104,20 +113,28 @@ struct FullScreenSheetView: View {
                         Spacer()
                     }
                     .frame(alignment: .leading)
-                    HStack(){
-                        Text("Secondary food info will be displayed here...")
-                            .font(.caption)
-                            .foregroundColor(.gray)
-                            .padding(EdgeInsets(.init(top: 0, leading: 15, bottom: 5, trailing: 5)))
-                        Spacer()
+            
+
+        //                                .font(.caption)
+        //                                .foregroundColor(.gray)
+        //                            .padding(EdgeInsets(.init(top: 0, leading: 15, bottom: 5, trailing: 5)))
+                
+                
+//
+//                    .frame(alignment: .leading)
+//                    Spacer()
+                
+                ForEach(posts) { post in
+                    VStack(alignment: .leading){
+                        Text(post.title)
+                        Divider()
                     }
-                    .frame(alignment: .leading)
-                    Spacer()
                 }
             }
-            
+
             Spacer()
 
+            }
             
             Spacer()
         }
@@ -128,9 +145,33 @@ struct FullScreenSheetView: View {
 //            foodNameTitle = imDetection.imageDetectionVM.predictionLabel
             didClickClose = false
             didClickSave = false
+            Api().getPosts { posts in
+                self.posts = posts
+            }
         }
+
     }
+   //Function to save stuff to coreData
+    private func addItem () {
+        let data = self.sheetViewImage?.jpegData(compressionQuality: 0.5)
+        withAnimation {
+            let newItem = Saved(context: moc)
+            newItem.dataFoodImage = data
+            newItem.dataFoodName = foodNameTitle
+            newItem.dataFoodID = id
+            
+            do{
+                try moc.save()
+            } catch {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
+            
+        }
         
+    }
     
 }
 

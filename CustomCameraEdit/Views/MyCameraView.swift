@@ -8,16 +8,19 @@ import SwiftUI
 import AVFoundation
  
 struct CustomCameraPhotoView: View {
-//    @State private var image: Image?
-//    @State private var showingCustomCamera = false
-//    @State private var inputImage: UIImage?
     @State private var image: UIImage?
     @State private var didOutPutImage = false
-    @State private var selcetion = 0
+    @State private var selection = 0
     let customCameraController = CustomCameraController()
+    
+    //Timer Variables
+    @State var timeRemaining = 2
+    var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State private var isActive = true
+    
     var body: some View {
 
-        TabView(selection: $selcetion){
+        TabView(selection: $selection.animation()){
             
             let customCameraRepresentable = CustomCameraRepresentable(
                 cameraFrame: .zero,
@@ -35,66 +38,61 @@ struct CustomCameraPhotoView: View {
                 .sheet(isPresented: $didOutPutImage, content: {
                     FullScreenSheetView(sheetViewImage: $image, imDetection: ImageDetection(), didTakePhoto: $didOutPutImage)
                 })
-
+            //When the app returns back to the camera screen it turns the camera preview back onx
                 .onAppear {
-                    customCameraRepresentable.startRunningCaptureSession()
+                        customCameraRepresentable.startRunningCaptureSession()
                 }
                 .onDisappear {
-                    customCameraRepresentable.stopRunningCaptureSession()
+                    //When the app moves to the saved screen it should run a 2 second timer then stop the camera from running.
+                    guard self .isActive else {return}
+                    if self.timeRemaining > 0 {
+                        self.timeRemaining -= 1
+                    }
+                    if self .timeRemaining <= 0 {
+                        print("Disappear Timer Finished")
+                        customCameraRepresentable.stopRunningCaptureSession()
+                        cancelTimer()
+                    }
+                    
+                    
+                }
+            //Checks to see if the app has gone into the back ground and stop timer if so.
+
+            .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
+                    self.isActive = false
+                }
+            .onReceive(NotificationCenter.default.publisher(for:UIApplication.willEnterForegroundNotification)) { _ in
+                    self.isActive = true
                 }
 
-                
-        //        if let image = image {
-        //            Image(uiImage: image)
-        //                .resizable()
-        //                .aspectRatio(contentMode: .fit)
-        //        }
-//            VStack{
-//                ZStack {
-//                    CustomCameraView(showingCustomCamera: self.$showingCustomCamera, image: self.$inputImage)
-//
-//            }
-//            .sheet(isPresented: $showingCustomCamera) {
-//                FullScreenSheetView(sheetViewImage: $inputImage, imDetection: ImageDetection())
-//
-//            }
-//            .onChange(of: showingCustomCamera, perform: { newValue in
-//                loadImage()
-//            })
-//
-//            .edgesIgnoringSafeArea(.all)
-//
-//            }
-
+            
             
             
                 .tag(0)
                 .tabItem {
-                    Image(systemName: (selcetion == 0 ? "camera.fill" : "camera"))
-                    
+                    if selection == 0{
+                    Image(systemName: (selection == 0 ? "camera.fill" : "camera"))
+                    }
                 }
             
             SavedFoodView()
                 .tag(1)
                 .tabItem {
-                Image(systemName: (selcetion == 1 ? "bookmark.fill" : "bookmark"))
-                        
+                    if selection == 1{
+                Image(systemName: (selection == 1 ? "bookmark.fill" : "bookmark"))
+                    }
+                    
             }
-            
-            
+
             
         }.tabViewStyle(.page)
             .indexViewStyle(.page(backgroundDisplayMode: .always))
-//        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
-//            .indexViewStyle(.page)
-//            .indexViewStyle(.page(backgroundDisplayMode: .always))
-        }
+    }
     
-    
-//    func loadImage() {
-//        guard let inputImage = inputImage else { return }
-//        image = Image(uiImage: inputImage)
-//    }
+    func cancelTimer () {
+        self.timer.makeConnectable().connect().cancel()
+        return
+    }
 }
 
 import SwiftUI
