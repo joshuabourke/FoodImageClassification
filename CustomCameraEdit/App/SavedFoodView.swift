@@ -18,8 +18,6 @@ struct SavedFoodView: View {
     
     var savings: FetchedResults<Saved>
     
-    
-  
     var body: some View {
         NavigationView{
             List{
@@ -36,6 +34,7 @@ struct SavedFoodView: View {
 
                 }
                 .onDelete(perform: removeFromCoreData)
+                
             }
             
             .navigationBarTitle(Text("Saved"))
@@ -53,10 +52,19 @@ struct SavedFoodView: View {
     
     }
 
+    func save() throws {
+        try self.moc.save()
+    }
+    
     func removeFromCoreData(at offsets: IndexSet) {
         for index in offsets {
             let storedFoodItem = savings[index]
             moc.delete(storedFoodItem)
+            do{
+            try save()
+            } catch {
+                print("\(error.localizedDescription)")
+            }
         }
     }
 

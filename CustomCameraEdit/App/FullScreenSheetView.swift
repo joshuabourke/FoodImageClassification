@@ -17,6 +17,9 @@ struct FullScreenSheetView: View {
     @Binding var didTakePhoto: Bool
     @State var didClickClose: Bool = false
     @State var didClickSave: Bool = false
+    @State private var isAnimating: Bool = false
+    
+    let hapticFeedBack = UINotificationFeedbackGenerator()
     
     @State var id = UUID()
     var fireBaseObject = FireBaseUpload()
@@ -44,16 +47,17 @@ struct FullScreenSheetView: View {
                         presentataionMode.wrappedValue.dismiss()
                         didClickClose = true
                     }, label: {
-                        Image(systemName: self.didClickClose == true ? "xmark.circle.fill" : "xmark" )
-                            .resizable()
-                            .frame(width: 15, height: 20)
+                        Image(systemName: self.didClickClose ? "xmark.circle.fill" : "xmark" )
+                            .font(.title2)
+                            .foregroundColor(.white)
+                            
                 })
-                    .frame(width: 15, height: 20)
+                    .frame(width: 15, height: 15)
                     .padding()
-                    .background(Color.white)
-                    .clipShape(Circle())
-                    .shadow(color: .black, radius: 3, x: 0.25, y: 0.25)
-                    
+//                    .background(Color.white)
+//                    .clipShape(Circle())
+//                    .shadow(color: .black, radius: 3, x: 0.25, y: 0.25)
+//
                  Spacer()
                     
                 
@@ -63,14 +67,15 @@ struct FullScreenSheetView: View {
                     print("Upload Button Pressed")
                     }, label: {
                         Image(systemName: "square.and.arrow.up")
-                        .resizable()
+                            .font(.title2)
+                            .foregroundColor(.white)
                 })
-                        .frame(width: 15, height: 20)
+                        .frame(width: 15, height: 15)
                         .padding()
-                        .background(Color.white)
-                        .clipShape(Circle())
-                        .shadow(color: .black, radius: 3, x: 0.25, y: 0.25)
-                
+//                        .background(Color.white)
+//                        .clipShape(Circle())
+//                        .shadow(color: .black, radius: 3, x: 0.25, y: 0.25)
+//
                     Spacer()
                     
                 Button(action: {
@@ -86,14 +91,15 @@ struct FullScreenSheetView: View {
 //                    }
                     
                     }, label: {
-                        Image(systemName: self.didClickSave == true ? "bookmark.fill" : "bookmark")
-                        .resizable()
+                        Image(systemName: self.didClickSave ? "bookmark.fill" : "bookmark")
+                            .font(.title2)
+                            .foregroundColor(.white)
                 })
-                        .frame(width: 15, height: 20)
+                        .frame(width: 15, height: 15)
                         .padding()
-                        .background(Color.white)
-                        .clipShape(Circle())
-                        .shadow(color: .black, radius: 3, x: 0.25, y: 0.25)
+//                        .background(Color.white)
+//                        .clipShape(Circle())
+//                        .shadow(color: .black, radius: 3, x: 0.25, y: 0.25)
                     Spacer()
                 }
             ZStack(alignment: .top){
@@ -104,7 +110,12 @@ struct FullScreenSheetView: View {
                     .frame(width: 350, height: 425)
                     .cornerRadius(12)
                     .shadow(color: .black, radius: 3, x: 0.25, y: 0.25)
-                
+                    .scaleEffect(isAnimating ? 1 : 2)
+                    .animation(.easeOut(duration: 0.4), value: isAnimating)
+                    .onAppear {
+                        isAnimating = true
+                        hapticFeedBack.notificationOccurred(.success)
+                    }
                 Spacer()
                     HStack(){
                         Text(foodNameTitle)
@@ -134,6 +145,12 @@ struct FullScreenSheetView: View {
 
             Spacer()
 
+            }
+            .opacity(isAnimating ? 1 : 0)
+            .offset(y: isAnimating ? 0 : 40)
+            .animation(.easeOut(duration: 0.8), value: isAnimating)
+            .onAppear {
+                isAnimating = true
             }
             
             Spacer()

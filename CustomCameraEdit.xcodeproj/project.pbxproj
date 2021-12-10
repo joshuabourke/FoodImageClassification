@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08A10F0B276314760085EA22 /* RowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A10F0A276314760085EA22 /* RowView.swift */; };
 		129ACCDBBE8778285A052CA4 /* Pods_CustomCameraEdit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9618BDF9094699B3A69AC726 /* Pods_CustomCameraEdit.framework */; };
 		280509032738DB2C00321027 /* FancyAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280509022738DB2C00321027 /* FancyAnimations.swift */; };
 		28077B1A2733B4CD00F107C1 /* SavedFoodDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 28077B182733B4CD00F107C1 /* SavedFoodDataModel.xcdatamodeld */; };
@@ -14,8 +15,12 @@
 		28077B252733B81B00F107C1 /* Saved+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28077B232733B81B00F107C1 /* Saved+CoreDataProperties.swift */; };
 		2808977526EEFC510094A830 /* FullScreenSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2808977426EEFC510094A830 /* FullScreenSheetView.swift */; };
 		2822B3D62741DDC6005C4657 /* MyPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2822B3D52741DDC6005C4657 /* MyPersistentContainer.swift */; };
+		2822B3F92745FE63005C4657 /* FoodWebRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2822B3F82745FE63005C4657 /* FoodWebRequest.swift */; };
+		2822B3FB274603DD005C4657 /* foodApiSwiftTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2822B3FA274603DD005C4657 /* foodApiSwiftTest.swift */; };
+		2822B3FF27461156005C4657 /* FoodInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2822B3FE27461156005C4657 /* FoodInfoRequest.swift */; };
 		2835C3FF26F2FDD900288C74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2835C3FE26F2FDD900288C74 /* AppDelegate.swift */; };
 		2835C40326F6931A00288C74 /* SavedFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2835C40226F6931A00288C74 /* SavedFoodView.swift */; };
+		28574CBF2746FAA000D6D452 /* FoodRequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28574CBE2746FAA000D6D452 /* FoodRequestViewModel.swift */; };
 		285974E926F07F3800FCC3B9 /* ImageDetectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285974E526F07F3300FCC3B9 /* ImageDetectionManager.swift */; };
 		285974EA26F07F3800FCC3B9 /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 285974E626F07F3800FCC3B9 /* Resnet50.mlmodel */; };
 		285974EB26F07F3800FCC3B9 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285974E726F07F3800FCC3B9 /* UIImage+Extension.swift */; };
@@ -32,14 +37,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		08A10F0A276314760085EA22 /* RowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowView.swift; sourceTree = "<group>"; };
 		280509022738DB2C00321027 /* FancyAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FancyAnimations.swift; sourceTree = "<group>"; };
 		28077B192733B4CD00F107C1 /* SavedFoodDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SavedFoodDataModel.xcdatamodel; sourceTree = "<group>"; };
 		28077B222733B81B00F107C1 /* Saved+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Saved+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		28077B232733B81B00F107C1 /* Saved+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Saved+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		2808977426EEFC510094A830 /* FullScreenSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenSheetView.swift; sourceTree = "<group>"; };
 		2822B3D52741DDC6005C4657 /* MyPersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPersistentContainer.swift; sourceTree = "<group>"; };
+		2822B3F82745FE63005C4657 /* FoodWebRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodWebRequest.swift; sourceTree = "<group>"; };
+		2822B3FA274603DD005C4657 /* foodApiSwiftTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = foodApiSwiftTest.swift; sourceTree = "<group>"; };
+		2822B3FE27461156005C4657 /* FoodInfoRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodInfoRequest.swift; sourceTree = "<group>"; };
 		2835C3FE26F2FDD900288C74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2835C40226F6931A00288C74 /* SavedFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedFoodView.swift; sourceTree = "<group>"; };
+		28574CBE2746FAA000D6D452 /* FoodRequestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodRequestViewModel.swift; sourceTree = "<group>"; };
 		285974E526F07F3300FCC3B9 /* ImageDetectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDetectionManager.swift; sourceTree = "<group>"; };
 		285974E626F07F3800FCC3B9 /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
 		285974E726F07F3800FCC3B9 /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
@@ -72,6 +82,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08A10F0C276314800085EA22 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				08A10F0A276314760085EA22 /* RowView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		28077B1D2733B7B800F107C1 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +113,10 @@
 			isa = PBXGroup;
 			children = (
 				288ACFB7273DBA2D00813959 /* WebRequest.swift */,
+				2822B3FA274603DD005C4657 /* foodApiSwiftTest.swift */,
+				2822B3F82745FE63005C4657 /* FoodWebRequest.swift */,
+				28574CBE2746FAA000D6D452 /* FoodRequestViewModel.swift */,
+				2822B3FE27461156005C4657 /* FoodInfoRequest.swift */,
 				2835C3FE26F2FDD900288C74 /* AppDelegate.swift */,
 				28A4FAD826F2A656002CCD45 /* ImageDetection.swift */,
 				28BA407927013F02000A2B73 /* ImageAndFoodNameFeeder.swift */,
@@ -102,7 +124,7 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		2835C40426F6932300288C74 /* Views */ = {
+		2835C40426F6932300288C74 /* App */ = {
 			isa = PBXGroup;
 			children = (
 				28C97F7E26E9D29400C06095 /* MyCameraView.swift */,
@@ -110,7 +132,7 @@
 				2835C40226F6931A00288C74 /* SavedFoodView.swift */,
 				280509022738DB2C00321027 /* FancyAnimations.swift */,
 			);
-			path = Views;
+			path = App;
 			sourceTree = "<group>";
 		};
 		285974ED26F07F4300FCC3B9 /* ImageDetection */ = {
@@ -146,9 +168,10 @@
 		28C97F7B26E9D29400C06095 /* CustomCameraEdit */ = {
 			isa = PBXGroup;
 			children = (
+				08A10F0C276314800085EA22 /* Views */,
 				2822B3F727421B02005C4657 /* Models */,
 				2822B3F627421AFA005C4657 /* Main */,
-				2835C40426F6932300288C74 /* Views */,
+				2835C40426F6932300288C74 /* App */,
 				28C97F8026E9D29700C06095 /* Assets.xcassets */,
 				28077B1D2733B7B800F107C1 /* CoreData */,
 				285974ED26F07F4300FCC3B9 /* ImageDetection */,
@@ -299,12 +322,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				2822B3D62741DDC6005C4657 /* MyPersistentContainer.swift in Sources */,
+				08A10F0B276314760085EA22 /* RowView.swift in Sources */,
 				285974EA26F07F3800FCC3B9 /* Resnet50.mlmodel in Sources */,
 				288ACFB8273DBA2D00813959 /* WebRequest.swift in Sources */,
+				2822B3FF27461156005C4657 /* FoodInfoRequest.swift in Sources */,
+				28574CBF2746FAA000D6D452 /* FoodRequestViewModel.swift in Sources */,
+				2822B3F92745FE63005C4657 /* FoodWebRequest.swift in Sources */,
 				28077B242733B81B00F107C1 /* Saved+CoreDataClass.swift in Sources */,
 				28A4FAD926F2A656002CCD45 /* ImageDetection.swift in Sources */,
 				28C97F7F26E9D29400C06095 /* MyCameraView.swift in Sources */,
 				280509032738DB2C00321027 /* FancyAnimations.swift in Sources */,
+				2822B3FB274603DD005C4657 /* foodApiSwiftTest.swift in Sources */,
 				28BA407A27013F02000A2B73 /* ImageAndFoodNameFeeder.swift in Sources */,
 				2835C3FF26F2FDD900288C74 /* AppDelegate.swift in Sources */,
 				28C97F7D26E9D29400C06095 /* CustomCameraEditApp.swift in Sources */,

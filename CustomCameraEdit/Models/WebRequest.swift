@@ -39,3 +39,10 @@ class Api {
     }
     
 }
+
+
+//Food Api web: "https://api.edamam.com/api/food-database/v2/parser?app_id=0ec6a263&app_key=4ed1b4351b462ceb2762f0242ca0b0fc&ingr=Apple&nutrition-type=cooking"
+
+//Properties: id = UUID(), var title: String var title: String, var email: String, var author: String
+
+//Test Api web: "https://training.xcelvations.com/data/books.json"

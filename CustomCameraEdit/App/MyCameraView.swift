@@ -141,22 +141,27 @@ struct CameraControlsView: View {
 import SwiftUI
 
 struct CaptureButtonView: View {
-    @Environment(\.colorScheme) var colorScheme
     
-    @State private var animationAmount: CGFloat = 1
+    @State private var isAnimating: Bool = false
     
     var body: some View {
                 ZStack{
                     Circle()
                         .fill(Color.white)
                         .frame(width: 65, height: 65)
-        
+
                     Circle()
                         .stroke(Color.white,lineWidth: 2)
-                        .frame(width: 75, height: 75)
+                        .frame(width: 75, height: 75, alignment: .center)
+                        .scaleEffect(isAnimating ? 1.15 : 1)
+                        .opacity(isAnimating ? 0.2 : 1)
+                        .animation(.easeInOut(duration: 1.25).repeatForever(), value: isAnimating)
                 }
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 50, trailing: 0))
-        
+  
+                .onAppear {
+                    isAnimating = true
+                }
     }
 }
 
