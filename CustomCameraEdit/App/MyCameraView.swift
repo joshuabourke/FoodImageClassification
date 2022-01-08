@@ -12,11 +12,11 @@ struct CustomCameraPhotoView: View {
     @State private var didOutPutImage = false
     @State private var selection = 0
     let customCameraController = CustomCameraController()
-    
     //Timer Variables
     @State var timeRemaining = 2
     var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State private var isActive = true
+    let testJson: [Test] = Bundle.main.decode("TestApple.json")
     
     var body: some View {
 
@@ -35,8 +35,10 @@ struct CustomCameraPhotoView: View {
                         
                     }
                 )
+                
                 .sheet(isPresented: $didOutPutImage, content: {
-                    FullScreenSheetView(sheetViewImage: $image, imDetection: ImageDetection(), didTakePhoto: $didOutPutImage)
+//                    FullScreenSheetView(sheetViewImage: $image, imDetection: ImageDetection(), didTakePhoto: $didOutPutImage)
+                    FullScreenBodyTextView(imDetection: ImageDetection(),testJson: testJson[0], takenImage: $image)
                 })
             //When the app returns back to the camera screen it turns the camera preview back onx
                 .onAppear {
@@ -75,7 +77,7 @@ struct CustomCameraPhotoView: View {
                     }
                 }
             
-            SavedFoodView()
+            SavedFoodView(testJson: testJson[0])
                 .tag(1)
                 .tabItem {
                     if selection == 1{
@@ -85,7 +87,8 @@ struct CustomCameraPhotoView: View {
             }
 
             
-        }.tabViewStyle(.page)
+        }//: TABVIEW
+        .tabViewStyle(.page)
             .indexViewStyle(.page(backgroundDisplayMode: .always))
     }
     
@@ -114,7 +117,7 @@ struct CustomCameraView: View {
                         customCameraRepresentable?.takePhoto()
                     })
                 }
-            }
+            }.ignoresSafeArea(.all)
         }
     }
     

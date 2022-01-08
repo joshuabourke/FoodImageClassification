@@ -9,6 +9,7 @@ import SwiftUI
 import Firebase
 
 struct FullScreenSheetView: View {
+    //MARK: - PROPERTIES
     @Environment(\.defaultMinListRowHeight) var minRowHeight
     @Environment(\.presentationMode) var presentataionMode
     @Binding var sheetViewImage: UIImage?
@@ -26,8 +27,6 @@ struct FullScreenSheetView: View {
     
     @State var posts = [Post]()
     
-
-    
     //trying to save items from the list the Core Data
 
     @Environment(\.managedObjectContext) var moc
@@ -35,14 +34,14 @@ struct FullScreenSheetView: View {
     
     var savings: FetchedResults<Saved>
     
-    
-    @EnvironmentObject var imageAndNameFeeder: ImageAndNameFeeder
 
-
+    //MARK: - BODY
     var body: some View {
         VStack {
             HStack{
                     Spacer()
+                
+        //MARK: - DISMISS BUTTON
                 Button(action: {
                         presentataionMode.wrappedValue.dismiss()
                         didClickClose = true
@@ -60,7 +59,7 @@ struct FullScreenSheetView: View {
 //
                  Spacer()
                     
-                
+        //MARK: - FIREBASE BUTTON
                 Button(action: {
                     fireBaseObject.fireBaseUpload(funcMetaDataName: foodNameTitle, funcImage: sheetViewImage!)
                     
@@ -77,7 +76,7 @@ struct FullScreenSheetView: View {
 //                        .shadow(color: .black, radius: 3, x: 0.25, y: 0.25)
 //
                     Spacer()
-                    
+        //MARK: - SAVE BUTTON
                 Button(action: {
                     addItem()
                     didClickSave.toggle()
@@ -97,9 +96,7 @@ struct FullScreenSheetView: View {
                 })
                         .frame(width: 15, height: 15)
                         .padding()
-//                        .background(Color.white)
-//                        .clipShape(Circle())
-//                        .shadow(color: .black, radius: 3, x: 0.25, y: 0.25)
+
                     Spacer()
                 }
             ZStack(alignment: .top){
@@ -124,16 +121,6 @@ struct FullScreenSheetView: View {
                         Spacer()
                     }
                     .frame(alignment: .leading)
-            
-
-        //                                .font(.caption)
-        //                                .foregroundColor(.gray)
-        //                            .padding(EdgeInsets(.init(top: 0, leading: 15, bottom: 5, trailing: 5)))
-                
-                
-//
-//                    .frame(alignment: .leading)
-//                    Spacer()
                 
                 ForEach(posts) { post in
                     VStack(alignment: .leading){
@@ -156,10 +143,14 @@ struct FullScreenSheetView: View {
             Spacer()
         }
         .onAppear {
+//            switch foodNameTitle {
+//            case "Apple":
+//
+//                
+//            }
+            
             imDetection.imageDetectionVM.detect(sheetViewImage)
             foodNameTitle = imDetection.imageDetectionVM.predictionLabel
-//            imDetection.imageDetectionVM.detect(sheetViewImage)
-//            foodNameTitle = imDetection.imageDetectionVM.predictionLabel
             didClickClose = false
             didClickSave = false
             Api().getPosts { posts in
@@ -188,7 +179,7 @@ struct FullScreenSheetView: View {
             
         }
         
-    }
+    }//: addItem
     
 }
 
