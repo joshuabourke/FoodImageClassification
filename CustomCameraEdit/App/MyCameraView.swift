@@ -16,12 +16,14 @@ struct CustomCameraPhotoView: View {
     @State var timeRemaining = 2
     var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State private var isActive = true
+    @State var viewSwitch: Bool
     let testJson: [Test] = Bundle.main.decode("TestApple.json")
+    
     
     var body: some View {
 
-        TabView(selection: $selection.animation()){
-            
+//        TabView(selection: $selection.animation()){
+        if viewSwitch {
             let customCameraRepresentable = CustomCameraRepresentable(
                 cameraFrame: .zero,
                 imageCompletion: { _ in }
@@ -33,7 +35,7 @@ struct CustomCameraPhotoView: View {
                         self.image = newImage
                         didOutPutImage = true
                         
-                    }
+                    }, viewSwitch: $viewSwitch
                 )
                 
                 .sheet(isPresented: $didOutPutImage, content: {
@@ -66,30 +68,40 @@ struct CustomCameraPhotoView: View {
             .onReceive(NotificationCenter.default.publisher(for:UIApplication.willEnterForegroundNotification)) { _ in
                     self.isActive = true
                 }
-
-            
-            
-            
-                .tag(0)
-                .tabItem {
-                    if selection == 0{
-                    Image(systemName: (selection == 0 ? "camera.fill" : "camera"))
-                    }
-                }
-            
+        } else {
             SavedFoodView(testJson: testJson[0])
-                .tag(1)
-                .tabItem {
-                    if selection == 1{
-                Image(systemName: (selection == 1 ? "bookmark.fill" : "bookmark"))
-                    }
-                    
-            }
+        }//: CONDITIONAL
+            
+            
+            
+//                .tag(0)
+//                .tabItem {
+//                    if selection == 0{
+//                        Image(systemName: "camera.fill")
+//                    } else {
+//                        Image(systemName: "camera")
+//                        Text("Camera")
+//                    }
+//                }
+            
+            
+//                .tag(1)
+//                .tabItem {
+//                    if selection == 1{
+//                    Label("Saved", systemImage: "bookmark.fill")
+//                        Image(systemName: "bookmark.fill")
+                        
+//                    } else {
+//                        Image(systemName: "bookmark")
+//                    }
+//                }
+                
 
             
-        }//: TABVIEW
-        .tabViewStyle(.page)
-            .indexViewStyle(.page(backgroundDisplayMode: .always))
+//        }//: TABVIEW
+//        .frame(height:850)
+//        .tabViewStyle(.page)
+//            .indexViewStyle(.page(backgroundDisplayMode: .always))
     }
     
     func cancelTimer () {
@@ -103,7 +115,8 @@ import SwiftUI
 struct CustomCameraView: View {
     var customCameraRepresentable: CustomCameraRepresentable
     var imageCompletion: ((UIImage) -> Void)
-    
+    let testJson: [Test] = Bundle.main.decode("TestApple.json")
+    @Binding var viewSwitch: Bool
     var body: some View {
         GeometryReader { geometry in
             VStack {
@@ -113,12 +126,26 @@ struct CustomCameraView: View {
                 cameraView(frame: frame)
                 
                 HStack {
+                    CustomButtonView(buttonLabel: "camera")
+                        .font(.title)
+                        .onTapGesture {
+                            viewSwitch = false
+                            print("camera")
+                        }
+                    
                     CameraControlsView(captureButtonAction: { [weak customCameraRepresentable] in
                         customCameraRepresentable?.takePhoto()
                     })
-                }
-            }.ignoresSafeArea(.all)
+                    CustomButtonView(buttonLabel: "bookmark")
+                        .font(.title)
+                        .onTapGesture {
+                            viewSwitch = false
+                            print("book mark")
+                        }
+                }//: HSTACK
+            }
         }
+        .edgesIgnoringSafeArea([.top, .bottom])
     }
     
     private func cameraView(frame: CGRect) -> CustomCameraRepresentable {
@@ -160,7 +187,7 @@ struct CaptureButtonView: View {
                         .opacity(isAnimating ? 0.2 : 1)
                         .animation(.easeInOut(duration: 1.25).repeatForever(), value: isAnimating)
                 }
-                .padding(EdgeInsets(top: 0, leading: 0, bottom: 50, trailing: 0))
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: 25, trailing: 0))
   
                 .onAppear {
                     isAnimating = true

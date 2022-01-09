@@ -10,14 +10,19 @@ import SwiftUI
 struct CustomButtonView: View {
     //MARK: - PROPERTIES
     
+    var buttonLabel: String
+    
     //MARK: - BODY
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Image(systemName: buttonLabel)
+        
     }
 }
     //MARK: - PREVIEW
 struct CustomButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        CustomButtonView()
+        CustomButtonView(buttonLabel: "camera")
+            .previewLayout(.sizeThatFits)
+            .padding()
     }
 }

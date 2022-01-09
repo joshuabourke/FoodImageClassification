@@ -17,7 +17,7 @@ struct CustomCameraEditApp: App {
    
     var body: some Scene {
         WindowGroup {
-            CustomCameraPhotoView().environmentObject(ImageAndNameFeeder(addingItemName: "Test", itemImage: UIImage(named: "placeholder")!)).environment(\.managedObjectContext, persistentContainer.container.viewContext)
+            CustomCameraPhotoView(viewSwitch: true).environmentObject(ImageAndNameFeeder(addingItemName: "Test", itemImage: UIImage(named: "placeholder")!)).environment(\.managedObjectContext, persistentContainer.container.viewContext)
             
         }
     }
