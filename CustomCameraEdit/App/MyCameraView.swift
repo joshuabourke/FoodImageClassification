@@ -8,102 +8,121 @@ import SwiftUI
 import AVFoundation
  
 struct CustomCameraPhotoView: View {
+    //MARK:  - PROPERTIES
     @State private var image: UIImage?
     @State private var didOutPutImage = false
     @State private var selection = 0
     let customCameraController = CustomCameraController()
+    
     //Timer Variables
     @State var timeRemaining = 2
     var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State private var isActive = true
-    @State var viewSwitch: Bool
+    
+    
     let testJson: [Test] = Bundle.main.decode("TestApple.json")
     
+    //Custom Tabbar Properties
     
+    @State var selectedTab = "camera"
+    @Namespace var animation
+    @StateObject var modelData = ModelView()
+    
+    
+    //MARK: - BODY
     var body: some View {
-
-//        TabView(selection: $selection.animation()){
-        if viewSwitch {
-            let customCameraRepresentable = CustomCameraRepresentable(
-                cameraFrame: .zero,
-                imageCompletion: { _ in }
-            )
-            
-                CustomCameraView(
-                    customCameraRepresentable: customCameraRepresentable,
-                    imageCompletion: { newImage in
-                        self.image = newImage
-                        didOutPutImage = true
+        
+        VStack(spacing: 0){
+            GeometryReader { _ in
+                ZStack {
+                    //Tabs go here...
+                    let customCameraRepresentable = CustomCameraRepresentable(
+                        cameraFrame: .zero,
+                        imageCompletion: { _ in }
+                    )
+                    
+                        CustomCameraView(
+                            customCameraRepresentable: customCameraRepresentable,
+                            imageCompletion: { newImage in
+                                self.image = newImage
+                                didOutPutImage = true
+                                
+                            }
+                        )
                         
-                    }, viewSwitch: $viewSwitch
-                )
-                
-                .sheet(isPresented: $didOutPutImage, content: {
-//                    FullScreenSheetView(sheetViewImage: $image, imDetection: ImageDetection(), didTakePhoto: $didOutPutImage)
-                    FullScreenBodyTextView(imDetection: ImageDetection(),testJson: testJson[0], takenImage: $image)
-                })
-            //When the app returns back to the camera screen it turns the camera preview back onx
-                .onAppear {
-                        customCameraRepresentable.startRunningCaptureSession()
-                }
-                .onDisappear {
-                    //When the app moves to the saved screen it should run a 2 second timer then stop the camera from running.
-                    guard self .isActive else {return}
-                    if self.timeRemaining > 0 {
-                        self.timeRemaining -= 1
-                    }
-                    if self .timeRemaining <= 0 {
-                        print("Disappear Timer Finished")
-                        customCameraRepresentable.stopRunningCaptureSession()
-                        cancelTimer()
-                    }
+                        .sheet(isPresented: $didOutPutImage, content: {
+        //                    FullScreenSheetView(sheetViewImage: $image, imDetection: ImageDetection(), didTakePhoto: $didOutPutImage)
+                            FullScreenBodyTextView(imDetection: ImageDetection(),testJson: testJson[0], takenImage: $image)
+                        })
+                    //When the app returns back to the camera screen it turns the camera preview back onx
+                        .onAppear {
+                                customCameraRepresentable.startRunningCaptureSession()
+                        }
+                        .onDisappear {
+                            //When the app moves to the saved screen it should run a 2 second timer then stop the camera from running.
+                            guard self .isActive else {return}
+                            if self.timeRemaining > 0 {
+                                self.timeRemaining -= 1
+                            }
+                            if self .timeRemaining <= 0 {
+                                print("Disappear Timer Finished")
+                                customCameraRepresentable.stopRunningCaptureSession()
+                                cancelTimer()
+                            }
+                            
+                            
+                        }
+                    //Checks to see if the app has gone into the back ground and stop timer if so.
+
+                    .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
+                            self.isActive = false
+                        }
+                    .onReceive(NotificationCenter.default.publisher(for:UIApplication.willEnterForegroundNotification)) { _ in
+                            self.isActive = true
+                        }
+
+                    .opacity(selectedTab == "camera" ? 1 : 0)
+                    .padding(.vertical)
+                    
+                    SavedFoodView(testJson: testJson[0])
+                        .opacity(selectedTab == "bookmark" ? 1 : 0)
+                        .padding(.vertical)
                     
                     
+                }//: ZSTACK
+            }//: GEOREADER
+            .onChange(of: selectedTab) {_ in
+                switch(selectedTab) {
+                case "bookmark": if !modelData.isBookMarkLoaded{modelData.loadBookMark()}
+//                case "camera": if !modelData.isCameraLoaded{modelData.loadCamera()}
+//                case "square": if !modelData.isSquareLoaded{modelData.loadSquare()}
+                default: ()
                 }
-            //Checks to see if the app has gone into the back ground and stop timer if so.
-
-            .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
-                    self.isActive = false
-                }
-            .onReceive(NotificationCenter.default.publisher(for:UIApplication.willEnterForegroundNotification)) { _ in
-                    self.isActive = true
-                }
-        } else {
-            SavedFoodView(testJson: testJson[0])
-        }//: CONDITIONAL
-            
-            
-            
-//                .tag(0)
-//                .tabItem {
-//                    if selection == 0{
-//                        Image(systemName: "camera.fill")
-//                    } else {
-//                        Image(systemName: "camera")
-//                        Text("Camera")
-//                    }
-//                }
-            
-            
-//                .tag(1)
-//                .tabItem {
-//                    if selection == 1{
-//                    Label("Saved", systemImage: "bookmark.fill")
-//                        Image(systemName: "bookmark.fill")
-                        
-//                    } else {
-//                        Image(systemName: "bookmark")
-//                    }
-//                }
+            }
+            //Tab View...
+            HStack(spacing: 0){
                 
-
-            
-//        }//: TABVIEW
-//        .frame(height:850)
-//        .tabViewStyle(.page)
-//            .indexViewStyle(.page(backgroundDisplayMode: .always))
+                ForEach(tabs, id:\.self) { tab in
+                    Spacer()
+                    TabButtonView(title: tab, selectedTab: $selectedTab, animation: animation)
+                    Spacer()
+                    if tab != tabs.last {
+                        
+                    }
+                }
+                
+            }//: HSTACK
+            .padding(.vertical, 6)
+            .background(Color.clear)
+        }
+//        .ignoresSafeArea(.all, edges: [.bottom, .top])
+//        .background(Color.black.opacity(0.6).ignoresSafeArea(.all, edges: .all))
+        
     }
     
+ var tabs = ["camera", "bookmark"]
+            
+
     func cancelTimer () {
         self.timer.makeConnectable().connect().cancel()
         return
@@ -111,12 +130,10 @@ struct CustomCameraPhotoView: View {
 }
 
 import SwiftUI
-
+//MARK: - CUSTOM CAMERA VIEW
 struct CustomCameraView: View {
     var customCameraRepresentable: CustomCameraRepresentable
     var imageCompletion: ((UIImage) -> Void)
-    let testJson: [Test] = Bundle.main.decode("TestApple.json")
-    @Binding var viewSwitch: Bool
     var body: some View {
         GeometryReader { geometry in
             VStack {
@@ -126,26 +143,15 @@ struct CustomCameraView: View {
                 cameraView(frame: frame)
                 
                 HStack {
-                    CustomButtonView(buttonLabel: "camera")
-                        .font(.title)
-                        .onTapGesture {
-                            viewSwitch = false
-                            print("camera")
-                        }
-                    
                     CameraControlsView(captureButtonAction: { [weak customCameraRepresentable] in
                         customCameraRepresentable?.takePhoto()
                     })
-                    CustomButtonView(buttonLabel: "bookmark")
-                        .font(.title)
-                        .onTapGesture {
-                            viewSwitch = false
-                            print("book mark")
-                        }
                 }//: HSTACK
             }
         }
-        .edgesIgnoringSafeArea([.top, .bottom])
+        .ignoresSafeArea(.all, edges: [.top, .bottom])
+        .cornerRadius(12)
+        .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.15), radius: 8, x: 6, y: 8)
     }
     
     private func cameraView(frame: CGRect) -> CustomCameraRepresentable {
@@ -156,7 +162,7 @@ struct CustomCameraView: View {
 }
 
 import SwiftUI
-
+//MARK: - CAMERA CONTROLS VIEW
 struct CameraControlsView: View {
     var captureButtonAction: (() -> Void)
     
@@ -169,10 +175,11 @@ struct CameraControlsView: View {
 }
 
 import SwiftUI
-
+//MARK: - CAPTURE BUTTON VIEW
 struct CaptureButtonView: View {
     
     @State private var isAnimating: Bool = false
+    @State private var animation: Double = 0.0
     
     var body: some View {
                 ZStack{
@@ -181,23 +188,25 @@ struct CaptureButtonView: View {
                         .frame(width: 65, height: 65)
 
                     Circle()
-                        .stroke(Color.white,lineWidth: 2)
-                        .frame(width: 75, height: 75, alignment: .center)
-                        .scaleEffect(isAnimating ? 1.15 : 1)
-                        .opacity(isAnimating ? 0.2 : 1)
-                        .animation(.easeInOut(duration: 1.25).repeatForever(), value: isAnimating)
+                        .stroke(Color.accentColor,lineWidth: 2)
+                        .frame(width: 70, height: 70, alignment: .center)
+                        .scaleEffect(0.9 + CGFloat(animation))
+                        .opacity(1 - animation)
+                        
                 }
-                .padding(EdgeInsets(top: 0, leading: 0, bottom: 25, trailing: 0))
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: 30, trailing: 0))
   
                 .onAppear {
-                    isAnimating = true
+                    withAnimation(Animation.easeOut(duration: 2).repeatForever(autoreverses: false)){
+                        animation = 1
+                    }
                 }
     }
 }
 
 import SwiftUI
 import AVFoundation
-
+//MARK: - CUSTOM CAMERA CONTROLLER CLASS
 final class CustomCameraController: UIViewController {
     static let shared = CustomCameraController()
     
@@ -298,6 +307,8 @@ final class CustomCameraController: UIViewController {
     }
 }
 
+//MARK: - CUSTOM CAMERA REPRESENTABLE
+
 final class CustomCameraRepresentable: UIViewControllerRepresentable {
 //    @Environment(\.presentationMode) var presentationMode
     
@@ -334,6 +345,7 @@ final class CustomCameraRepresentable: UIViewControllerRepresentable {
     }
 }
 
+//MARK: - CUSTOM CARMERA REP EXTENSION
 extension CustomCameraRepresentable {
     final class Coordinator: NSObject, AVCapturePhotoCaptureDelegate {
         private let parent: CustomCameraRepresentable

@@ -11,7 +11,7 @@ import UIKit
 
 class ImageDetectionManager {
     
-    let model = FoodVisionV1_78_foods_cleaned()
+    let model = FoodVisionV2_100_foods_semi_cleaned()
     
     func detect(_ img: UIImage) -> String? {
         

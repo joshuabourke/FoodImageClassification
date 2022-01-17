@@ -15,9 +15,11 @@ struct FullScreenBodyTextView: View {
     let testJson: Test
     
     //Properties that change ever time a photo is taken. changes the image and the title, then assigns it a new unique id for core data purposes.
-    @State var title: String = ""
+    @State private var title: String = ""
     @Binding var takenImage: UIImage?
     @State var id = UUID()
+    @State private var didCloseInfo: Bool = false
+    @State private var didSave: Bool = false
     
     
     
@@ -58,6 +60,44 @@ struct FullScreenBodyTextView: View {
                         .font(.headline)
                         .multilineTextAlignment(.leading)
                         .padding(.horizontal)
+                    
+                    //LINE OF BUTTONS
+                    //MARK: - DISMISS BUTTON
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                                        presentataionMode.wrappedValue.dismiss()
+                                    }, label: {
+                                        Image(systemName: "xmark")
+                                            .font(.title2)
+                                            .foregroundColor(.accentColor)
+                                            
+                                })
+                                    .frame(width: 15, height: 15)
+                                .padding()
+                    
+                             Spacer()
+                    //MARK: - SAVE BUTTON
+                        Button(action: {
+                                addItem()
+                                didSave.toggle()
+            //Testing to see if the items are being displayed in the list with CoreData
+            //                    if didClickSave == true {
+            //                        imageAndNameFeeder.foodList.append(ImageAndNameFeeder.Item(addingItemName: foodNameTitle, itemImage: sheetViewImage ?? UIImage(named: "placeholder")!))
+            //                    } else {
+            //                        imageAndNameFeeder.foodList.removeLast()
+            //                    }
+                                
+                                }
+                            ,label: {
+                                    Image(systemName: self.didSave ? "bookmark.fill" : "bookmark")
+                                        .font(.title2)
+                                        .foregroundColor(.accentColor)
+                            })
+                                    .frame(width: 15, height: 15)
+                                    .padding()
+                        Spacer()
+                    }//: HSTACK (BUTTONS)
                     
                     //NUTRITION INFO
                     Group{

@@ -25,7 +25,6 @@ struct FullScreenSheetView: View {
     @State var id = UUID()
     var fireBaseObject = FireBaseUpload()
     
-    @State var posts = [Post]()
     
     //trying to save items from the list the Core Data
 
@@ -122,12 +121,6 @@ struct FullScreenSheetView: View {
                     }
                     .frame(alignment: .leading)
                 
-                ForEach(posts) { post in
-                    VStack(alignment: .leading){
-                        Text(post.title)
-                        Divider()
-                    }
-                }
             }
 
             Spacer()
@@ -153,9 +146,6 @@ struct FullScreenSheetView: View {
             foodNameTitle = imDetection.imageDetectionVM.predictionLabel
             didClickClose = false
             didClickSave = false
-            Api().getPosts { posts in
-                self.posts = posts
-            }
         }
 
     }
