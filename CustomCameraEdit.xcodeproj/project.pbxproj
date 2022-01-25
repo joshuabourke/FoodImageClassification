@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0810D72027955F5100E876D1 /* 0.0.2-FoodVisionV2-100-foods-manually-cleaned.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0810D71F27955F5100E876D1 /* 0.0.2-FoodVisionV2-100-foods-manually-cleaned.mlmodel */; };
 		082EE84C278A801F00AA334D /* ModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082EE84B278A801F00AA334D /* ModelView.swift */; };
 		082EE84E278A80B500AA334D /* CustomShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082EE84D278A80B500AA334D /* CustomShape.swift */; };
 		082EE850278A812C00AA334D /* TabButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082EE84F278A812C00AA334D /* TabButtonView.swift */; };
@@ -21,7 +22,6 @@
 		089B598C277431FE00EBDF09 /* ImageSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089B598B277431FE00EBDF09 /* ImageSliderView.swift */; };
 		089B598E277560E400EBDF09 /* ImageButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089B598D277560E400EBDF09 /* ImageButtonView.swift */; };
 		08A10F10276315800085EA22 /* NutrifyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A10F0F276315800085EA22 /* NutrifyModel.swift */; };
-		08F3690727914C470080F477 /* FoodVisionV2-100-foods-semi-cleaned.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 08F3690627914C470080F477 /* FoodVisionV2-100-foods-semi-cleaned.mlmodel */; };
 		129ACCDBBE8778285A052CA4 /* Pods_CustomCameraEdit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9618BDF9094699B3A69AC726 /* Pods_CustomCameraEdit.framework */; };
 		28077B1A2733B4CD00F107C1 /* SavedFoodDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 28077B182733B4CD00F107C1 /* SavedFoodDataModel.xcdatamodeld */; };
 		28077B242733B81B00F107C1 /* Saved+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28077B222733B81B00F107C1 /* Saved+CoreDataClass.swift */; };
@@ -43,6 +43,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0810D71F27955F5100E876D1 /* 0.0.2-FoodVisionV2-100-foods-manually-cleaned.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "0.0.2-FoodVisionV2-100-foods-manually-cleaned.mlmodel"; sourceTree = "<group>"; };
 		082EE84B278A801F00AA334D /* ModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelView.swift; sourceTree = "<group>"; };
 		082EE84D278A80B500AA334D /* CustomShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomShape.swift; sourceTree = "<group>"; };
 		082EE84F278A812C00AA334D /* TabButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButtonView.swift; sourceTree = "<group>"; };
@@ -57,7 +58,6 @@
 		089B598B277431FE00EBDF09 /* ImageSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSliderView.swift; sourceTree = "<group>"; };
 		089B598D277560E400EBDF09 /* ImageButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageButtonView.swift; sourceTree = "<group>"; };
 		08A10F0F276315800085EA22 /* NutrifyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrifyModel.swift; sourceTree = "<group>"; };
-		08F3690627914C470080F477 /* FoodVisionV2-100-foods-semi-cleaned.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "FoodVisionV2-100-foods-semi-cleaned.mlmodel"; sourceTree = "<group>"; };
 		28077B192733B4CD00F107C1 /* SavedFoodDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SavedFoodDataModel.xcdatamodel; sourceTree = "<group>"; };
 		28077B222733B81B00F107C1 /* Saved+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Saved+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		28077B232733B81B00F107C1 /* Saved+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Saved+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
@@ -149,7 +149,6 @@
 			isa = PBXGroup;
 			children = (
 				2835C3FE26F2FDD900288C74 /* AppDelegate.swift */,
-				28A4FAD826F2A656002CCD45 /* ImageDetection.swift */,
 				28BA407927013F02000A2B73 /* ImageAndFoodNameFeeder.swift */,
 				08A10F0F276315800085EA22 /* NutrifyModel.swift */,
 			);
@@ -161,7 +160,6 @@
 			children = (
 				082EE851278A81D500AA334D /* ContentView.swift */,
 				28C97F7E26E9D29400C06095 /* MyCameraView.swift */,
-				2808977426EEFC510094A830 /* FullScreenSheetView.swift */,
 				089B597D2773F51500EBDF09 /* FullScreenBodyTextView.swift */,
 				2835C40226F6931A00288C74 /* SavedFoodView.swift */,
 			);
@@ -171,10 +169,12 @@
 		285974ED26F07F4300FCC3B9 /* ImageDetection */ = {
 			isa = PBXGroup;
 			children = (
+				28A4FAD826F2A656002CCD45 /* ImageDetection.swift */,
 				285974E526F07F3300FCC3B9 /* ImageDetectionManager.swift */,
 				285974E826F07F3800FCC3B9 /* ImageDetectionViewModel.swift */,
-				08F3690627914C470080F477 /* FoodVisionV2-100-foods-semi-cleaned.mlmodel */,
+				0810D71F27955F5100E876D1 /* 0.0.2-FoodVisionV2-100-foods-manually-cleaned.mlmodel */,
 				285974E726F07F3800FCC3B9 /* UIImage+Extension.swift */,
+				2808977426EEFC510094A830 /* FullScreenSheetView.swift */,
 			);
 			path = ImageDetection;
 			sourceTree = "<group>";
@@ -363,6 +363,7 @@
 				089B597C2773F1B200EBDF09 /* CodableBundleExtension.swift in Sources */,
 				28A4FAD926F2A656002CCD45 /* ImageDetection.swift in Sources */,
 				28C97F7F26E9D29400C06095 /* MyCameraView.swift in Sources */,
+				0810D72027955F5100E876D1 /* 0.0.2-FoodVisionV2-100-foods-manually-cleaned.mlmodel in Sources */,
 				089B59772773F06C00EBDF09 /* Test.swift in Sources */,
 				28BA407A27013F02000A2B73 /* ImageAndFoodNameFeeder.swift in Sources */,
 				089B598C277431FE00EBDF09 /* ImageSliderView.swift in Sources */,
@@ -375,7 +376,6 @@
 				285974EC26F07F3900FCC3B9 /* ImageDetectionViewModel.swift in Sources */,
 				2808977526EEFC510094A830 /* FullScreenSheetView.swift in Sources */,
 				082EE852278A81D500AA334D /* ContentView.swift in Sources */,
-				08F3690727914C470080F477 /* FoodVisionV2-100-foods-semi-cleaned.mlmodel in Sources */,
 				089B598E277560E400EBDF09 /* ImageButtonView.swift in Sources */,
 				082EE84E278A80B500AA334D /* CustomShape.swift in Sources */,
 				2835C40326F6931A00288C74 /* SavedFoodView.swift in Sources */,
@@ -518,7 +518,7 @@
 				DEVELOPMENT_TEAM = TT2K57S6Q3;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = CustomCameraEdit/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -543,7 +543,7 @@
 				DEVELOPMENT_TEAM = TT2K57S6Q3;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = CustomCameraEdit/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

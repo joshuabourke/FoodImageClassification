@@ -17,7 +17,6 @@ struct FullScreenBodyTextView: View {
     //Properties that change ever time a photo is taken. changes the image and the title, then assigns it a new unique id for core data purposes.
     @State private var title: String = ""
     @Binding var takenImage: UIImage?
-    @State var id = UUID()
     @State private var didCloseInfo: Bool = false
     @State private var didSave: Bool = false
     
@@ -27,7 +26,12 @@ struct FullScreenBodyTextView: View {
     //MARK: - CORE DATA PROPERTIES
     //trying to save items from the list the Core Data
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(entity: Saved.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Saved.dataFoodName, ascending: true), NSSortDescriptor(keyPath: \Saved.dataFoodImage, ascending: true), NSSortDescriptor(keyPath: \Saved.dataPredicPercent, ascending: true), NSSortDescriptor(keyPath: \Saved.dataFoodID, ascending: true)])
+    @FetchRequest(entity: Saved.entity(), sortDescriptors: [
+    NSSortDescriptor(keyPath: \Saved.dataDate, ascending: true)])
+    
+//    NSSortDescriptor(keyPath: \Saved.dataFoodName, ascending: true),
+//    NSSortDescriptor(keyPath: \Saved.dataFoodImage, ascending: true),
+//    NSSortDescriptor(keyPath: \Saved.dataPredicPercent, ascending: true),
     
     var savings: FetchedResults<Saved>
 
@@ -146,7 +150,8 @@ struct FullScreenBodyTextView: View {
              let newItem = Saved(context: moc)
              newItem.dataFoodImage = data
              newItem.dataFoodName = title
-             newItem.dataFoodID = id
+             newItem.dataFoodID = UUID()
+             newItem.dataDate = Date()
              do{
                  try moc.save()
              } catch {

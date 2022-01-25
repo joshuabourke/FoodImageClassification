@@ -13,7 +13,13 @@ struct SavedFoodView: View {
     @Environment(\.presentationMode) var presentationMode
     
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(entity: Saved.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Saved.dataFoodName, ascending: true), NSSortDescriptor(keyPath: \Saved.dataFoodImage, ascending: true), NSSortDescriptor(keyPath: \Saved.dataPredicPercent, ascending: true), NSSortDescriptor(keyPath: \Saved.dataFoodID, ascending: true)])
+    @FetchRequest(entity: Saved.entity(), sortDescriptors: [
+    NSSortDescriptor(keyPath: \Saved.dataDate, ascending: true)])
+    
+//    NSSortDescriptor(keyPath: \Saved.dataFoodName, ascending: true),
+//    NSSortDescriptor(keyPath: \Saved.dataFoodImage, ascending: true),
+//    NSSortDescriptor(keyPath: \Saved.dataPredicPercent, ascending: true),
+//    NSSortDescriptor(keyPath: \Saved.dataFoodID, ascending: true),
 
     var savings: FetchedResults<Saved>
     
@@ -24,7 +30,7 @@ struct SavedFoodView: View {
         
         NavigationView{
             List{
-                ForEach(savings, id:\.self) { index in
+                ForEach(savings, id: \.self.dataFoodID.description) { index in
                     NavigationLink(destination: FullScreenBodyTextView(imDetection: ImageDetection(), testJson: testJson, takenImage: Binding<UIImage?>.constant(UIImage(data: index.dataFoodImage!)!)))
                     {
                         HStack{
