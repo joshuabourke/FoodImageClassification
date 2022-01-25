@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-struct FullScreenBodyTextView: View {
+struct DetailedSheetView: View {
     //MARK: - PROPERTIES
     @Environment(\.presentationMode) var presentataionMode
     @StateObject var imDetection: ImageDetection
@@ -25,6 +25,8 @@ struct FullScreenBodyTextView: View {
     
     //MARK: - CORE DATA PROPERTIES
     //trying to save items from the list the Core Data
+    
+    //The Following code allows me to now save the same item more than once, also it will be sorted by date.
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(entity: Saved.entity(), sortDescriptors: [
     NSSortDescriptor(keyPath: \Saved.dataDate, ascending: true)])
@@ -39,6 +41,7 @@ struct FullScreenBodyTextView: View {
     var body: some View {
         
         ZStack {
+            //MARK: - SCROLL VIEW
             ScrollView(.vertical, showsIndicators: false){
                 VStack(alignment: .center, spacing: 20) {
                     //HERO IMAGE
@@ -102,7 +105,7 @@ struct FullScreenBodyTextView: View {
                                     .padding()
                         Spacer()
                     }//: HSTACK (BUTTONS)
-                    
+                    //MARK: - GROUP VIEWS
                     //NUTRITION INFO
                     Group{
                     HeadingView(headingImage: "info.circle", headingTitle: "Nutritional Values")
@@ -138,7 +141,6 @@ struct FullScreenBodyTextView: View {
                 imDetection.imageDetectionVM.detect(takenImage)
                 title = imDetection.imageDetectionVM.predictionLabel
                 
-                
             }
         }//: ZSTACK
     }//: BODY
@@ -173,7 +175,7 @@ struct FullScreenBodyTextView_Previews: PreviewProvider {
     static let testApple: [Test] = Bundle.main.decode("TestApple.json")
     
     static var previews: some View {
-        FullScreenBodyTextView(imDetection: ImageDetection(), testJson: testApple[0], takenImage: Binding<UIImage?>.constant(UIImage(named: "placeholder")!))
+        DetailedSheetView(imDetection: ImageDetection(), testJson: testApple[0], takenImage: Binding<UIImage?>.constant(UIImage(named: "placeholder")!))
             .preferredColorScheme(.dark)
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-struct SavedFoodView: View {
+struct SavedFoodListView: View {
     //MARK: PROPERTIES
     @Environment(\.presentationMode) var presentationMode
     
@@ -31,7 +31,7 @@ struct SavedFoodView: View {
         NavigationView{
             List{
                 ForEach(savings, id: \.self.dataFoodID.description) { index in
-                    NavigationLink(destination: FullScreenBodyTextView(imDetection: ImageDetection(), testJson: testJson, takenImage: Binding<UIImage?>.constant(UIImage(data: index.dataFoodImage!)!)))
+                    NavigationLink(destination: DetailedSheetView(imDetection: ImageDetection(), testJson: testJson, takenImage: Binding<UIImage?>.constant(UIImage(data: index.dataFoodImage!)!)))
                     {
                         HStack{
                             Image(uiImage: UIImage(data: index.dataFoodImage!) ?? UIImage(named: "placeholder")!)
@@ -40,6 +40,7 @@ struct SavedFoodView: View {
                                 .scaledToFit()
                                 .frame(width: 90, height: 90)
                                 .clipShape(RoundedRectangle(cornerRadius: 12))
+                                .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.65), radius: 3)
                             
                             VStack(alignment: .leading, spacing: 5) {
                                 Text(index.dataFoodName ?? "")
@@ -51,6 +52,7 @@ struct SavedFoodView: View {
                                     .multilineTextAlignment(.leading)
                                     .lineLimit(2)
                                     .padding(.trailing, 8)
+                                    .foregroundColor(Color.gray)
     //                            switch index.dataFoodName{
     //                            case "apple":
     //                                Text("Testing for Apple")
@@ -107,6 +109,6 @@ struct SavedFoodView_Previews: PreviewProvider {
     static let testing : [Test] = Bundle.main.decode("TestApple.json")
     
     static var previews: some View {
-        SavedFoodView(testJson: testing[0])
+        SavedFoodListView(testJson: testing[0])
     }
 }

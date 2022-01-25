@@ -52,7 +52,7 @@ struct CustomCameraPhotoView: View {
                         
                         .sheet(isPresented: $didOutPutImage, content: {
         //                    FullScreenSheetView(sheetViewImage: $image, imDetection: ImageDetection(), didTakePhoto: $didOutPutImage)
-                            FullScreenBodyTextView(imDetection: ImageDetection(),testJson: testJson[0], takenImage: $image)
+                            DetailedSheetView(imDetection: ImageDetection(),testJson: testJson[0], takenImage: $image)
                         })
                     //When the app returns back to the camera screen it turns the camera preview back onx
                         .onAppear {
@@ -84,7 +84,7 @@ struct CustomCameraPhotoView: View {
                     .opacity(selectedTab == "camera" ? 1 : 0)
                     .padding(.vertical)
                     
-                    SavedFoodView(testJson: testJson[0])
+                    SavedFoodListView(testJson: testJson[0])
                         .opacity(selectedTab == "bookmark" ? 1 : 0)
                         .padding(.vertical)
                     
