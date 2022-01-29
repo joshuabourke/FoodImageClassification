@@ -12,6 +12,8 @@
 		082EE84E278A80B500AA334D /* CustomShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082EE84D278A80B500AA334D /* CustomShape.swift */; };
 		082EE850278A812C00AA334D /* TabButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082EE84F278A812C00AA334D /* TabButtonView.swift */; };
 		082EE852278A81D500AA334D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082EE851278A81D500AA334D /* ContentView.swift */; };
+		0860C859279FE78700278F84 /* SavedItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0860C858279FE78700278F84 /* SavedItemView.swift */; };
+		0860C8A227A506BE00278F84 /* OffsetTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0860C8A127A506BE00278F84 /* OffsetTabView.swift */; };
 		089B59772773F06C00EBDF09 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089B59762773F06C00EBDF09 /* Test.swift */; };
 		089B597C2773F1B200EBDF09 /* CodableBundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089B597B2773F1B200EBDF09 /* CodableBundleExtension.swift */; };
 		089B597E2773F51500EBDF09 /* DetailedSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089B597D2773F51500EBDF09 /* DetailedSheetView.swift */; };
@@ -48,6 +50,8 @@
 		082EE84D278A80B500AA334D /* CustomShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomShape.swift; sourceTree = "<group>"; };
 		082EE84F278A812C00AA334D /* TabButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButtonView.swift; sourceTree = "<group>"; };
 		082EE851278A81D500AA334D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0860C858279FE78700278F84 /* SavedItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedItemView.swift; sourceTree = "<group>"; };
+		0860C8A127A506BE00278F84 /* OffsetTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetTabView.swift; sourceTree = "<group>"; };
 		089B59762773F06C00EBDF09 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		089B597B2773F1B200EBDF09 /* CodableBundleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableBundleExtension.swift; sourceTree = "<group>"; };
 		089B597D2773F51500EBDF09 /* DetailedSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedSheetView.swift; sourceTree = "<group>"; };
@@ -94,6 +98,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0860C857279FE6E000278F84 /* Saving For Later */ = {
+			isa = PBXGroup;
+			children = (
+				2808977426EEFC510094A830 /* FullScreenSheetView.swift */,
+			);
+			path = "Saving For Later";
+			sourceTree = "<group>";
+		};
 		089B597A2773F19200EBDF09 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +125,8 @@
 				082EE84B278A801F00AA334D /* ModelView.swift */,
 				082EE84D278A80B500AA334D /* CustomShape.swift */,
 				082EE84F278A812C00AA334D /* TabButtonView.swift */,
+				0860C858279FE78700278F84 /* SavedItemView.swift */,
+				0860C8A127A506BE00278F84 /* OffsetTabView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -174,7 +188,7 @@
 				285974E826F07F3800FCC3B9 /* ImageDetectionViewModel.swift */,
 				0810D71F27955F5100E876D1 /* 0.0.2-FoodVisionV2-100-foods-manually-cleaned.mlmodel */,
 				285974E726F07F3800FCC3B9 /* UIImage+Extension.swift */,
-				2808977426EEFC510094A830 /* FullScreenSheetView.swift */,
+				0860C857279FE6E000278F84 /* Saving For Later */,
 			);
 			path = ImageDetection;
 			sourceTree = "<group>";
@@ -359,6 +373,7 @@
 				2822B3D62741DDC6005C4657 /* MyPersistentContainer.swift in Sources */,
 				089B597E2773F51500EBDF09 /* DetailedSheetView.swift in Sources */,
 				082EE84C278A801F00AA334D /* ModelView.swift in Sources */,
+				0860C8A227A506BE00278F84 /* OffsetTabView.swift in Sources */,
 				28077B242733B81B00F107C1 /* Saved+CoreDataClass.swift in Sources */,
 				089B597C2773F1B200EBDF09 /* CodableBundleExtension.swift in Sources */,
 				28A4FAD926F2A656002CCD45 /* ImageDetection.swift in Sources */,
@@ -383,6 +398,7 @@
 				28077B1A2733B4CD00F107C1 /* SavedFoodDataModel.xcdatamodeld in Sources */,
 				28077B252733B81B00F107C1 /* Saved+CoreDataProperties.swift in Sources */,
 				08A10F10276315800085EA22 /* NutrifyModel.swift in Sources */,
+				0860C859279FE78700278F84 /* SavedItemView.swift in Sources */,
 				089B59842774230100EBDF09 /* NutritionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

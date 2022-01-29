@@ -33,39 +33,9 @@ struct SavedFoodListView: View {
                 ForEach(savings, id: \.self.dataFoodID.description) { index in
                     NavigationLink(destination: DetailedSheetView(imDetection: ImageDetection(), testJson: testJson, takenImage: Binding<UIImage?>.constant(UIImage(data: index.dataFoodImage!)!)))
                     {
-                        HStack{
-                            Image(uiImage: UIImage(data: index.dataFoodImage!) ?? UIImage(named: "placeholder")!)
-                                .renderingMode(.original)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 90, height: 90)
-                                .clipShape(RoundedRectangle(cornerRadius: 12))
-                                .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.65), radius: 3)
-                            
-                            VStack(alignment: .leading, spacing: 5) {
-                                Text(index.dataFoodName ?? "")
-                                    .font(.title2)
-                                    .fontWeight(.heavy)
-                                    .foregroundColor(.primary)
-                                Text(testJson.headline)
-                                    .font(.footnote)
-                                    .multilineTextAlignment(.leading)
-                                    .lineLimit(2)
-                                    .padding(.trailing, 8)
-                                    .foregroundColor(Color.gray)
-    //                            switch index.dataFoodName{
-    //                            case "apple":
-    //                                Text("Testing for Apple")
-    //                            case "banana":
-    //                                Text("Testing for Banana")
-    //                            default:
-    //                                Text("Not sure Whats going on")
-    //
-    //                            }
-    //                                .font(.caption)
-    //                                .foregroundColor(Color.secondary)
-                            }//: VSTACK
-                        }//: HSTACK
+                        //MARK: - SAVED ITEM VIEW
+                        
+                        SavedItemView(image: index.dataFoodImage!, title: index.dataFoodName ?? "", headline: testJson.headline)
                     }//: LINK
                 }//: LOOP
                 .onDelete(perform: removeFromCoreData)

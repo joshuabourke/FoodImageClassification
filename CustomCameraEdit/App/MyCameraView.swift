@@ -31,7 +31,6 @@ struct CustomCameraPhotoView: View {
     
     //MARK: - BODY
     var body: some View {
-        
         VStack(spacing: 0){
             GeometryReader { _ in
                 ZStack {
@@ -90,6 +89,10 @@ struct CustomCameraPhotoView: View {
                     
                     
                 }//: ZSTACK
+//                SwipeGesture(toSavedPage: $selectedTab, animation: animation)
+//                SwipeGesture(toSavedPage: $selectedTab, animation: animation)
+                    
+                
             }//: GEOREADER
             .onChange(of: selectedTab) {_ in
                 switch(selectedTab) {
