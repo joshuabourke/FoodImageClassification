@@ -12,6 +12,7 @@ struct CustomCameraPhotoView: View {
     @State private var image: UIImage?
     @State private var didOutPutImage = false
     @State private var selection = 0
+
     let customCameraController = CustomCameraController()
     
     //Timer Variables
@@ -24,9 +25,9 @@ struct CustomCameraPhotoView: View {
     
     //Custom Tabbar Properties
     
-    @State var selectedTab = "camera"
-    @Namespace var animation
-    @StateObject var modelData = ModelView()
+//    @State var selectedTab = "camera"
+//    @Namespace var animation
+//    @StateObject var modelData = ModelView()
     
     
     //MARK: - BODY
@@ -80,12 +81,12 @@ struct CustomCameraPhotoView: View {
                             self.isActive = true
                         }
 
-                    .opacity(selectedTab == "camera" ? 1 : 0)
-                    .padding(.vertical)
-                    
-                    SavedFoodListView(testJson: testJson[0])
-                        .opacity(selectedTab == "bookmark" ? 1 : 0)
-                        .padding(.vertical)
+//                    .opacity(selectedTab == "camera" ? 1 : 0)
+//                    .padding(.vertical)
+//
+//                    SavedFoodListView(testJson: testJson[0])
+//                        .opacity(selectedTab == "bookmark" ? 1 : 0)
+//                        .padding(.vertical)
                     
                     
                 }//: ZSTACK
@@ -94,37 +95,34 @@ struct CustomCameraPhotoView: View {
                     
                 
             }//: GEOREADER
-            .onChange(of: selectedTab) {_ in
-                switch(selectedTab) {
-                case "bookmark": if !modelData.isBookMarkLoaded{modelData.loadBookMark()}
-//                case "camera": if !modelData.isCameraLoaded{modelData.loadCamera()}
-//                case "square": if !modelData.isSquareLoaded{modelData.loadSquare()}
-                default: ()
-                }
-            }
+//            .onChange(of: selectedTab) {_ in
+//                switch(selectedTab) {
+//                case "bookmark": if !modelData.isBookMarkLoaded{modelData.loadBookMark()}
+////                case "camera": if !modelData.isCameraLoaded{modelData.loadCamera()}
+////                case "square": if !modelData.isSquareLoaded{modelData.loadSquare()}
+//                default: ()
+//                }
+//            }
             //Tab View...
-            HStack(spacing: 0){
-                
-                ForEach(tabs, id:\.self) { tab in
-                    Spacer()
-                    TabButtonView(title: tab, selectedTab: $selectedTab, animation: animation)
-                    Spacer()
-                    if tab != tabs.last {
-                        
-                    }
-                }
-                
-            }//: HSTACK
-            .padding(.vertical, 6)
-            .background(Color.clear)
+//            HStack(spacing: 0){
+//
+//                ForEach(tabs, id:\.self) { tab in
+//                    Spacer()
+//                    TabButtonView(title: tab, selectedTab: $selectedTab, animation: animation)
+//                    Spacer()
+//                    if tab != tabs.last {
+//
+//                    }
+//                }
+//
+//            }//: HSTACK
+//            .padding(.vertical, 6)
+//            .background(Color.clear)
         }
 //        .ignoresSafeArea(.all, edges: [.bottom, .top])
 //        .background(Color.black.opacity(0.6).ignoresSafeArea(.all, edges: .all))
         
     }
-    
- var tabs = ["camera", "bookmark"]
-            
 
     func cancelTimer () {
         self.timer.makeConnectable().connect().cancel()
@@ -140,21 +138,25 @@ struct CustomCameraView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                
+                ZStack{
                 //Camera Frame
                 let frame = CGRect(x: 0, y: 0, width: geometry.size.width, height: geometry.size.height)
                 cameraView(frame: frame)
+                
+                   Crosshair(heightAndWidth: 299, lineWidth: 2)
+                }//: ZSTACK
                 
                 HStack {
                     CameraControlsView(captureButtonAction: { [weak customCameraRepresentable] in
                         customCameraRepresentable?.takePhoto()
                     })
                 }//: HSTACK
-            }
+            }//: VSTACK
+            .ignoresSafeArea(edges: [.top, .bottom])
+            .cornerRadius(12)
+            .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.15), radius: 8, x: 6, y: 8)
         }
-        .ignoresSafeArea(.all, edges: [.top, .bottom])
-        .cornerRadius(12)
-        .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.15), radius: 8, x: 6, y: 8)
+
     }
     
     private func cameraView(frame: CGRect) -> CustomCameraRepresentable {
@@ -168,12 +170,16 @@ import SwiftUI
 //MARK: - CAMERA CONTROLS VIEW
 struct CameraControlsView: View {
     var captureButtonAction: (() -> Void)
+
     
     var body: some View {
         CaptureButtonView()
             .onTapGesture {
                 captureButtonAction()
+
+                feedback.notificationOccurred(.success)
             }
+
     }
 }
 
@@ -190,20 +196,15 @@ struct CaptureButtonView: View {
                         .fill(Color.white)
                         .frame(width: 65, height: 65)
 
+
+
                     Circle()
-                        .stroke(Color.accentColor,lineWidth: 2)
-                        .frame(width: 70, height: 70, alignment: .center)
-                        .scaleEffect(0.9 + CGFloat(animation))
-                        .opacity(1 - animation)
+                        .stroke(Color.white,lineWidth: 2)
+                        .frame(width: 75, height: 75, alignment: .center)
+
                         
                 }
-                .padding(EdgeInsets(top: 0, leading: 0, bottom: 30, trailing: 0))
-  
-                .onAppear {
-                    withAnimation(Animation.easeOut(duration: 2).repeatForever(autoreverses: false)){
-                        animation = 1
-                    }
-                }
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: 125, trailing: 0))
     }
 }
 
@@ -318,10 +319,12 @@ final class CustomCameraRepresentable: UIViewControllerRepresentable {
     init(cameraFrame: CGRect, imageCompletion: @escaping ((UIImage) -> Void)) {
         self.cameraFrame = cameraFrame
         self.imageCompletion = imageCompletion
+
     }
     
     var cameraFrame: CGRect
     var imageCompletion: ((UIImage) -> Void)
+
     
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
@@ -333,7 +336,8 @@ final class CustomCameraRepresentable: UIViewControllerRepresentable {
         return CustomCameraController.shared
     }
     
-    func updateUIViewController(_ cameraViewController: CustomCameraController, context: Context) {}
+    func updateUIViewController(_ cameraViewController: CustomCameraController, context: Context) {
+    }
     
     func takePhoto() {
         CustomCameraController.shared.takePhoto()

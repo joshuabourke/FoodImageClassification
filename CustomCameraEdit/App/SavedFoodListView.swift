@@ -23,7 +23,9 @@ struct SavedFoodListView: View {
 
     var savings: FetchedResults<Saved>
     
-    let testJson: Test
+    var testJson: Test
+    
+
     
     var body: some View {
     //MARK: - BODY
@@ -31,19 +33,24 @@ struct SavedFoodListView: View {
         NavigationView{
             List{
                 ForEach(savings, id: \.self.dataFoodID.description) { index in
-                    NavigationLink(destination: DetailedSheetView(imDetection: ImageDetection(), testJson: testJson, takenImage: Binding<UIImage?>.constant(UIImage(data: index.dataFoodImage!)!)))
+                    NavigationLink(destination: DetailedSheetView(imDetection: ImageDetection(), testJson: testJson, takenImage: Binding<UIImage?>.constant(UIImage(data: index.dataFoodImage!)!), didSave: true))
                     {
                         //MARK: - SAVED ITEM VIEW
                         
                         SavedItemView(image: index.dataFoodImage!, title: index.dataFoodName ?? "", headline: testJson.headline)
                     }//: LINK
+
                 }//: LOOP
                 .onDelete(perform: removeFromCoreData)
                 
             }//: LIST
-            
             .navigationTitle("Saved")
+            .navigationBarItems(trailing:
+                    EditButton()
+                    .padding()
+            )
         }//: NAVIGATION
+        .padding(.top, 70)
         
         //Fetching CoreData
     .onAppear{
@@ -79,6 +86,6 @@ struct SavedFoodView_Previews: PreviewProvider {
     static let testing : [Test] = Bundle.main.decode("TestApple.json")
     
     static var previews: some View {
-        SavedFoodListView(testJson: testing[0])
+        SavedFoodListView(testJson:  testJson1[1])
     }
 }

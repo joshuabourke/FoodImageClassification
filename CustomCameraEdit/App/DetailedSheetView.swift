@@ -18,8 +18,9 @@ struct DetailedSheetView: View {
     @State private var title: String = ""
     @Binding var takenImage: UIImage?
     @State private var didCloseInfo: Bool = false
-    @State private var didSave: Bool = false
-    
+    @State var didSave: Bool = false
+    @State private var isSaved: Bool = false
+    @State private var itemOffset: Int = 0
     
     
     
@@ -37,6 +38,55 @@ struct DetailedSheetView: View {
     
     var savings: FetchedResults<Saved>
 
+    //MARK: - FUNCTIONS
+    
+//    func checkIfItemExists() {
+//        if testJson1.contains(where: {$0.name == title}) {
+//            //it exists, do something
+//            print("It Exists")
+//        } else {
+//            print("Item could not be found")
+//        }
+//    }
+    
+//    func getElement() {
+//        if let elementName = testJson1.first(where: {$0.name == title}) {
+//            //Do something with title
+//            print("Do something with Title")
+//        } else {
+//            print("Could not find the title")
+//        }
+//    }
+    
+    func getEleOffset() {
+    if let eleOffset = testJson1.enumerated().first(where: {$0.element.name == title}) {
+            //Do something with the item off set
+            print("Found item.offset\(eleOffset) and item.element")
+            itemOffset = eleOffset.offset
+        } else {
+            //item offset and element could not be found
+            print("Couldn't find item.offset and item.element")
+        }
+    }
+//
+//    func getOffset() {
+//        if let foodOffset = testJson1.firstIndex(where: {$0.name == title}) {
+//            //Do something with titleOffset
+//            print("retrieved offset")
+//        } else {
+//            //Item could not be found
+//            print("Could not get offset")
+//        }
+//    }
+    
+    func runAll(){
+//        checkIfItemExists()
+//        getElement()
+        getEleOffset()
+//        getOffset()
+    }
+    
+    
     //MARK: - BODY
     var body: some View {
         
@@ -46,8 +96,12 @@ struct DetailedSheetView: View {
                 VStack(alignment: .center, spacing: 20) {
                     //HERO IMAGE
                     Image(uiImage: takenImage ?? UIImage(named: "placeholder")!)
-                        .resizable()
-                        .scaledToFit()
+                        .centerCropped()
+                        .frame(width: 299, height: 299, alignment: .center)
+                        .cornerRadius(8)
+                        .padding(.top)
+
+                    
                     
                     //TITLE
                     Text(title)
@@ -63,7 +117,7 @@ struct DetailedSheetView: View {
                     //LINE OF BUTTONS
                     
                     //HEADLINE
-                    Text(testJson.headline)
+                    Text(testJson1[itemOffset].headline)
                         .font(.headline)
                         .multilineTextAlignment(.leading)
                         .padding(.horizontal)
@@ -86,8 +140,10 @@ struct DetailedSheetView: View {
                              Spacer()
                     //MARK: - SAVE BUTTON
                         Button(action: {
-                                addItem()
-                                didSave.toggle()
+                            addItem()
+                            didSave = true
+
+                                
             //Testing to see if the items are being displayed in the list with CoreData
             //                    if didClickSave == true {
             //                        imageAndNameFeeder.foodList.append(ImageAndNameFeeder.Item(addingItemName: foodNameTitle, itemImage: sheetViewImage ?? UIImage(named: "placeholder")!))
@@ -97,7 +153,7 @@ struct DetailedSheetView: View {
                                 
                                 }
                             ,label: {
-                                    Image(systemName: self.didSave ? "bookmark.fill" : "bookmark")
+                            Image(systemName: didSave ? "bookmark.fill" : "bookmark")
                                         .font(.title2)
                                         .foregroundColor(.accentColor)
                             })
@@ -109,20 +165,20 @@ struct DetailedSheetView: View {
                     //NUTRITION INFO
                     Group{
                     HeadingView(headingImage: "info.circle", headingTitle: "Nutritional Values")
-                    NutritionView(food: testJson)
+                    NutritionView(food: testJson1[itemOffset])
                     }//: GROUP
                     
                     //GALLERY
                     Group{
-                        HeadingView(headingImage: "photo.on.rectangle.angled", headingTitle: "More \(title)'s")
-                        ImageSliderView(testJson: testJson)
+                        HeadingView(headingImage: "photo.on.rectangle.angled", headingTitle: "More on \(title)")
+                        ImageSliderView(testJson: testJson1[itemOffset])
                     }//: GROUP
                     .padding(.vertical)
                     
                     //DESCRIPTION
                     Group{
                     HeadingView(headingImage: "questionmark.circle", headingTitle: "All about \(title)'s")
-                        Text(testJson.description)
+                        Text(testJson1[itemOffset].description)
                             .multilineTextAlignment(.leading)
                             .layoutPriority(1)
                     }//: GROUP
@@ -130,18 +186,23 @@ struct DetailedSheetView: View {
                     //LINK
                     Group{
                         HeadingView(headingImage: "books.vertical", headingTitle: "Find out More!")
-                        LinkView(testJson: testJson)
+                        LinkView(testJson: testJson1[itemOffset])
                     }//: GROUP
                     .padding(.vertical)
                 }//: VSTACK
                 
+                .padding(.bottom, 46)
             }//: SCROLL
-            .ignoresSafeArea(.container, edges: .top)
+//            .ignoresSafeArea(.container, edges: .top)
             .onAppear {
                 imDetection.imageDetectionVM.detect(takenImage)
                 title = imDetection.imageDetectionVM.predictionLabel
-                
+                runAll()
             }
+            .onDisappear {
+                didSave = false
+            }
+
         }//: ZSTACK
     }//: BODY
     
@@ -154,6 +215,7 @@ struct DetailedSheetView: View {
              newItem.dataFoodName = title
              newItem.dataFoodID = UUID()
              newItem.dataDate = Date()
+             newItem.dataIsSaved = didSave
              do{
                  try moc.save()
              } catch {

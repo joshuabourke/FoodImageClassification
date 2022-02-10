@@ -5,9 +5,10 @@
         <attribute name="dataFoodID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="dataFoodImage" optional="YES" attributeType="Binary"/>
         <attribute name="dataFoodName" optional="YES" attributeType="String"/>
+        <attribute name="dataIsSaved" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="dataPredicPercent" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Saved" positionX="-63" positionY="-18" width="128" height="104"/>
+        <element name="Saved" positionX="-63" positionY="-18" width="128" height="119"/>
     </elements>
 </model>

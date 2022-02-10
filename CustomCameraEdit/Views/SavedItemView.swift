@@ -22,8 +22,7 @@ struct SavedItemView: View {
         HStack{
             Image(uiImage: UIImage(data: image) ?? UIImage(named: "placeholder")!)
 //            Image(uiImage: UIImage(named: "placeholder")!)
-                .renderingMode(.original)
-                .resizable()
+                .centerCropped()
                 .scaledToFit()
                 .frame(width: 90, height: 90)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
@@ -35,10 +34,12 @@ struct SavedItemView: View {
                     .fontWeight(.heavy)
                     .foregroundColor(.primary)
                 Text(headline)
+                    .foregroundColor(Color("grey1"))
                     .font(.subheadline)
                     .multilineTextAlignment(.leading)
                     .lineLimit(2)
                     .padding(.trailing, 8)
+                    
 
 
             }//: VSTACK
@@ -55,6 +56,7 @@ struct SavedItemView: View {
                 
 
         }//: HSTACK
+        .padding(.vertical, 10)
     }
 }
         //MARK: - PREVIEW

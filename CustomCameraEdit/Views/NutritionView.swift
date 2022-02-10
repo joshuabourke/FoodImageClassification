@@ -24,7 +24,7 @@ struct NutritionView: View {
                             Image(systemName: "info.circle")
                             Text(nutrients[item])
                         }
-                        .foregroundColor(Color("green2"))
+                        .foregroundColor(Color("yellow1"))
                         .font(.system(.body).bold())
                         
                         Spacer(minLength: 25)

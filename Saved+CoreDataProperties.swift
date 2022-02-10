@@ -21,6 +21,7 @@ extension Saved {
     @NSManaged public var dataPredicPercent: String?
     @NSManaged public var dataFoodID: UUID
     @NSManaged public var dataDate: Date
+    @NSManaged public var dataIsSaved: Bool
 }
 
 extension Saved : Identifiable {

@@ -23,7 +23,7 @@ class ImageDetectionViewModel: ObservableObject{
         
         let sourceImage = image
         
-        guard let resizedImage = sourceImage?.resizeImage(targetSize: CGSize(width: 299, height: 299)) else {
+        guard let resizedImage = image?.cropToBounds(image: sourceImage!, width: 299, height: 299)  else {
             fatalError("Unable to resize the image!")
         }
         
@@ -34,4 +34,5 @@ class ImageDetectionViewModel: ObservableObject{
         //update prediction label with the image prediction
         
     }
+    //sourceImage?.resizeImage(targetSize: CGSize(width: 299, height: 299))
 }
