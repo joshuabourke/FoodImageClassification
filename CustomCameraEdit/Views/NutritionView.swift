@@ -16,24 +16,32 @@ struct NutritionView: View {
     //MARK: - BODY
     var body: some View {
         GroupBox() {
-            DisclosureGroup("Nutritional value per 100g"){
-                ForEach(0..<nutrients.count, id:\.self) { item in
-                    Divider().padding(.vertical, 2)
-                    HStack{
-                        Group{
-                            Image(systemName: "info.circle")
-                            Text(nutrients[item])
-                        }
-                        .foregroundColor(Color("yellow1"))
-                        .font(.system(.body).bold())
-                        
-                        Spacer(minLength: 25)
-                        
-                        Text(food.nutrition[item])
-                            .multilineTextAlignment(.trailing)
-                    }//: HSTACK
-                }
-            }//: DISCLOSUREGROUP
+            
+            HStack(alignment: .top) {
+                    Image(systemName:"info.circle")
+                        .foregroundColor(Color.accentColor)
+                        .padding(.top, 6)
+                
+                DisclosureGroup("Nutritional value per 100g"){
+                    ForEach(0..<nutrients.count, id:\.self) { item in
+                        Divider().padding(.vertical, 2)
+                        HStack{
+                            Group{
+                                Image(systemName: "info.circle")
+                                Text(nutrients[item])
+                            }
+                            .foregroundColor(Color("yellow1"))
+                            .font(.system(.body).bold())
+                            
+                            Spacer(minLength: 25)
+                            
+                            Text(food.nutrition[item])
+                                .multilineTextAlignment(.trailing)
+                        }//: HSTACK
+                    }
+                }//: DISCLOSUREGROUP
+                .foregroundColor(Color.primary)
+            }//: HSTACK
         }//: GROUP
         .padding()
         

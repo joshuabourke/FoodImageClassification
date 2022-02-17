@@ -7,15 +7,19 @@
 
 import SwiftUI
 import CoreData
+import CoreML
 
 struct DetailedSheetView: View {
     //MARK: - PROPERTIES
     @Environment(\.presentationMode) var presentataionMode
+    @AppStorage("savePhoto's") var savePhotos: Bool = false
+    
     @StateObject var imDetection: ImageDetection
     let testJson: Test
     
     //Properties that change ever time a photo is taken. changes the image and the title, then assigns it a new unique id for core data purposes.
     @State private var title: String = ""
+    @State private var otherFoods: [String] = []
     @Binding var takenImage: UIImage?
     @State private var didCloseInfo: Bool = false
     @State var didSave: Bool = false
@@ -114,7 +118,7 @@ struct DetailedSheetView: View {
                                         .frame(height: 6)
                                         .offset(y: 24))
                     
-                    //LINE OF BUTTONS
+
                     
                     //HEADLINE
                     Text(testJson1[itemOffset].headline)
@@ -135,13 +139,18 @@ struct DetailedSheetView: View {
                                             
                                 })
                                     .frame(width: 15, height: 15)
-                                .padding()
+                                .padding(4)
                     
                              Spacer()
                     //MARK: - SAVE BUTTON
                         Button(action: {
                             addItem()
                             didSave = true
+                            if savePhotos {
+                            MyPhotoAlbum.shared.save(image: takenImage ?? UIImage(named: "placeholder")!)
+                            } else {
+                                print("Not Saving photo's")
+                            }
 
                                 
             //Testing to see if the items are being displayed in the list with CoreData
@@ -158,13 +167,19 @@ struct DetailedSheetView: View {
                                         .foregroundColor(.accentColor)
                             })
                                     .frame(width: 15, height: 15)
-                                    .padding()
+                                    .padding(4)
                         Spacer()
                     }//: HSTACK (BUTTONS)
+                    
+                    //MARK: - FOOD TAG'S
+                    Group{
+                    FoodTagView(testingArray: otherFoods)
+                    }
+                    .padding(.bottom)
                     //MARK: - GROUP VIEWS
                     //NUTRITION INFO
                     Group{
-                    HeadingView(headingImage: "info.circle", headingTitle: "Nutritional Values")
+                    HeadingView(headingImage: "leaf", headingTitle: "Nutritional Values")
                     NutritionView(food: testJson1[itemOffset])
                     }//: GROUP
                     
@@ -197,6 +212,9 @@ struct DetailedSheetView: View {
             .onAppear {
                 imDetection.imageDetectionVM.detect(takenImage)
                 title = imDetection.imageDetectionVM.predictionLabel
+                otherFoods = imDetection.imageDetectionVM.otherPossiblePredictions
+                
+                print("Other Predictions: \(imDetection.imageDetectionVM.otherPossiblePredictions)")
                 runAll()
             }
             .onDisappear {

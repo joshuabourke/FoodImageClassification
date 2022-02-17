@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     //MARK: - PROPERTIES
-    
+    @AppStorage("isDarkMode") var isDarkMode: Bool = false
     @State var currentSelection: Int = 0
     @State var isCurrentlySelected: Bool = true
     
@@ -72,8 +72,9 @@ struct ContentView: View {
             
         }
         
-
+        .preferredColorScheme(isDarkMode ? .light : .dark)
     }
+
 }
     //MARK: - PREVIEW
 struct ContentView_Previews: PreviewProvider {

@@ -13,8 +13,12 @@
 		082EE850278A812C00AA334D /* TabButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082EE84F278A812C00AA334D /* TabButtonView.swift */; };
 		082EE852278A81D500AA334D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082EE851278A81D500AA334D /* ContentView.swift */; };
 		0838201327B371D000624453 /* Crosshair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0838201227B371D000624453 /* Crosshair.swift */; };
+		08450B0627B4C64600337D46 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08450B0527B4C64600337D46 /* SettingsView.swift */; };
+		08450B0827B4C8D200337D46 /* SettingsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08450B0727B4C8D200337D46 /* SettingsRowView.swift */; };
+		08450B0A27B4CB8300337D46 /* SettingsLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08450B0927B4CB8300337D46 /* SettingsLabelView.swift */; };
+		08450B0C27B76D3200337D46 /* FoodTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08450B0B27B76D3200337D46 /* FoodTagView.swift */; };
+		08450B0E27B76D9B00337D46 /* FoodTagButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08450B0D27B76D9B00337D46 /* FoodTagButton.swift */; };
 		084C37E727A680BC00C1BD43 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084C37E627A680BC00C1BD43 /* ImageExtension.swift */; };
-		084C380327AA270800C1BD43 /* TestApple.json in Resources */ = {isa = PBXBuildFile; fileRef = 084C380227AA270800C1BD43 /* TestApple.json */; };
 		084C380527AA2A4700C1BD43 /* TestingFoodNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084C380427AA2A4700C1BD43 /* TestingFoodNames.swift */; };
 		0860C859279FE78700278F84 /* SavedItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0860C858279FE78700278F84 /* SavedItemView.swift */; };
 		0860C8A227A506BE00278F84 /* OffsetTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0860C8A127A506BE00278F84 /* OffsetTabView.swift */; };
@@ -30,6 +34,8 @@
 		089B598C277431FE00EBDF09 /* ImageSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089B598B277431FE00EBDF09 /* ImageSliderView.swift */; };
 		089B598E277560E400EBDF09 /* ImageButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089B598D277560E400EBDF09 /* ImageButtonView.swift */; };
 		08A10F10276315800085EA22 /* NutrifyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A10F0F276315800085EA22 /* NutrifyModel.swift */; };
+		08AB3D4C27BB79410060EC5C /* TestApple.json in Resources */ = {isa = PBXBuildFile; fileRef = 08AB3D4B27BB79410060EC5C /* TestApple.json */; };
+		08AB3D4E27BB812C0060EC5C /* CustomAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AB3D4D27BB812C0060EC5C /* CustomAlbum.swift */; };
 		129ACCDBBE8778285A052CA4 /* Pods_CustomCameraEdit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9618BDF9094699B3A69AC726 /* Pods_CustomCameraEdit.framework */; };
 		28077B1A2733B4CD00F107C1 /* SavedFoodDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 28077B182733B4CD00F107C1 /* SavedFoodDataModel.xcdatamodeld */; };
 		28077B242733B81B00F107C1 /* Saved+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28077B222733B81B00F107C1 /* Saved+CoreDataClass.swift */; };
@@ -57,8 +63,12 @@
 		082EE84F278A812C00AA334D /* TabButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButtonView.swift; sourceTree = "<group>"; };
 		082EE851278A81D500AA334D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0838201227B371D000624453 /* Crosshair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crosshair.swift; sourceTree = "<group>"; };
+		08450B0527B4C64600337D46 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		08450B0727B4C8D200337D46 /* SettingsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowView.swift; sourceTree = "<group>"; };
+		08450B0927B4CB8300337D46 /* SettingsLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLabelView.swift; sourceTree = "<group>"; };
+		08450B0B27B76D3200337D46 /* FoodTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTagView.swift; sourceTree = "<group>"; };
+		08450B0D27B76D9B00337D46 /* FoodTagButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTagButton.swift; sourceTree = "<group>"; };
 		084C37E627A680BC00C1BD43 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
-		084C380227AA270800C1BD43 /* TestApple.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TestApple.json; sourceTree = "<group>"; };
 		084C380427AA2A4700C1BD43 /* TestingFoodNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingFoodNames.swift; sourceTree = "<group>"; };
 		0860C858279FE78700278F84 /* SavedItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedItemView.swift; sourceTree = "<group>"; };
 		0860C8A127A506BE00278F84 /* OffsetTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetTabView.swift; sourceTree = "<group>"; };
@@ -74,6 +84,8 @@
 		089B598B277431FE00EBDF09 /* ImageSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSliderView.swift; sourceTree = "<group>"; };
 		089B598D277560E400EBDF09 /* ImageButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageButtonView.swift; sourceTree = "<group>"; };
 		08A10F0F276315800085EA22 /* NutrifyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrifyModel.swift; sourceTree = "<group>"; };
+		08AB3D4B27BB79410060EC5C /* TestApple.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TestApple.json; sourceTree = "<group>"; };
+		08AB3D4D27BB812C0060EC5C /* CustomAlbum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlbum.swift; sourceTree = "<group>"; };
 		28077B192733B4CD00F107C1 /* SavedFoodDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SavedFoodDataModel.xcdatamodel; sourceTree = "<group>"; };
 		28077B222733B81B00F107C1 /* Saved+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Saved+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		28077B232733B81B00F107C1 /* Saved+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Saved+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
@@ -151,6 +163,10 @@
 				0860C8A127A506BE00278F84 /* OffsetTabView.swift */,
 				0860C8A327A50BE600278F84 /* PagerTabView.swift */,
 				0838201227B371D000624453 /* Crosshair.swift */,
+				08450B0727B4C8D200337D46 /* SettingsRowView.swift */,
+				08450B0927B4CB8300337D46 /* SettingsLabelView.swift */,
+				08450B0B27B76D3200337D46 /* FoodTagView.swift */,
+				08450B0D27B76D9B00337D46 /* FoodTagButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -158,8 +174,8 @@
 		08A10F0D2763155C0085EA22 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				084C380227AA270800C1BD43 /* TestApple.json */,
 				089B59762773F06C00EBDF09 /* Test.swift */,
+				08AB3D4B27BB79410060EC5C /* TestApple.json */,
 				084C380427AA2A4700C1BD43 /* TestingFoodNames.swift */,
 			);
 			path = Data;
@@ -190,6 +206,7 @@
 				2835C3FE26F2FDD900288C74 /* AppDelegate.swift */,
 				28BA407927013F02000A2B73 /* ImageAndFoodNameFeeder.swift */,
 				08A10F0F276315800085EA22 /* NutrifyModel.swift */,
+				08AB3D4D27BB812C0060EC5C /* CustomAlbum.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -201,6 +218,7 @@
 				28C97F7E26E9D29400C06095 /* MyCameraView.swift */,
 				089B597D2773F51500EBDF09 /* DetailedSheetView.swift */,
 				2835C40226F6931A00288C74 /* SavedFoodListView.swift */,
+				08450B0527B4C64600337D46 /* SettingsView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -340,7 +358,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				084C380327AA270800C1BD43 /* TestApple.json in Resources */,
+				08AB3D4C27BB79410060EC5C /* TestApple.json in Resources */,
 				28C97F8426E9D29700C06095 /* Preview Assets.xcassets in Resources */,
 				28C97F8126E9D29700C06095 /* Assets.xcassets in Resources */,
 				28A4FADB26F2F8B9002CCD45 /* GoogleService-Info.plist in Resources */,
@@ -396,21 +414,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08450B0E27B76D9B00337D46 /* FoodTagButton.swift in Sources */,
 				2822B3D62741DDC6005C4657 /* MyPersistentContainer.swift in Sources */,
 				089B597E2773F51500EBDF09 /* DetailedSheetView.swift in Sources */,
 				082EE84C278A801F00AA334D /* ModelView.swift in Sources */,
 				0860C8A227A506BE00278F84 /* OffsetTabView.swift in Sources */,
 				28077B242733B81B00F107C1 /* Saved+CoreDataClass.swift in Sources */,
 				089B597C2773F1B200EBDF09 /* CodableBundleExtension.swift in Sources */,
+				08450B0A27B4CB8300337D46 /* SettingsLabelView.swift in Sources */,
+				08450B0627B4C64600337D46 /* SettingsView.swift in Sources */,
 				0860C8A627A5423C00278F84 /* ViewExtension.swift in Sources */,
 				28A4FAD926F2A656002CCD45 /* ImageDetection.swift in Sources */,
 				28C97F7F26E9D29400C06095 /* MyCameraView.swift in Sources */,
+				08450B0C27B76D3200337D46 /* FoodTagView.swift in Sources */,
 				084C37E727A680BC00C1BD43 /* ImageExtension.swift in Sources */,
 				0810D72027955F5100E876D1 /* 0.0.2-FoodVisionV2-100-foods-manually-cleaned.mlmodel in Sources */,
 				089B59772773F06C00EBDF09 /* Test.swift in Sources */,
+				08AB3D4E27BB812C0060EC5C /* CustomAlbum.swift in Sources */,
 				28BA407A27013F02000A2B73 /* ImageAndFoodNameFeeder.swift in Sources */,
 				089B598C277431FE00EBDF09 /* ImageSliderView.swift in Sources */,
 				2835C3FF26F2FDD900288C74 /* AppDelegate.swift in Sources */,
+				08450B0827B4C8D200337D46 /* SettingsRowView.swift in Sources */,
 				082EE850278A812C00AA334D /* TabButtonView.swift in Sources */,
 				28C97F7D26E9D29400C06095 /* CustomCameraEditApp.swift in Sources */,
 				084C380527AA2A4700C1BD43 /* TestingFoodNames.swift in Sources */,

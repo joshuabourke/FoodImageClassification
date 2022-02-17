@@ -13,7 +13,8 @@ class ImageDetectionViewModel: ObservableObject{
     
     var name: String = ""
     var manager: ImageDetectionManager
-  @Published  var predictionLabel: String = ""
+    @Published  var predictionLabel: String = ""
+    @Published var otherPossiblePredictions: [String] = []
     
     init(manager: ImageDetectionManager) {
         self.manager = manager
@@ -27,9 +28,12 @@ class ImageDetectionViewModel: ObservableObject{
             fatalError("Unable to resize the image!")
         }
         
-        if let label = self.manager.detect(resizedImage) {
+        if let label = self.manager.detect(resizedImage).0{
             self.predictionLabel = label
         }
+        let otherLabel = self.manager.detect(resizedImage).1
+        otherPossiblePredictions.append(contentsOf: otherLabel)
+        
         
         //update prediction label with the image prediction
         

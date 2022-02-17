@@ -14,7 +14,7 @@ struct SavedFoodListView: View {
     
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(entity: Saved.entity(), sortDescriptors: [
-    NSSortDescriptor(keyPath: \Saved.dataDate, ascending: true)])
+    NSSortDescriptor(keyPath: \Saved.dataDate, ascending: false)])
     
 //    NSSortDescriptor(keyPath: \Saved.dataFoodName, ascending: true),
 //    NSSortDescriptor(keyPath: \Saved.dataFoodImage, ascending: true),
@@ -25,7 +25,7 @@ struct SavedFoodListView: View {
     
     var testJson: Test
     
-
+    @State private var isShowingSettings = false
     
     var body: some View {
     //MARK: - BODY
@@ -45,7 +45,19 @@ struct SavedFoodListView: View {
                 
             }//: LIST
             .navigationTitle("Saved")
-            .navigationBarItems(trailing:
+            .navigationBarItems(leading:
+            Button(action: {
+                isShowingSettings = true
+            }, label: {
+                HStack {
+                    Image(systemName: "ellipsis")
+                    Text("Settings")
+                }
+            })
+                .fullScreenCover(isPresented: $isShowingSettings, content: {
+                SettingsView()
+            })
+                , trailing:
                     EditButton()
                     .padding()
             )

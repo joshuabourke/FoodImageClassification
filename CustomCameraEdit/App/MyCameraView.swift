@@ -176,7 +176,6 @@ struct CameraControlsView: View {
         CaptureButtonView()
             .onTapGesture {
                 captureButtonAction()
-
                 feedback.notificationOccurred(.success)
             }
 
