@@ -26,6 +26,9 @@ struct DetailedSheetView: View {
     @State private var isSaved: Bool = false
     @State private var itemOffset: Int = 0
     
+    @State private var tagTitle: String = ""
+    @State private var tagIndex: Int = 0
+    
     
     
     //MARK: - CORE DATA PROPERTIES
@@ -141,7 +144,16 @@ struct DetailedSheetView: View {
                                     .frame(width: 15, height: 15)
                                 .padding(4)
                     
-                             Spacer()
+                  //MARK: - SHARE BUTTON
+                        Spacer()
+                        Button(action: {
+                            print("Share Image")
+                        }, label: {
+                            Image(systemName: "square.and.arrow.up")
+                        })
+                        Spacer()
+                        
+                        
                     //MARK: - SAVE BUTTON
                         Button(action: {
                             addItem()
@@ -173,7 +185,14 @@ struct DetailedSheetView: View {
                     
                     //MARK: - FOOD TAG'S
                     Group{
-                    FoodTagView(testingArray: otherFoods)
+                        
+                        HeadingView(headingImage: "tag", headingTitle: "Other Possibilities")
+                        
+                        FoodTagView(testingArray: otherFoods)
+                            .onTapGesture {
+                                
+                            }
+                            
                     }
                     .padding(.bottom)
                     //MARK: - GROUP VIEWS

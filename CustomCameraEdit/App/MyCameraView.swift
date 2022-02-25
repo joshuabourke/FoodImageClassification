@@ -12,7 +12,7 @@ struct CustomCameraPhotoView: View {
     @State private var image: UIImage?
     @State private var didOutPutImage = false
     @State private var selection = 0
-
+    @Binding var didTapMe: Bool
     let customCameraController = CustomCameraController()
     
     //Timer Variables
@@ -42,7 +42,7 @@ struct CustomCameraPhotoView: View {
                     )
                     
                         CustomCameraView(
-                            customCameraRepresentable: customCameraRepresentable,
+                            didTapMe: $didTapMe, customCameraRepresentable: customCameraRepresentable,
                             imageCompletion: { newImage in
                                 self.image = newImage
                                 didOutPutImage = true
@@ -133,6 +133,7 @@ struct CustomCameraPhotoView: View {
 import SwiftUI
 //MARK: - CUSTOM CAMERA VIEW
 struct CustomCameraView: View {
+    @Binding var didTapMe: Bool
     var customCameraRepresentable: CustomCameraRepresentable
     var imageCompletion: ((UIImage) -> Void)
     var body: some View {
@@ -144,6 +145,21 @@ struct CustomCameraView: View {
                 cameraView(frame: frame)
                 
                    Crosshair(heightAndWidth: 299, lineWidth: 2)
+                  
+                    VStack(alignment:.trailing) {
+                        Spacer()
+                        HStack(alignment:.top) {
+                            Spacer()
+                            CameraOverlayOptions(didTapMe: $didTapMe)
+                                .padding(.trailing)
+                        }
+                        Spacer()
+                        Spacer()
+                        Spacer()
+                        Spacer()
+                        Spacer()
+                        Spacer()
+                    }
                 }//: ZSTACK
                 
                 HStack {

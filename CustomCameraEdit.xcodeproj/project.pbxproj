@@ -36,6 +36,11 @@
 		08A10F10276315800085EA22 /* NutrifyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A10F0F276315800085EA22 /* NutrifyModel.swift */; };
 		08AB3D4C27BB79410060EC5C /* TestApple.json in Resources */ = {isa = PBXBuildFile; fileRef = 08AB3D4B27BB79410060EC5C /* TestApple.json */; };
 		08AB3D4E27BB812C0060EC5C /* CustomAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AB3D4D27BB812C0060EC5C /* CustomAlbum.swift */; };
+		08AB3D5027BE04270060EC5C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AB3D4F27BE04270060EC5C /* LoginView.swift */; };
+		08AB3D5227BE1BB60060EC5C /* CameraOverlayOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AB3D5127BE1BB60060EC5C /* CameraOverlayOptions.swift */; };
+		08AB3D5427BE1C5B0060EC5C /* KeyBoardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AB3D5327BE1C5A0060EC5C /* KeyBoardExtension.swift */; };
+		08AB3D5627BE1D7E0060EC5C /* BlankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AB3D5527BE1D7E0060EC5C /* BlankView.swift */; };
+		08AB3D5927BF749F0060EC5C /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AB3D5827BF749F0060EC5C /* CreateAccountView.swift */; };
 		129ACCDBBE8778285A052CA4 /* Pods_CustomCameraEdit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9618BDF9094699B3A69AC726 /* Pods_CustomCameraEdit.framework */; };
 		28077B1A2733B4CD00F107C1 /* SavedFoodDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 28077B182733B4CD00F107C1 /* SavedFoodDataModel.xcdatamodeld */; };
 		28077B242733B81B00F107C1 /* Saved+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28077B222733B81B00F107C1 /* Saved+CoreDataClass.swift */; };
@@ -86,6 +91,12 @@
 		08A10F0F276315800085EA22 /* NutrifyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutrifyModel.swift; sourceTree = "<group>"; };
 		08AB3D4B27BB79410060EC5C /* TestApple.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TestApple.json; sourceTree = "<group>"; };
 		08AB3D4D27BB812C0060EC5C /* CustomAlbum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlbum.swift; sourceTree = "<group>"; };
+		08AB3D4F27BE04270060EC5C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		08AB3D5127BE1BB60060EC5C /* CameraOverlayOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraOverlayOptions.swift; sourceTree = "<group>"; };
+		08AB3D5327BE1C5A0060EC5C /* KeyBoardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoardExtension.swift; sourceTree = "<group>"; };
+		08AB3D5527BE1D7E0060EC5C /* BlankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankView.swift; sourceTree = "<group>"; };
+		08AB3D5727BF719F0060EC5C /* CustomCameraEdit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CustomCameraEdit.entitlements; sourceTree = "<group>"; };
+		08AB3D5827BF749F0060EC5C /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
 		28077B192733B4CD00F107C1 /* SavedFoodDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SavedFoodDataModel.xcdatamodel; sourceTree = "<group>"; };
 		28077B222733B81B00F107C1 /* Saved+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Saved+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		28077B232733B81B00F107C1 /* Saved+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Saved+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
@@ -144,6 +155,7 @@
 				089B597B2773F1B200EBDF09 /* CodableBundleExtension.swift */,
 				0860C8A527A5423C00278F84 /* ViewExtension.swift */,
 				084C37E627A680BC00C1BD43 /* ImageExtension.swift */,
+				08AB3D5327BE1C5A0060EC5C /* KeyBoardExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -167,6 +179,7 @@
 				08450B0927B4CB8300337D46 /* SettingsLabelView.swift */,
 				08450B0B27B76D3200337D46 /* FoodTagView.swift */,
 				08450B0D27B76D9B00337D46 /* FoodTagButton.swift */,
+				08AB3D5527BE1D7E0060EC5C /* BlankView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -219,6 +232,9 @@
 				089B597D2773F51500EBDF09 /* DetailedSheetView.swift */,
 				2835C40226F6931A00288C74 /* SavedFoodListView.swift */,
 				08450B0527B4C64600337D46 /* SettingsView.swift */,
+				08AB3D4F27BE04270060EC5C /* LoginView.swift */,
+				08AB3D5827BF749F0060EC5C /* CreateAccountView.swift */,
+				08AB3D5127BE1BB60060EC5C /* CameraOverlayOptions.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -257,6 +273,7 @@
 		28C97F7B26E9D29400C06095 /* CustomCameraEdit */ = {
 			isa = PBXGroup;
 			children = (
+				08AB3D5727BF719F0060EC5C /* CustomCameraEdit.entitlements */,
 				0860C8A727A545D000278F84 /* Constants */,
 				089B597A2773F19200EBDF09 /* Extensions */,
 				08A10F0D2763155C0085EA22 /* Data */,
@@ -414,6 +431,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08AB3D5227BE1BB60060EC5C /* CameraOverlayOptions.swift in Sources */,
 				08450B0E27B76D9B00337D46 /* FoodTagButton.swift in Sources */,
 				2822B3D62741DDC6005C4657 /* MyPersistentContainer.swift in Sources */,
 				089B597E2773F51500EBDF09 /* DetailedSheetView.swift in Sources */,
@@ -422,6 +440,7 @@
 				28077B242733B81B00F107C1 /* Saved+CoreDataClass.swift in Sources */,
 				089B597C2773F1B200EBDF09 /* CodableBundleExtension.swift in Sources */,
 				08450B0A27B4CB8300337D46 /* SettingsLabelView.swift in Sources */,
+				08AB3D5027BE04270060EC5C /* LoginView.swift in Sources */,
 				08450B0627B4C64600337D46 /* SettingsView.swift in Sources */,
 				0860C8A627A5423C00278F84 /* ViewExtension.swift in Sources */,
 				28A4FAD926F2A656002CCD45 /* ImageDetection.swift in Sources */,
@@ -439,6 +458,7 @@
 				28C97F7D26E9D29400C06095 /* CustomCameraEditApp.swift in Sources */,
 				084C380527AA2A4700C1BD43 /* TestingFoodNames.swift in Sources */,
 				285974EB26F07F3800FCC3B9 /* UIImage+Extension.swift in Sources */,
+				08AB3D5627BE1D7E0060EC5C /* BlankView.swift in Sources */,
 				089B598827742A7200EBDF09 /* LinkView.swift in Sources */,
 				089B59802773F96000EBDF09 /* HeadingView.swift in Sources */,
 				285974EC26F07F3900FCC3B9 /* ImageDetectionViewModel.swift in Sources */,
@@ -452,10 +472,12 @@
 				285974E926F07F3800FCC3B9 /* ImageDetectionManager.swift in Sources */,
 				28077B1A2733B4CD00F107C1 /* SavedFoodDataModel.xcdatamodeld in Sources */,
 				28077B252733B81B00F107C1 /* Saved+CoreDataProperties.swift in Sources */,
+				08AB3D5427BE1C5B0060EC5C /* KeyBoardExtension.swift in Sources */,
 				08A10F10276315800085EA22 /* NutrifyModel.swift in Sources */,
 				0860C859279FE78700278F84 /* SavedItemView.swift in Sources */,
 				0860C8A427A50BE600278F84 /* PagerTabView.swift in Sources */,
 				089B59842774230100EBDF09 /* NutritionView.swift in Sources */,
+				08AB3D5927BF749F0060EC5C /* CreateAccountView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -584,6 +606,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CustomCameraEdit/CustomCameraEdit.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"CustomCameraEdit/Preview Content\"";
@@ -609,6 +632,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CustomCameraEdit/CustomCameraEdit.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"CustomCameraEdit/Preview Content\"";

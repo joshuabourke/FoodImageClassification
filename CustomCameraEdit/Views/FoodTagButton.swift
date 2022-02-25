@@ -12,9 +12,10 @@ struct FoodTagButton: View {
     var tagTitle: String
     
     var body: some View {
-        Button {
-            
-        } label: {
+        Button(action: {
+            print("passedTagTitle", tagTitle)
+
+        }, label: {
             Text(tagTitle)
 
                 .foregroundColor(Color.primary)
@@ -23,7 +24,7 @@ struct FoodTagButton: View {
                 .padding(.horizontal)
                 .padding(.vertical, 2)
                 
-        }
+        })
         .border(Color.accentColor, width: 2, cornerRadius: 25)
 
     }
@@ -31,7 +32,7 @@ struct FoodTagButton: View {
 
 struct FoodTagButton_Previews: PreviewProvider {
     static var previews: some View {
-        FoodTagButton(tagTitle: "Item1")
+        FoodTagButton(tagTitle: "item1")
             .previewLayout(.sizeThatFits)
             .padding()
     }

@@ -12,66 +12,75 @@ struct ContentView: View {
     @AppStorage("isDarkMode") var isDarkMode: Bool = false
     @State var currentSelection: Int = 0
     @State var isCurrentlySelected: Bool = true
+    @State private var isShowingLogin: Bool = false
+    @State private var isShowingCreateAccount: Bool = false
     
     //MARK: - BODY
     var body: some View {
         
-        PagerTabView(selection: $currentSelection, isSelected: $isCurrentlySelected) {
-            
-            VStack(spacing: 0) {
-                Image(systemName: "camera")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 25, height: 25)
-//                    .padding(.vertical, 10)
-                    .foregroundColor(isCurrentlySelected ? Color.accentColor : Color.gray)
-                    .opacity(isCurrentlySelected ? 1 : 0.3)
-                .pageLabel()
-            
-                Text("Camera")
-                    .fontWeight(.medium)
-                    .font(.system(size: 10))
-                    .foregroundColor(isCurrentlySelected ? Color.accentColor : Color.gray)
-                    .opacity(isCurrentlySelected ? 1 : 0.3)
-//                    .padding(0)
-            }//: VSTACK
-            
+        ZStack {
+            PagerTabView(selection: $currentSelection, isSelected: $isCurrentlySelected) {
                 
+                VStack(spacing: 0) {
+                    Image(systemName: "camera")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 25, height: 25)
+    //                    .padding(.vertical, 10)
+                        .foregroundColor(isCurrentlySelected ? Color.accentColor : Color.gray)
+                        .opacity(isCurrentlySelected ? 1 : 0.3)
+                    .pageLabel()
                 
+                    Text("Camera")
+                        .fontWeight(.medium)
+                        .font(.system(size: 10))
+                        .foregroundColor(isCurrentlySelected ? Color.accentColor : Color.gray)
+                        .opacity(isCurrentlySelected ? 1 : 0.3)
+    //                    .padding(0)
+                }//: VSTACK
+                
+                    
+                    
+                
+                VStack(spacing: 0) {
+                    Image(systemName: "bookmark")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 25, height: 25)
+    //                    .padding(.vertical, 10)
+                        .foregroundColor(isCurrentlySelected ? Color.gray : Color.accentColor)
+                        .opacity(isCurrentlySelected ? 0.3 : 1)
+                    .pageLabel()
+                    
+                    Text("Saved")
+                        .fontWeight(.medium)
+                        .font(.system(size: 10))
+                        .foregroundColor(isCurrentlySelected ? Color.gray : Color.accentColor)
+                        .opacity(isCurrentlySelected ? 0.3 : 1)
+    //                    .padding(0)
+                }//: VSTACK
+               
+                    
+            } content: {
+                //Tab 1.
+                CustomCameraPhotoView(didTapMe: $isShowingLogin)
+                    .pageView(ignoresSafeArea: false, edges: .top)
+                
+                //Tab 2.
+                SavedFoodListView(testJson: testJson1[0])
+                    .pageView(ignoresSafeArea: false, edges: .top)
+                
+            }
+            if isShowingLogin {
+                LoginView(isShowingLogin: $isShowingLogin, isShowingCreateAccount: $isShowingCreateAccount)
+            } else if isShowingCreateAccount {
+                CreateAccountView(isShowingCreateAccount: $isShowingCreateAccount, isShowingLogin: $isShowingLogin)
+            }
             
-            VStack(spacing: 0) {
-                Image(systemName: "bookmark")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 25, height: 25)
-//                    .padding(.vertical, 10)
-                    .foregroundColor(isCurrentlySelected ? Color.gray : Color.accentColor)
-                    .opacity(isCurrentlySelected ? 0.3 : 1)
-                .pageLabel()
-                
-                Text("Saved")
-                    .fontWeight(.medium)
-                    .font(.system(size: 10))
-                    .foregroundColor(isCurrentlySelected ? Color.gray : Color.accentColor)
-                    .opacity(isCurrentlySelected ? 0.3 : 1)
-//                    .padding(0)
-            }//: VSTACK
-           
-                
-                
-                
             
-        } content: {
-            //Tab 1.
-            CustomCameraPhotoView()
-                .pageView(ignoresSafeArea: false, edges: .top)
             
-            //Tab 2.
-            SavedFoodListView(testJson: testJson1[0])
-                .pageView(ignoresSafeArea: false, edges: .top)
-            
+
         }
-        
         .preferredColorScheme(isDarkMode ? .light : .dark)
     }
 

@@ -50,8 +50,8 @@ struct SavedFoodListView: View {
                 isShowingSettings = true
             }, label: {
                 HStack {
-                    Image(systemName: "ellipsis")
-                    Text("Settings")
+                    Image(systemName: "ellipsis.circle")
+//                    Text("Settings")
                 }
             })
                 .fullScreenCover(isPresented: $isShowingSettings, content: {
