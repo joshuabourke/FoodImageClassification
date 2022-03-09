@@ -24,10 +24,16 @@ struct DetailedSheetView: View {
     @State private var didCloseInfo: Bool = false
     @State var didSave: Bool = false
     @State private var isSaved: Bool = false
+
     @State private var itemOffset: Int = 0
     
+    //For the share sheet.
+    @State private var shareSheetShowing: Bool = false
+    @State private var items: [Any] = []
+    
+    
     @State private var tagTitle: String = ""
-    @State private var tagIndex: Int = 0
+    @State private var testingArray = [String]()
     
     
     
@@ -93,7 +99,6 @@ struct DetailedSheetView: View {
 //        getOffset()
     }
     
-    
     //MARK: - BODY
     var body: some View {
         
@@ -101,27 +106,9 @@ struct DetailedSheetView: View {
             //MARK: - SCROLL VIEW
             ScrollView(.vertical, showsIndicators: false){
                 VStack(alignment: .center, spacing: 20) {
-                    //HERO IMAGE
-                    Image(uiImage: takenImage ?? UIImage(named: "placeholder")!)
-                        .centerCropped()
-                        .frame(width: 299, height: 299, alignment: .center)
-                        .cornerRadius(8)
-                        .padding(.top)
 
+                    TestingImageSharing(image: takenImage, title: title)
                     
-                    
-                    //TITLE
-                    Text(title)
-                        .font(.largeTitle)
-                        .fontWeight(.heavy)
-                        .multilineTextAlignment(.center)
-                        .padding(.vertical, 8)
-                        .foregroundColor(.primary)
-                        .background(Color.accentColor
-                                        .frame(height: 6)
-                                        .offset(y: 24))
-                    
-
                     
                     //HEADLINE
                     Text(testJson1[itemOffset].headline)
@@ -147,17 +134,28 @@ struct DetailedSheetView: View {
                   //MARK: - SHARE BUTTON
                         Spacer()
                         Button(action: {
+                            let sharedSnapshot = TestingImageSharing(image: takenImage,title: title).snapshot()
                             print("Share Image")
+                            items.removeAll()
+                            items.append(sharedSnapshot)
+                            shareSheetShowing.toggle()
                         }, label: {
                             Image(systemName: "square.and.arrow.up")
                         })
                         Spacer()
+                            .sheet(isPresented: $shareSheetShowing) {
+                                ShareSheet(items: items)
+                            }
                         
                         
                     //MARK: - SAVE BUTTON
                         Button(action: {
-                            addItem()
                             didSave = true
+                            if didSave{
+                            addItem()
+                            } else {
+                                print("Item Not Saved")
+                            }
                             if savePhotos {
                             MyPhotoAlbum.shared.save(image: takenImage ?? UIImage(named: "placeholder")!)
                             } else {
@@ -178,6 +176,8 @@ struct DetailedSheetView: View {
                                         .font(.title2)
                                         .foregroundColor(.accentColor)
                             })
+                                    .disabled(didSave)
+                                    .foregroundColor(.accentColor)
                                     .frame(width: 15, height: 15)
                                     .padding(4)
                         Spacer()
@@ -188,10 +188,35 @@ struct DetailedSheetView: View {
                         
                         HeadingView(headingImage: "tag", headingTitle: "Other Possibilities")
                         
-                        FoodTagView(testingArray: otherFoods)
-                            .onTapGesture {
-                                
-                            }
+                        //FOOD TAG BUTTON'S
+                        VStack(alignment: .center, spacing: 12) {
+                                HStack(alignment: .center, spacing: 2) {
+                                    ForEach(otherFoods, id: \.self) { item in
+                                        Button(action: {
+                                            print("passedTagTitle", tagTitle)
+                                            title = item
+                                            
+
+                                        }, label: {
+                                            Text(item)
+
+                                                .foregroundColor(Color.primary)
+                                                .font(.caption)
+                                                .fontWeight(.bold)
+                                                .padding(.horizontal)
+                                                .padding(.vertical, 2)
+                                                
+                                        })
+                                        .border(Color.accentColor, width: 2, cornerRadius: 25)
+
+                                            .padding(.horizontal)
+
+                                        }//: LOOP
+                                    }//: HSTACK
+                                    .padding(.horizontal, 16)
+                                    .padding(.vertical, 4)
+
+                                }//: VSTACK
                             
                     }
                     .padding(.bottom)
@@ -265,6 +290,7 @@ struct DetailedSheetView: View {
          }
          
      }//: addItem
+
 }
 
 

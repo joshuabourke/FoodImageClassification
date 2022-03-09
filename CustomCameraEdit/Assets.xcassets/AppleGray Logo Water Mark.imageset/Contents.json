@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "Nutrify V3 No BackGround.png",
+      "filename" : "AppleGray Logo Water Mark.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -17,9 +17,5 @@
   "info" : {
     "author" : "xcode",
     "version" : 1
-  },
-  "properties" : {
-    "preserves-vector-representation" : true,
-    "template-rendering-intent" : "original"
   }
 }

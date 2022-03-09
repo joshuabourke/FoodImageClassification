@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0810D72027955F5100E876D1 /* 0.0.2-FoodVisionV2-100-foods-manually-cleaned.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0810D71F27955F5100E876D1 /* 0.0.2-FoodVisionV2-100-foods-manually-cleaned.mlmodel */; };
+		08217FAC27C89BA400758B08 /* TestingImageSharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08217FAB27C89BA400758B08 /* TestingImageSharing.swift */; };
+		08217FAE27C89E3D00758B08 /* ScreenShotExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08217FAD27C89E3D00758B08 /* ScreenShotExtension.swift */; };
+		08217FB027C89F5C00758B08 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08217FAF27C89F5C00758B08 /* ShareSheet.swift */; };
 		082EE84C278A801F00AA334D /* ModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082EE84B278A801F00AA334D /* ModelView.swift */; };
 		082EE84E278A80B500AA334D /* CustomShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082EE84D278A80B500AA334D /* CustomShape.swift */; };
 		082EE850278A812C00AA334D /* TabButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082EE84F278A812C00AA334D /* TabButtonView.swift */; };
@@ -16,8 +19,6 @@
 		08450B0627B4C64600337D46 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08450B0527B4C64600337D46 /* SettingsView.swift */; };
 		08450B0827B4C8D200337D46 /* SettingsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08450B0727B4C8D200337D46 /* SettingsRowView.swift */; };
 		08450B0A27B4CB8300337D46 /* SettingsLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08450B0927B4CB8300337D46 /* SettingsLabelView.swift */; };
-		08450B0C27B76D3200337D46 /* FoodTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08450B0B27B76D3200337D46 /* FoodTagView.swift */; };
-		08450B0E27B76D9B00337D46 /* FoodTagButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08450B0D27B76D9B00337D46 /* FoodTagButton.swift */; };
 		084C37E727A680BC00C1BD43 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084C37E627A680BC00C1BD43 /* ImageExtension.swift */; };
 		084C380527AA2A4700C1BD43 /* TestingFoodNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084C380427AA2A4700C1BD43 /* TestingFoodNames.swift */; };
 		0860C859279FE78700278F84 /* SavedItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0860C858279FE78700278F84 /* SavedItemView.swift */; };
@@ -25,6 +26,7 @@
 		0860C8A427A50BE600278F84 /* PagerTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0860C8A327A50BE600278F84 /* PagerTabView.swift */; };
 		0860C8A627A5423C00278F84 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0860C8A527A5423C00278F84 /* ViewExtension.swift */; };
 		0860C8A927A545DF00278F84 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0860C8A827A545DF00278F84 /* Constants.swift */; };
+		087F740327D8A82F002BA68F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 087F740227D8A82F002BA68F /* LaunchScreen.storyboard */; };
 		089B59772773F06C00EBDF09 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089B59762773F06C00EBDF09 /* Test.swift */; };
 		089B597C2773F1B200EBDF09 /* CodableBundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089B597B2773F1B200EBDF09 /* CodableBundleExtension.swift */; };
 		089B597E2773F51500EBDF09 /* DetailedSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089B597D2773F51500EBDF09 /* DetailedSheetView.swift */; };
@@ -45,7 +47,6 @@
 		28077B1A2733B4CD00F107C1 /* SavedFoodDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 28077B182733B4CD00F107C1 /* SavedFoodDataModel.xcdatamodeld */; };
 		28077B242733B81B00F107C1 /* Saved+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28077B222733B81B00F107C1 /* Saved+CoreDataClass.swift */; };
 		28077B252733B81B00F107C1 /* Saved+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28077B232733B81B00F107C1 /* Saved+CoreDataProperties.swift */; };
-		2808977526EEFC510094A830 /* FullScreenSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2808977426EEFC510094A830 /* FullScreenSheetView.swift */; };
 		2822B3D62741DDC6005C4657 /* MyPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2822B3D52741DDC6005C4657 /* MyPersistentContainer.swift */; };
 		2835C3FF26F2FDD900288C74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2835C3FE26F2FDD900288C74 /* AppDelegate.swift */; };
 		2835C40326F6931A00288C74 /* SavedFoodListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2835C40226F6931A00288C74 /* SavedFoodListView.swift */; };
@@ -63,6 +64,9 @@
 
 /* Begin PBXFileReference section */
 		0810D71F27955F5100E876D1 /* 0.0.2-FoodVisionV2-100-foods-manually-cleaned.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "0.0.2-FoodVisionV2-100-foods-manually-cleaned.mlmodel"; sourceTree = "<group>"; };
+		08217FAB27C89BA400758B08 /* TestingImageSharing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingImageSharing.swift; sourceTree = "<group>"; };
+		08217FAD27C89E3D00758B08 /* ScreenShotExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenShotExtension.swift; sourceTree = "<group>"; };
+		08217FAF27C89F5C00758B08 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 		082EE84B278A801F00AA334D /* ModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelView.swift; sourceTree = "<group>"; };
 		082EE84D278A80B500AA334D /* CustomShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomShape.swift; sourceTree = "<group>"; };
 		082EE84F278A812C00AA334D /* TabButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButtonView.swift; sourceTree = "<group>"; };
@@ -71,8 +75,6 @@
 		08450B0527B4C64600337D46 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		08450B0727B4C8D200337D46 /* SettingsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowView.swift; sourceTree = "<group>"; };
 		08450B0927B4CB8300337D46 /* SettingsLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLabelView.swift; sourceTree = "<group>"; };
-		08450B0B27B76D3200337D46 /* FoodTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTagView.swift; sourceTree = "<group>"; };
-		08450B0D27B76D9B00337D46 /* FoodTagButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodTagButton.swift; sourceTree = "<group>"; };
 		084C37E627A680BC00C1BD43 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 		084C380427AA2A4700C1BD43 /* TestingFoodNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingFoodNames.swift; sourceTree = "<group>"; };
 		0860C858279FE78700278F84 /* SavedItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedItemView.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 		0860C8A327A50BE600278F84 /* PagerTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerTabView.swift; sourceTree = "<group>"; };
 		0860C8A527A5423C00278F84 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		0860C8A827A545DF00278F84 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		087F740227D8A82F002BA68F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		089B59762773F06C00EBDF09 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		089B597B2773F1B200EBDF09 /* CodableBundleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableBundleExtension.swift; sourceTree = "<group>"; };
 		089B597D2773F51500EBDF09 /* DetailedSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedSheetView.swift; sourceTree = "<group>"; };
@@ -100,7 +103,6 @@
 		28077B192733B4CD00F107C1 /* SavedFoodDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SavedFoodDataModel.xcdatamodel; sourceTree = "<group>"; };
 		28077B222733B81B00F107C1 /* Saved+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Saved+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		28077B232733B81B00F107C1 /* Saved+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Saved+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		2808977426EEFC510094A830 /* FullScreenSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenSheetView.swift; sourceTree = "<group>"; };
 		2822B3D52741DDC6005C4657 /* MyPersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPersistentContainer.swift; sourceTree = "<group>"; };
 		2835C3FE26F2FDD900288C74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2835C40226F6931A00288C74 /* SavedFoodListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedFoodListView.swift; sourceTree = "<group>"; };
@@ -133,14 +135,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0860C857279FE6E000278F84 /* Saving For Later */ = {
-			isa = PBXGroup;
-			children = (
-				2808977426EEFC510094A830 /* FullScreenSheetView.swift */,
-			);
-			path = "Saving For Later";
-			sourceTree = "<group>";
-		};
 		0860C8A727A545D000278F84 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +150,7 @@
 				0860C8A527A5423C00278F84 /* ViewExtension.swift */,
 				084C37E627A680BC00C1BD43 /* ImageExtension.swift */,
 				08AB3D5327BE1C5A0060EC5C /* KeyBoardExtension.swift */,
+				08217FAD27C89E3D00758B08 /* ScreenShotExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -177,9 +172,9 @@
 				0838201227B371D000624453 /* Crosshair.swift */,
 				08450B0727B4C8D200337D46 /* SettingsRowView.swift */,
 				08450B0927B4CB8300337D46 /* SettingsLabelView.swift */,
-				08450B0B27B76D3200337D46 /* FoodTagView.swift */,
-				08450B0D27B76D9B00337D46 /* FoodTagButton.swift */,
 				08AB3D5527BE1D7E0060EC5C /* BlankView.swift */,
+				08217FAB27C89BA400758B08 /* TestingImageSharing.swift */,
+				08217FAF27C89F5C00758B08 /* ShareSheet.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -247,7 +242,6 @@
 				285974E826F07F3800FCC3B9 /* ImageDetectionViewModel.swift */,
 				285974E726F07F3800FCC3B9 /* UIImage+Extension.swift */,
 				0810D71F27955F5100E876D1 /* 0.0.2-FoodVisionV2-100-foods-manually-cleaned.mlmodel */,
-				0860C857279FE6E000278F84 /* Saving For Later */,
 			);
 			path = ImageDetection;
 			sourceTree = "<group>";
@@ -287,6 +281,7 @@
 				28C97F8526E9D29700C06095 /* Info.plist */,
 				28A4FADA26F2F8B8002CCD45 /* GoogleService-Info.plist */,
 				28C97F8226E9D29700C06095 /* Preview Content */,
+				087F740227D8A82F002BA68F /* LaunchScreen.storyboard */,
 			);
 			path = CustomCameraEdit;
 			sourceTree = "<group>";
@@ -378,6 +373,7 @@
 				08AB3D4C27BB79410060EC5C /* TestApple.json in Resources */,
 				28C97F8426E9D29700C06095 /* Preview Assets.xcassets in Resources */,
 				28C97F8126E9D29700C06095 /* Assets.xcassets in Resources */,
+				087F740327D8A82F002BA68F /* LaunchScreen.storyboard in Resources */,
 				28A4FADB26F2F8B9002CCD45 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -432,20 +428,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				08AB3D5227BE1BB60060EC5C /* CameraOverlayOptions.swift in Sources */,
-				08450B0E27B76D9B00337D46 /* FoodTagButton.swift in Sources */,
 				2822B3D62741DDC6005C4657 /* MyPersistentContainer.swift in Sources */,
 				089B597E2773F51500EBDF09 /* DetailedSheetView.swift in Sources */,
 				082EE84C278A801F00AA334D /* ModelView.swift in Sources */,
 				0860C8A227A506BE00278F84 /* OffsetTabView.swift in Sources */,
 				28077B242733B81B00F107C1 /* Saved+CoreDataClass.swift in Sources */,
 				089B597C2773F1B200EBDF09 /* CodableBundleExtension.swift in Sources */,
+				08217FB027C89F5C00758B08 /* ShareSheet.swift in Sources */,
+				08217FAE27C89E3D00758B08 /* ScreenShotExtension.swift in Sources */,
 				08450B0A27B4CB8300337D46 /* SettingsLabelView.swift in Sources */,
 				08AB3D5027BE04270060EC5C /* LoginView.swift in Sources */,
 				08450B0627B4C64600337D46 /* SettingsView.swift in Sources */,
 				0860C8A627A5423C00278F84 /* ViewExtension.swift in Sources */,
 				28A4FAD926F2A656002CCD45 /* ImageDetection.swift in Sources */,
 				28C97F7F26E9D29400C06095 /* MyCameraView.swift in Sources */,
-				08450B0C27B76D3200337D46 /* FoodTagView.swift in Sources */,
 				084C37E727A680BC00C1BD43 /* ImageExtension.swift in Sources */,
 				0810D72027955F5100E876D1 /* 0.0.2-FoodVisionV2-100-foods-manually-cleaned.mlmodel in Sources */,
 				089B59772773F06C00EBDF09 /* Test.swift in Sources */,
@@ -462,12 +458,12 @@
 				089B598827742A7200EBDF09 /* LinkView.swift in Sources */,
 				089B59802773F96000EBDF09 /* HeadingView.swift in Sources */,
 				285974EC26F07F3900FCC3B9 /* ImageDetectionViewModel.swift in Sources */,
-				2808977526EEFC510094A830 /* FullScreenSheetView.swift in Sources */,
 				082EE852278A81D500AA334D /* ContentView.swift in Sources */,
 				0838201327B371D000624453 /* Crosshair.swift in Sources */,
 				089B598E277560E400EBDF09 /* ImageButtonView.swift in Sources */,
 				0860C8A927A545DF00278F84 /* Constants.swift in Sources */,
 				082EE84E278A80B500AA334D /* CustomShape.swift in Sources */,
+				08217FAC27C89BA400758B08 /* TestingImageSharing.swift in Sources */,
 				2835C40326F6931A00288C74 /* SavedFoodListView.swift in Sources */,
 				285974E926F07F3800FCC3B9 /* ImageDetectionManager.swift in Sources */,
 				28077B1A2733B4CD00F107C1 /* SavedFoodDataModel.xcdatamodeld in Sources */,

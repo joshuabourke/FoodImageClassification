@@ -19,44 +19,51 @@ struct SavedItemView: View {
     
     //MARK: - BODY
     var body: some View {
-        HStack{
-            Image(uiImage: UIImage(data: image) ?? UIImage(named: "placeholder")!)
-//            Image(uiImage: UIImage(named: "placeholder")!)
-                .centerCropped()
-                .scaledToFit()
-                .frame(width: 90, height: 90)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
-                .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.65), radius: 3)
-            
-            VStack(alignment: .leading, spacing: 5) {
-                Text(title)
-                    .font(.title2)
-                    .fontWeight(.heavy)
-                    .foregroundColor(.primary)
-                Text(headline)
-                    .foregroundColor(Color("grey1"))
-                    .font(.subheadline)
-                    .multilineTextAlignment(.leading)
-                    .lineLimit(2)
-                    .padding(.trailing, 8)
+        VStack {
+            HStack{
+                Image(uiImage: UIImage(data: image) ?? UIImage(named: "placeholder")!)
+    //            Image(uiImage: UIImage(named: "placeholder")!)
+                    .centerCropped()
+                    .scaledToFit()
+                    .frame(width: 90, height: 90)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.65), radius: 3)
+                
+                VStack(alignment: .leading, spacing: 5) {
+                    Text(title)
+                        .font(.title2)
+                        .fontWeight(.heavy)
+                        .foregroundColor(.primary)
+                    Text(headline)
+                        .foregroundColor(Color("grey1"))
+                        .font(.subheadline)
+                        .multilineTextAlignment(.leading)
+                        .lineLimit(2)
+                        .padding(.trailing, 8)
+                        
+
+                        
+                    
+                }//: VSTACK
+    //            Spacer()
+    //
+    //
+    //            VStack {
+    //                Spacer()
+    //                Text(date)
+    //                        .font(.footnote)
+    //                    .foregroundColor(.gray)
+    //            }
                     
 
-
-            }//: VSTACK
-//            
-//            Spacer()
-//            
-//            
-//            VStack {
-//                Spacer()
-//                Text(date)
-//                        .font(.footnote)
-//                    .foregroundColor(.gray)
-//            }
-                
-
-        }//: HSTACK
-        .padding(.vertical, 10)
+            }//: HSTACK
+//            .padding(.vertical, 6)
+            
+            Rectangle()
+                .frame(maxWidth: .infinity)
+                .frame(height: 0.5)
+                .foregroundColor(.gray.opacity(0.5))
+        }//: VSTACK
     }
 }
         //MARK: - PREVIEW

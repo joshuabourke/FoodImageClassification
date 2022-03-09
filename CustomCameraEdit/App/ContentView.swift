@@ -72,9 +72,14 @@ struct ContentView: View {
                 
             }
             if isShowingLogin {
-                LoginView(isShowingLogin: $isShowingLogin, isShowingCreateAccount: $isShowingCreateAccount)
+                withAnimation(.easeInOut(duration: 0.35)) {
+                LoginView(isShowingLogin: $isShowingLogin,
+                isShowingCreateAccount: $isShowingCreateAccount)
+                }
             } else if isShowingCreateAccount {
+                withAnimation(.easeInOut(duration: 0.35)){
                 CreateAccountView(isShowingCreateAccount: $isShowingCreateAccount, isShowingLogin: $isShowingLogin)
+                }
             }
             
             

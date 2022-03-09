@@ -26,7 +26,7 @@ struct SavedFoodListView: View {
     var testJson: Test
     
     @State private var isShowingSettings = false
-    
+
     var body: some View {
     //MARK: - BODY
         
@@ -34,16 +34,21 @@ struct SavedFoodListView: View {
             List{
                 ForEach(savings, id: \.self.dataFoodID.description) { index in
                     NavigationLink(destination: DetailedSheetView(imDetection: ImageDetection(), testJson: testJson, takenImage: Binding<UIImage?>.constant(UIImage(data: index.dataFoodImage!)!), didSave: true))
+                    
                     {
                         //MARK: - SAVED ITEM VIEW
                         
                         SavedItemView(image: index.dataFoodImage!, title: index.dataFoodName ?? "", headline: testJson.headline)
+                        
                     }//: LINK
-
+                    
+                    
                 }//: LOOP
                 .onDelete(perform: removeFromCoreData)
+
                 
             }//: LIST
+            
             .navigationTitle("Saved")
             .navigationBarItems(leading:
             Button(action: {
