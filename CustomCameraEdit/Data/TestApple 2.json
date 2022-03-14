@@ -1,0 +1,44 @@
+[
+    {
+        "id" : "Apple",
+        "name" : "Apple",
+        "headline" : "This is a test JSON for the food apple",
+        "description": "This is a test description for the food apple",
+        "link": "this would link to some where for apples",
+        "nutrition" : [
+            "250kj",
+            "9.96",
+            "0.33",
+            "0.74",
+            "A, B1, B2, B3, B5, B6, B9, C, E, K",
+            "Calcium, Iron, Magnasium, Phosphorus, Sodium, Zinc"],
+        "images" : [
+            "apple1",
+            "apple2",
+            "apple3",
+            "apple4",
+            "apple5"
+        ]
+},
+{
+    "id" : "Banana",
+    "name" : "Banana",
+    "headline" : "This is a test JSON for the food Banana",
+    "description": "This is a test description for the food Banana",
+    "link": "this would link to some where for Bananas",
+    "nutrition" : [
+        "250kj",
+        "9.96",
+        "0.33",
+        "0.74",
+        "A, B1, B2, B3, B5, B6, B9, C, E, K",
+        "Calcium, Iron, Magnasium, Phosphorus, Sodium, Zinc"],
+    "images" : [
+        "Banana1",
+        "Banana2",
+        "Banana3",
+        "Banana4",
+        "Banana5"
+    ]
+}
+]

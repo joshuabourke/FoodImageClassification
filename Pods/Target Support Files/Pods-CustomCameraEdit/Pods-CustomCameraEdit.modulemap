@@ -1,0 +1,6 @@
+framework module Pods_CustomCameraEdit {
+  umbrella header "Pods-CustomCameraEdit-umbrella.h"
+
+  export *
+  module * { export * }
+}
