@@ -13,6 +13,7 @@ struct CustomCameraPhotoView: View {
     @State private var didOutPutImage = false
     @State private var selection = 0
     @Binding var didTapMe: Bool
+    @Binding var didTapAR: Bool
     let customCameraController = CustomCameraController()
     
     //Timer Variables
@@ -42,7 +43,7 @@ struct CustomCameraPhotoView: View {
                     )
                     
                         CustomCameraView(
-                            didTapMe: $didTapMe, customCameraRepresentable: customCameraRepresentable,
+                            didTapMe: $didTapMe, didTapAR: $didTapAR, customCameraRepresentable: customCameraRepresentable,
                             imageCompletion: { newImage in
                                 self.image = newImage
                                 didOutPutImage = true
@@ -134,6 +135,7 @@ import SwiftUI
 //MARK: - CUSTOM CAMERA VIEW
 struct CustomCameraView: View {
     @Binding var didTapMe: Bool
+    @Binding var didTapAR: Bool
     var customCameraRepresentable: CustomCameraRepresentable
     var imageCompletion: ((UIImage) -> Void)
     var body: some View {
@@ -146,12 +148,17 @@ struct CustomCameraView: View {
                 
                    Crosshair(heightAndWidth: 299, lineWidth: 2)
                   
-                    VStack(alignment:.trailing) {
+                    VStack() {
                         Spacer()
                         HStack(alignment:.top) {
+                            ARViewSwitchButton(didTapMe: $didTapAR)
+                                .padding(.leading)
+                                .frame(alignment: .leading)
                             Spacer()
                             CameraOverlayOptions(didTapMe: $didTapMe)
                                 .padding(.trailing)
+                                .frame(alignment: .trailing)
+                            
                         }
                         Spacer()
                         Spacer()
@@ -186,14 +193,17 @@ import SwiftUI
 //MARK: - CAMERA CONTROLS VIEW
 struct CameraControlsView: View {
     var captureButtonAction: (() -> Void)
-
-    
+    @State private var animation: Bool = false
+    @State var scaleButton: CGFloat = 1
     var body: some View {
-        CaptureButtonView()
+        CaptureButtonView(animation: $animation, scaleButton: $scaleButton)
             .onTapGesture {
                 captureButtonAction()
                 feedback.notificationOccurred(.success)
+                animation.toggle()
+                scaleButton = 0.9
             }
+        
 
     }
 }
@@ -203,20 +213,29 @@ import SwiftUI
 struct CaptureButtonView: View {
     
     @State private var isAnimating: Bool = false
-    @State private var animation: Double = 0.0
+    @Binding var animation: Bool
+    @Binding var scaleButton: CGFloat
     
     var body: some View {
                 ZStack{
                     Circle()
                         .fill(Color.white)
                         .frame(width: 65, height: 65)
-
+                        .modifier(ReversingScale(to: scaleButton, onEnd: {
+                            DispatchQueue.main.async {
+                                self.scaleButton = 1
+                            }
+                        }))
+                        .animation(.easeInOut(duration: 0.15), value: scaleButton)
+//                        .scaleEffect(animation ? 0.9 : 1)
+//                        .animation(Animation.spring().repeatCount(1, autoreverses: true), value: animation)
+                    
 
 
                     Circle()
                         .stroke(Color.white,lineWidth: 2)
                         .frame(width: 75, height: 75, alignment: .center)
-
+                        
                         
                 }
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 125, trailing: 0))

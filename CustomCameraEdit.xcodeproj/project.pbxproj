@@ -26,7 +26,9 @@
 		0860C8A427A50BE600278F84 /* PagerTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0860C8A327A50BE600278F84 /* PagerTabView.swift */; };
 		0860C8A627A5423C00278F84 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0860C8A527A5423C00278F84 /* ViewExtension.swift */; };
 		0860C8A927A545DF00278F84 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0860C8A827A545DF00278F84 /* Constants.swift */; };
+		0868901D27DF2C9000C8E931 /* ARViewSwitchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0868901C27DF2C9000C8E931 /* ARViewSwitchButton.swift */; };
 		087F740327D8A82F002BA68F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 087F740227D8A82F002BA68F /* LaunchScreen.storyboard */; };
+		087F740527DABCFA002BA68F /* ReverseScalingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087F740427DABCFA002BA68F /* ReverseScalingAnimation.swift */; };
 		089B59772773F06C00EBDF09 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089B59762773F06C00EBDF09 /* Test.swift */; };
 		089B597C2773F1B200EBDF09 /* CodableBundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089B597B2773F1B200EBDF09 /* CodableBundleExtension.swift */; };
 		089B597E2773F51500EBDF09 /* DetailedSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089B597D2773F51500EBDF09 /* DetailedSheetView.swift */; };
@@ -82,7 +84,9 @@
 		0860C8A327A50BE600278F84 /* PagerTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerTabView.swift; sourceTree = "<group>"; };
 		0860C8A527A5423C00278F84 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		0860C8A827A545DF00278F84 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		0868901C27DF2C9000C8E931 /* ARViewSwitchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewSwitchButton.swift; sourceTree = "<group>"; };
 		087F740227D8A82F002BA68F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		087F740427DABCFA002BA68F /* ReverseScalingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseScalingAnimation.swift; sourceTree = "<group>"; };
 		089B59762773F06C00EBDF09 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		089B597B2773F1B200EBDF09 /* CodableBundleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableBundleExtension.swift; sourceTree = "<group>"; };
 		089B597D2773F51500EBDF09 /* DetailedSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedSheetView.swift; sourceTree = "<group>"; };
@@ -151,6 +155,7 @@
 				084C37E627A680BC00C1BD43 /* ImageExtension.swift */,
 				08AB3D5327BE1C5A0060EC5C /* KeyBoardExtension.swift */,
 				08217FAD27C89E3D00758B08 /* ScreenShotExtension.swift */,
+				087F740427DABCFA002BA68F /* ReverseScalingAnimation.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -175,6 +180,8 @@
 				08AB3D5527BE1D7E0060EC5C /* BlankView.swift */,
 				08217FAB27C89BA400758B08 /* TestingImageSharing.swift */,
 				08217FAF27C89F5C00758B08 /* ShareSheet.swift */,
+				08AB3D5127BE1BB60060EC5C /* CameraOverlayOptions.swift */,
+				0868901C27DF2C9000C8E931 /* ARViewSwitchButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -229,7 +236,6 @@
 				08450B0527B4C64600337D46 /* SettingsView.swift */,
 				08AB3D4F27BE04270060EC5C /* LoginView.swift */,
 				08AB3D5827BF749F0060EC5C /* CreateAccountView.swift */,
-				08AB3D5127BE1BB60060EC5C /* CameraOverlayOptions.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -464,11 +470,13 @@
 				0860C8A927A545DF00278F84 /* Constants.swift in Sources */,
 				082EE84E278A80B500AA334D /* CustomShape.swift in Sources */,
 				08217FAC27C89BA400758B08 /* TestingImageSharing.swift in Sources */,
+				087F740527DABCFA002BA68F /* ReverseScalingAnimation.swift in Sources */,
 				2835C40326F6931A00288C74 /* SavedFoodListView.swift in Sources */,
 				285974E926F07F3800FCC3B9 /* ImageDetectionManager.swift in Sources */,
 				28077B1A2733B4CD00F107C1 /* SavedFoodDataModel.xcdatamodeld in Sources */,
 				28077B252733B81B00F107C1 /* Saved+CoreDataProperties.swift in Sources */,
 				08AB3D5427BE1C5B0060EC5C /* KeyBoardExtension.swift in Sources */,
+				0868901D27DF2C9000C8E931 /* ARViewSwitchButton.swift in Sources */,
 				08A10F10276315800085EA22 /* NutrifyModel.swift in Sources */,
 				0860C859279FE78700278F84 /* SavedItemView.swift in Sources */,
 				0860C8A427A50BE600278F84 /* PagerTabView.swift in Sources */,

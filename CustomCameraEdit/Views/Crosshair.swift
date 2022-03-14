@@ -45,39 +45,6 @@ struct Crosshair: View {
                 .frame(width: heightAndWidth, height: heightAndWidth, alignment: .center)
                 .foregroundColor(.white)
                 .shadow(color: Color.black, radius: 2, x: 0, y: 0)
-            
-            
-            //MARK: - SQUARE CROSS HAIR
-//            Rectangle()
-//                .trim(from: 0.7, to: 0.8)
-//                .stroke(Color.white,lineWidth: lineWidth)
-//                .frame(width: heightAndWidth, height: heightAndWidth, alignment: .center)
-//                .foregroundColor(.white)
-//
-//            Rectangle()
-//                .trim(from: 0.45, to: 0.55)
-//                .stroke(Color.white,lineWidth: lineWidth)
-//                .frame(width: heightAndWidth, height: heightAndWidth, alignment: .center)
-//                .foregroundColor(.white)
-//
-//
-//            Rectangle()
-//                .trim(from: 0.2, to: 0.3)
-//                .stroke(Color.white,lineWidth: lineWidth)
-//                .frame(width: heightAndWidth, height: heightAndWidth, alignment: .center)
-//                .foregroundColor(.white)
-//
-//            Rectangle()
-//                .trim(from: 0.95, to: 1)
-//                .stroke(Color.white,lineWidth: lineWidth)
-//                .frame(width: heightAndWidth, height: heightAndWidth, alignment: .center)
-//                .foregroundColor(.white)
-//
-//            Rectangle()
-//                .trim(from: 0, to: 0.05)
-//                .stroke(Color.white,lineWidth: lineWidth)
-//                .frame(width: heightAndWidth, height: heightAndWidth, alignment: .center)
-//                .foregroundColor(.white)
                 
         }
             

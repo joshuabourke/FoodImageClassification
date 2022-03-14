@@ -14,6 +14,7 @@ struct ContentView: View {
     @State var isCurrentlySelected: Bool = true
     @State private var isShowingLogin: Bool = false
     @State private var isShowingCreateAccount: Bool = false
+    @State private var isARViewShowing: Bool = false
     
     //MARK: - BODY
     var body: some View {
@@ -63,7 +64,7 @@ struct ContentView: View {
                     
             } content: {
                 //Tab 1.
-                CustomCameraPhotoView(didTapMe: $isShowingLogin)
+                CustomCameraPhotoView(didTapMe: $isShowingLogin, didTapAR: $isARViewShowing)
                     .pageView(ignoresSafeArea: false, edges: .top)
                 
                 //Tab 2.

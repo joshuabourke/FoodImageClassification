@@ -1,20 +1,20 @@
 //
-//  CameraOverlayOptions.swift
+//  ARViewSwitchButton.swift
 //  CustomCameraEdit
 //
-//  Created by Josh Bourke on 17/2/22.
+//  Created by Josh Bourke on 14/3/22.
 //
 
 import SwiftUI
 
-struct CameraOverlayOptions: View {
+struct ARViewSwitchButton: View {
     //MARK: - PROPERTIES
     
     @Binding var didTapMe: Bool
     
     //MARK: - BODY
     var body: some View {
-        Image(systemName: "person")
+        Image(systemName: "cube")
             .foregroundColor(Color.accentColor)
             .font(.title3)
             .frame(width: 30, height: 30, alignment: .center)
@@ -26,11 +26,10 @@ struct CameraOverlayOptions: View {
     }
 }
 
-
     //MARK: - PREVIEW
-struct CameraOverlayOptions_Previews: PreviewProvider {
+struct ARViewSwitchButton_Previews: PreviewProvider {
     static var previews: some View {
-        CameraOverlayOptions(didTapMe: .constant(false))
+        ARViewSwitchButton(didTapMe: .constant(false))
             .previewLayout(.sizeThatFits)
             .padding()
     }
