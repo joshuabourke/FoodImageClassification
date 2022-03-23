@@ -8,6 +8,7 @@
 import SwiftUI
 import CoreData
 import CoreML
+import RealityKit
 
 struct DetailedSheetView: View {
     //MARK: - PROPERTIES
@@ -18,7 +19,8 @@ struct DetailedSheetView: View {
     let testJson: Test
     
     //Properties that change ever time a photo is taken. changes the image and the title, then assigns it a new unique id for core data purposes.
-    @State private var title: String = ""
+    @State var title: String = ""
+    @State private var detailDescription: String = ""
     @State private var otherFoods: [String] = []
     @Binding var takenImage: UIImage?
     @State private var didCloseInfo: Bool = false
@@ -26,6 +28,7 @@ struct DetailedSheetView: View {
     @State private var isSaved: Bool = false
 
     @State private var itemOffset: Int = 0
+    @State private var foodJSONOffSet: Int = 0
     
     //For the share sheet.
     @State private var shareSheetShowing: Bool = false
@@ -35,7 +38,11 @@ struct DetailedSheetView: View {
     @State private var tagTitle: String = ""
     @State private var testingArray = [String]()
     
-    
+    //NUTRITION INFO UPDATING
+    @State private var nutritionTitle = ["1g", "10g", "100g", "1kg", "10kg"]
+    @State private var nutritionMultiplyer = [0.01, 0.1, 1, 10, 100]
+    @State private var arrayCounter: Double = 2
+    @State private var isNutritionExpanded: Bool = false
     
     //MARK: - CORE DATA PROPERTIES
     //trying to save items from the list the Core Data
@@ -81,6 +88,17 @@ struct DetailedSheetView: View {
             print("Couldn't find item.offset and item.element")
         }
     }
+    
+    func getFoodJSONOffset() {
+        if let eleOffSet = foodJSON?.enumerated().first(where: {$0.element.food == title}) {
+            //Do something with the item off set
+            print("Found item.offset\(eleOffSet) and item.element for FOODJSON")
+            foodJSONOffSet = eleOffSet.offset
+        } else {
+            //Item offset and element could not be found
+            print("Couldn't find item.offset and item.element for FOODJSON")
+        }
+    }
 //
 //    func getOffset() {
 //        if let foodOffset = testJson1.firstIndex(where: {$0.name == title}) {
@@ -96,6 +114,7 @@ struct DetailedSheetView: View {
 //        checkIfItemExists()
 //        getElement()
         getEleOffset()
+        getFoodJSONOffset()
 //        getOffset()
     }
     
@@ -111,7 +130,7 @@ struct DetailedSheetView: View {
                     
                     
                     //HEADLINE
-                    Text(testJson1[itemOffset].headline)
+                    Text(foodJSON?[foodJSONOffSet].self.description ?? "n/a")
                         .font(.headline)
                         .multilineTextAlignment(.leading)
                         .padding(.horizontal)
@@ -224,7 +243,65 @@ struct DetailedSheetView: View {
                     //NUTRITION INFO
                     Group{
                     HeadingView(headingImage: "leaf", headingTitle: "Nutritional Values")
-                    NutritionView(food: testJson1[itemOffset])
+                        VStack {
+                            Text("Food Weight \(nutritionTitle[Array<String>.Index(arrayCounter)])")
+                                .font(.headline)
+                                .multilineTextAlignment(.leading)
+                                .padding(.horizontal)
+                                
+                            HStack{
+                                Image(systemName: "minus")
+                                    .foregroundColor(.accentColor)
+                                    .font(.title2)
+                                    .onTapGesture {
+                                        print("Decreasing food Weight Array Counter: \(arrayCounter)")
+                                        feedback.notificationOccurred(.success)
+                                        if arrayCounter <= 0 {
+                                            print("At Min")
+                                            feedback.notificationOccurred(.warning)
+                                        } else {
+                                            arrayCounter = arrayCounter - 1
+                                            feedback.notificationOccurred(.success)
+                                            if !isNutritionExpanded {
+                                                print("Is Expended is False")
+                                            } else {
+                                                print("Is Expanded is True")
+                                                isNutritionExpanded = false
+                                            }
+                                        }
+                                    }
+                                
+                                Slider(value: $arrayCounter,in: 0...4, step: 1)
+                                    .accentColor(Color.accentColor)
+                                    .onChange(of: arrayCounter) { V in
+                                        isNutritionExpanded = false
+                                    }
+                                
+                                Image(systemName: "plus")
+                                    .foregroundColor(.accentColor)
+                                    .font(.title2)
+                                    .onTapGesture {
+                                        print("Increasing food weight Array Counter: \(arrayCounter)")
+    
+                                        if arrayCounter >= 4 {
+                                            print("At max")
+                                            feedback.notificationOccurred(.warning)
+                                        } else {
+                                            arrayCounter = arrayCounter + 1
+                                            feedback.notificationOccurred(.success)
+                                            if !isNutritionExpanded {
+                                                print("Is Expended is False")
+                                            } else {
+                                                print("Is Expanded is True")
+                                                isNutritionExpanded = false
+                                            }
+                                        }
+                                    }
+                            }//: SLIDER
+                            .padding(.horizontal, 36)
+                        }//: VSTACK
+                        
+                        NutritionView(foodJSON: foodJSON?[foodJSONOffSet], foodMultiplyer: $nutritionMultiplyer[Array<Double>.Index(arrayCounter)], foodMultiplyerTitle: $nutritionTitle[Array<String>.Index(arrayCounter)], isNutrientsExpanded: $isNutritionExpanded)
                     }//: GROUP
                     
                     //GALLERY
@@ -254,15 +331,22 @@ struct DetailedSheetView: View {
             }//: SCROLL
 //            .ignoresSafeArea(.container, edges: .top)
             .onAppear {
+                
+                
                 imDetection.imageDetectionVM.detect(takenImage)
                 title = imDetection.imageDetectionVM.predictionLabel
                 otherFoods = imDetection.imageDetectionVM.otherPossiblePredictions
+                runAll()
+                
+                detailDescription = foodJSON?[foodJSONOffSet].self.description ?? "n/a"
+                print("DETAILDESCRIPTION: \(detailDescription)")
                 
                 print("Other Predictions: \(imDetection.imageDetectionVM.otherPossiblePredictions)")
-                runAll()
+                
             }
             .onDisappear {
                 didSave = false
+                detailDescription = ""
             }
 
         }//: ZSTACK
@@ -275,6 +359,7 @@ struct DetailedSheetView: View {
              let newItem = Saved(context: moc)
              newItem.dataFoodImage = data
              newItem.dataFoodName = title
+             newItem.dataFoodDescription = detailDescription
              newItem.dataFoodID = UUID()
              newItem.dataDate = Date()
              newItem.dataIsSaved = didSave

@@ -17,6 +17,7 @@ extension Saved {
     }
 
     @NSManaged public var dataFoodName: String?
+    @NSManaged public var dataFoodDescription: String?
     @NSManaged public var dataFoodImage: Data?
     @NSManaged public var dataPredicPercent: String?
     @NSManaged public var dataFoodID: UUID

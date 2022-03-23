@@ -15,6 +15,7 @@
 		082EE84E278A80B500AA334D /* CustomShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082EE84D278A80B500AA334D /* CustomShape.swift */; };
 		082EE850278A812C00AA334D /* TabButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082EE84F278A812C00AA334D /* TabButtonView.swift */; };
 		082EE852278A81D500AA334D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082EE851278A81D500AA334D /* ContentView.swift */; };
+		0834747427E69785000CE1CE /* NutritionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0834747327E69785000CE1CE /* NutritionViewItem.swift */; };
 		0838201327B371D000624453 /* Crosshair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0838201227B371D000624453 /* Crosshair.swift */; };
 		08450B0627B4C64600337D46 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08450B0527B4C64600337D46 /* SettingsView.swift */; };
 		08450B0827B4C8D200337D46 /* SettingsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08450B0727B4C8D200337D46 /* SettingsRowView.swift */; };
@@ -27,6 +28,10 @@
 		0860C8A627A5423C00278F84 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0860C8A527A5423C00278F84 /* ViewExtension.swift */; };
 		0860C8A927A545DF00278F84 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0860C8A827A545DF00278F84 /* Constants.swift */; };
 		0868901D27DF2C9000C8E931 /* ARViewSwitchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0868901C27DF2C9000C8E931 /* ARViewSwitchButton.swift */; };
+		0868901F27E043E100C8E931 /* ARViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0868901E27E043E100C8E931 /* ARViewContent.swift */; };
+		0868902127E0451A00C8E931 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0868902027E0451A00C8E931 /* ARView.swift */; };
+		0868902527E0719A00C8E931 /* FILE_8252.json in Resources */ = {isa = PBXBuildFile; fileRef = 0868902427E0719A00C8E931 /* FILE_8252.json */; };
+		0868902727E0731900C8E931 /* FoodJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0868902627E0731900C8E931 /* FoodJSON.swift */; };
 		087F740327D8A82F002BA68F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 087F740227D8A82F002BA68F /* LaunchScreen.storyboard */; };
 		087F740527DABCFA002BA68F /* ReverseScalingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087F740427DABCFA002BA68F /* ReverseScalingAnimation.swift */; };
 		089B59772773F06C00EBDF09 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089B59762773F06C00EBDF09 /* Test.swift */; };
@@ -73,6 +78,7 @@
 		082EE84D278A80B500AA334D /* CustomShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomShape.swift; sourceTree = "<group>"; };
 		082EE84F278A812C00AA334D /* TabButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButtonView.swift; sourceTree = "<group>"; };
 		082EE851278A81D500AA334D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0834747327E69785000CE1CE /* NutritionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionViewItem.swift; sourceTree = "<group>"; };
 		0838201227B371D000624453 /* Crosshair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crosshair.swift; sourceTree = "<group>"; };
 		08450B0527B4C64600337D46 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		08450B0727B4C8D200337D46 /* SettingsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowView.swift; sourceTree = "<group>"; };
@@ -85,6 +91,10 @@
 		0860C8A527A5423C00278F84 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		0860C8A827A545DF00278F84 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0868901C27DF2C9000C8E931 /* ARViewSwitchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewSwitchButton.swift; sourceTree = "<group>"; };
+		0868901E27E043E100C8E931 /* ARViewContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewContent.swift; sourceTree = "<group>"; };
+		0868902027E0451A00C8E931 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
+		0868902427E0719A00C8E931 /* FILE_8252.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FILE_8252.json; sourceTree = "<group>"; };
+		0868902627E0731900C8E931 /* FoodJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodJSON.swift; sourceTree = "<group>"; };
 		087F740227D8A82F002BA68F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		087F740427DABCFA002BA68F /* ReverseScalingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseScalingAnimation.swift; sourceTree = "<group>"; };
 		089B59762773F06C00EBDF09 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
@@ -139,6 +149,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0834747527E699F7000CE1CE /* DetailedView */ = {
+			isa = PBXGroup;
+			children = (
+				089B597F2773F96000EBDF09 /* HeadingView.swift */,
+				089B598D277560E400EBDF09 /* ImageButtonView.swift */,
+				0834747327E69785000CE1CE /* NutritionViewItem.swift */,
+				089B59832774230100EBDF09 /* NutritionView.swift */,
+				089B598727742A7200EBDF09 /* LinkView.swift */,
+				089B598B277431FE00EBDF09 /* ImageSliderView.swift */,
+				082EE84B278A801F00AA334D /* ModelView.swift */,
+			);
+			path = DetailedView;
+			sourceTree = "<group>";
+		};
 		0860C8A727A545D000278F84 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,12 +187,7 @@
 		08A10F0C276314800085EA22 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				089B597F2773F96000EBDF09 /* HeadingView.swift */,
-				089B598D277560E400EBDF09 /* ImageButtonView.swift */,
-				089B59832774230100EBDF09 /* NutritionView.swift */,
-				089B598727742A7200EBDF09 /* LinkView.swift */,
-				089B598B277431FE00EBDF09 /* ImageSliderView.swift */,
-				082EE84B278A801F00AA334D /* ModelView.swift */,
+				0834747527E699F7000CE1CE /* DetailedView */,
 				082EE84D278A80B500AA334D /* CustomShape.swift */,
 				082EE84F278A812C00AA334D /* TabButtonView.swift */,
 				0860C858279FE78700278F84 /* SavedItemView.swift */,
@@ -182,6 +201,7 @@
 				08217FAF27C89F5C00758B08 /* ShareSheet.swift */,
 				08AB3D5127BE1BB60060EC5C /* CameraOverlayOptions.swift */,
 				0868901C27DF2C9000C8E931 /* ARViewSwitchButton.swift */,
+				0868902027E0451A00C8E931 /* ARView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -189,6 +209,8 @@
 		08A10F0D2763155C0085EA22 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				0868902627E0731900C8E931 /* FoodJSON.swift */,
+				0868902427E0719A00C8E931 /* FILE_8252.json */,
 				089B59762773F06C00EBDF09 /* Test.swift */,
 				08AB3D4B27BB79410060EC5C /* TestApple.json */,
 				084C380427AA2A4700C1BD43 /* TestingFoodNames.swift */,
@@ -236,6 +258,7 @@
 				08450B0527B4C64600337D46 /* SettingsView.swift */,
 				08AB3D4F27BE04270060EC5C /* LoginView.swift */,
 				08AB3D5827BF749F0060EC5C /* CreateAccountView.swift */,
+				0868901E27E043E100C8E931 /* ARViewContent.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -378,6 +401,7 @@
 			files = (
 				08AB3D4C27BB79410060EC5C /* TestApple.json in Resources */,
 				28C97F8426E9D29700C06095 /* Preview Assets.xcassets in Resources */,
+				0868902527E0719A00C8E931 /* FILE_8252.json in Resources */,
 				28C97F8126E9D29700C06095 /* Assets.xcassets in Resources */,
 				087F740327D8A82F002BA68F /* LaunchScreen.storyboard in Resources */,
 				28A4FADB26F2F8B9002CCD45 /* GoogleService-Info.plist in Resources */,
@@ -438,6 +462,8 @@
 				089B597E2773F51500EBDF09 /* DetailedSheetView.swift in Sources */,
 				082EE84C278A801F00AA334D /* ModelView.swift in Sources */,
 				0860C8A227A506BE00278F84 /* OffsetTabView.swift in Sources */,
+				0868902127E0451A00C8E931 /* ARView.swift in Sources */,
+				0868901F27E043E100C8E931 /* ARViewContent.swift in Sources */,
 				28077B242733B81B00F107C1 /* Saved+CoreDataClass.swift in Sources */,
 				089B597C2773F1B200EBDF09 /* CodableBundleExtension.swift in Sources */,
 				08217FB027C89F5C00758B08 /* ShareSheet.swift in Sources */,
@@ -470,10 +496,12 @@
 				0860C8A927A545DF00278F84 /* Constants.swift in Sources */,
 				082EE84E278A80B500AA334D /* CustomShape.swift in Sources */,
 				08217FAC27C89BA400758B08 /* TestingImageSharing.swift in Sources */,
+				0834747427E69785000CE1CE /* NutritionViewItem.swift in Sources */,
 				087F740527DABCFA002BA68F /* ReverseScalingAnimation.swift in Sources */,
 				2835C40326F6931A00288C74 /* SavedFoodListView.swift in Sources */,
 				285974E926F07F3800FCC3B9 /* ImageDetectionManager.swift in Sources */,
 				28077B1A2733B4CD00F107C1 /* SavedFoodDataModel.xcdatamodeld in Sources */,
+				0868902727E0731900C8E931 /* FoodJSON.swift in Sources */,
 				28077B252733B81B00F107C1 /* Saved+CoreDataProperties.swift in Sources */,
 				08AB3D5427BE1C5B0060EC5C /* KeyBoardExtension.swift in Sources */,
 				0868901D27DF2C9000C8E931 /* ARViewSwitchButton.swift in Sources */,

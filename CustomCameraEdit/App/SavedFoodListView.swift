@@ -21,12 +21,16 @@ struct SavedFoodListView: View {
 //    NSSortDescriptor(keyPath: \Saved.dataPredicPercent, ascending: true),
 //    NSSortDescriptor(keyPath: \Saved.dataFoodID, ascending: true),
 
+    
     var savings: FetchedResults<Saved>
     
     var testJson: Test
-    
+
+
     @State private var isShowingSettings = false
 
+
+    
     var body: some View {
     //MARK: - BODY
         
@@ -34,11 +38,10 @@ struct SavedFoodListView: View {
             List{
                 ForEach(savings, id: \.self.dataFoodID.description) { index in
                     NavigationLink(destination: DetailedSheetView(imDetection: ImageDetection(), testJson: testJson, takenImage: Binding<UIImage?>.constant(UIImage(data: index.dataFoodImage!)!), didSave: true))
-                    
                     {
                         //MARK: - SAVED ITEM VIEW
                         
-                        SavedItemView(image: index.dataFoodImage!, title: index.dataFoodName ?? "", headline: testJson.headline)
+                        SavedItemView(image: index.dataFoodImage!, title: index.dataFoodName ?? "Can't find name", headline: index.dataFoodDescription ?? "can't find description")
                         
                     }//: LINK
                     
@@ -71,6 +74,9 @@ struct SavedFoodListView: View {
         
         //Fetching CoreData
     .onAppear{
+        
+
+        
         }
         //Storing CoreData
     .onDisappear{

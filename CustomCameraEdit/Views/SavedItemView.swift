@@ -19,7 +19,7 @@ struct SavedItemView: View {
     
     //MARK: - BODY
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             HStack{
                 Image(uiImage: UIImage(data: image) ?? UIImage(named: "placeholder")!)
     //            Image(uiImage: UIImage(named: "placeholder")!)
@@ -34,11 +34,13 @@ struct SavedItemView: View {
                         .font(.title2)
                         .fontWeight(.heavy)
                         .foregroundColor(.primary)
+                    
+                    
                     Text(headline)
                         .foregroundColor(Color("grey1"))
                         .font(.subheadline)
-                        .multilineTextAlignment(.leading)
-                        .lineLimit(2)
+                        .multilineTextAlignment(.center)
+                        .lineLimit(0)
                         .padding(.trailing, 8)
                         
 
@@ -66,7 +68,7 @@ struct SavedItemView: View {
         }//: VSTACK
     }
 }
-        //MARK: - PREVIEW
+//        MARK: - PREVIEW
 //struct SavedItemView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        SavedItemView(title: "Apple", headline: "This is an Apple.")

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Saved" representedClassName="Saved" syncable="YES">
         <attribute name="dataDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dataFoodDescription" optional="YES" attributeType="String"/>
         <attribute name="dataFoodID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="dataFoodImage" optional="YES" attributeType="Binary"/>
         <attribute name="dataFoodName" optional="YES" attributeType="String"/>
@@ -9,6 +10,6 @@
         <attribute name="dataPredicPercent" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Saved" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="Saved" positionX="-63" positionY="-18" width="128" height="134"/>
     </elements>
 </model>

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Test: Codable, Identifiable {
+struct Test: Codable{
     
     let id: String
     let name: String
